@@ -1,0 +1,8 @@
+class AddMedocIdToMedicines < ActiveRecord::Migration
+  def change
+
+      t.references :medoc, index: true, foreign_key: true
+
+    end
+  end
+end

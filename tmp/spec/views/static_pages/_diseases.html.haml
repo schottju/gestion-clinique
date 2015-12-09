@@ -1,0 +1,31 @@
+= form_tag diseases_search_path, method: :get do
+  = hidden_field_tag :direction, params[:direction]
+  = hidden_field_tag :sort, params[:sort]
+  = hidden_field_tag :tab, 'diseases'
+  .form-inline
+    = text_field_tag :search, params[:search], placeholder: 'Entrez la maladie', class: 'form-control'
+    = submit_tag "Rechercher", name: nil, class: 'btn btn-default'
+
+    .pull-right
+      = link_to 'Ajouter maladie', new_disease_path, class: "btn btn-default"
+
+- if @diseases.empty?
+  .alert.alert-warning.table-warning Aucun enregistrement.
+- else
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= sortable 'name', "Nom"
+        %th= sortable 'status', "Status"
+        %th
+    %tbody
+      - @diseases.each do |disease|
+        %tr
+          %td= change_blank_to_dash(disease.name)
+          %td= change_blank_to_dash(disease.status)
+          %td
+            .pull-right
+              = link_to icon('edit'), edit_disease_path(disease), title: 'Modifier', class: "btn btn-default"
+
+  .flickr_pagination
+    = will_paginate @diseases, param_name: 'diseases_page'

@@ -1,0 +1,16 @@
+.row
+  .col-md-3
+  .col-md-6
+    .panel.panel-default
+      .panel-heading Changez votre mot de passe
+      .panel-body
+        = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f|
+          = f.error_notification
+          = f.input :reset_password_token, as: :hidden
+          = f.full_error :reset_password_token
+          .form-inputs
+            = f.input :password, label: "Nouveau mot de passe", placeholder: 'Entrez mot de passe', required: true, autofocus: true, hint: ("minimum #{@minimum_password_length} caractères" if @minimum_password_length)
+            = f.input :password_confirmation, label: "Confirmez votre nouveau mot de passe", placeholder: 'Entrez de nouveau le nouveau mot de passe', required: true
+          .form-actions.pull-right
+            = f.button :submit, "Changez mot de passe"
+  .col-md-3

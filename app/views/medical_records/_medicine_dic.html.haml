@@ -1,0 +1,24 @@
+.nested-fields
+  .row
+    .col-md-1
+    .col-md-10
+      .jumbotron
+        .row
+          .col-md-2
+            = f.input :serial_number, label: 'N° de lot', placeholder: 'Entrez le N°'
+          .col-md-6
+            = f.input :name, label: 'Médicament', placeholder: 'Entrez le nom du nouveau médicament'
+        .row
+          .col-md-3
+            = f.input :amount, label: 'Quantité', placeholder: 'Entrez la quantité', as: :string, input_html: { value: change_period_to_comma(f.object.amount) }
+          .col-md-3
+            = f.input :unit_id, label: 'Unité', collection: @units
+
+        .row
+          .col-md-6
+            = f.input :dosage, label: 'Posologie', placeholder: 'Entrez la posologie'
+          .col-md-6
+            = f.input :description, label: 'Infos complémentaires', placeholder: 'Entrez les infos complémentaires'
+    .col-md-1
+      .pull-right
+        = link_to_remove_association icon('trash-o'), f, class: 'btn btn-default'

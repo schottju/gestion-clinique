@@ -1,0 +1,31 @@
+= form_tag medocs_search_path, method: :get do
+  = hidden_field_tag :direction, params[:direction]
+  = hidden_field_tag :sort, params[:sort]
+  = hidden_field_tag :tab, 'medocs'
+  .form-inline
+    = text_field_tag :search, params[:search], placeholder: 'Entrez le nom du médicament', class: 'form-control'
+    = submit_tag "Recherche", name: nil, class: 'btn btn-default'
+
+    .pull-right
+      = link_to 'Ajouter', new_medoc_path, class: "btn btn-default"
+
+- if @medocs.empty?
+  .alert.alert-warning.table-warning Aucun enregistrement.
+- else
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= sortable 'name', "Nom"
+        %th= sortable 'status', "Status"
+        %th
+    %tbody
+      - @medocs.each do |medoc|
+        %tr
+          %td= change_blank_to_dash(medoc.name)
+          %td= change_blank_to_dash(medoc.status)
+          %td
+            .pull-right
+              = link_to icon('edit'), edit_medoc_path(medoc), title: 'Modifier', class: "btn btn-default"
+
+  .flickr_pagination
+    = will_paginate @medocs, param_name: 'medocs_page'

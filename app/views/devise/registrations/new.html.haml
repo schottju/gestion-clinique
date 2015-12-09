@@ -1,0 +1,51 @@
+.panel.panel-default
+  .panel-heading Inscription
+  .panel-body
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f|
+      = f.error_notification
+      .row
+        .col-md-1
+        .col-md-10
+          .panel.panel-info
+            .panel-heading Données de base
+            .panel-body
+              .form-inputs
+                .row
+                  .col-md-6
+                    = f.input :first_name, label: 'Prénom', placeholder: 'Prénom', required: true, autofocus: true
+                    = f.input :email, label: 'Email', placeholder: 'Adresse mail (indispensable pour connexion)'
+                    = f.input :password, label: 'Mot de passe', placeholder: 'Tapez le', hint: ("minimum #{@minimum_password_length} caractères" if @minimum_password_length)
+                    = f.input :phone_number, label: 'Téléphone', placeholder: 'Entrez le numéro'
+                  .col-md-6
+                    = f.input :last_name, label: 'Nom', placeholder: 'le nom', required: true
+                    = f.input :password_confirmation, label: 'Confirmation mot de passe', placeholder: 'Re tapez le'
+                    .pull-left
+
+        .col-md-1
+      .row
+        .col-md-1
+        .col-md-10
+          .panel.panel-info
+            .panel-heading Coordonnées
+            .panel-body
+              = f.simple_fields_for :address do |a|
+                .row
+                  .col-md-6
+                    = a.input :street, label: 'Rue', placeholder: 'Nom de la rue'
+                  .col-md-3
+                    = a.input :house_number, label: 'Numéro', placeholder: 'Numéro de la rue'
+                  .col-md-3
+                    = a.input :flat_number, label: 'Appartement', placeholder: 'Numéro'
+                .row
+                  .col-md-6
+                    = a.input :zip_code, label: 'Code postal', placeholder: 'En chiffres'
+                  .col-md-6
+                    = a.input :city, label: 'Ville', placeholder: 'Entrez le nom'
+                    = a.input :country, label: 'Pays'
+        .col-md-1
+      .row
+        .col-md-1
+        .col-md-10
+          .form-actions.pull-right
+            = f.button :submit, "Inscription"
+        .col-md-1

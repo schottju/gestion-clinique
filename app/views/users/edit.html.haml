@@ -1,0 +1,52 @@
+.panel.panel-default
+  .panel-heading Modifier les données
+  .panel-body
+    = simple_form_for user do |f|
+      = f.error_notification
+      .form-inputs
+        .row
+          .col-md-1
+          .col-md-10
+            .panel.panel-info
+              .panel-heading Données de base
+              .panel-body
+                .row
+                  .col-md-6
+                    = f.input :first_name, label: 'Prénom', placeholder: 'Entrez le prénom', required: true, autofocus: true
+                    = f.input :email, label: 'Email', placeholder: 'Entrez email (indispensable pour connexion'
+                    = f.input :password, label: 'Mot de passe', placeholder: 'Entrez nouveau mot de passe'
+                    = f.input :phone_number, label: 'Téléphone', placeholder: 'Entrez Téléphone', required: true
+                  .col-md-6
+                    = f.input :last_name, label: 'Nom', placeholder: 'Entrez le nom', required: true
+                    = f.input :password_confirmation, label: 'Confirmer nouveau mot de passe', placeholder: 'Entrez nouveau mot de passe'
+          .col-md-1
+        .row
+          .col-md-1
+          .col-md-10
+            .panel.panel-info
+              .panel-heading Coordonnées
+              .panel-body
+                = f.simple_fields_for :address do |ff|
+                  .row
+                    .col-md-6
+                      = ff.input :street, label: 'Rue', placeholder: 'Entrez nouvelle rue', required: true
+                    .col-md-3
+                      = ff.input :house_number, label: 'Numéro', placeholder: 'Entrez numéro'
+                    .col-md-3
+                      = ff.input :flat_number, label: 'Numéro appartement', placeholder: 'Entrez N° appartement'
+                  .row
+                    .col-md-6
+                      = ff.input :zip_code, label: 'Code postal', placeholder: 'Entrez code postal', required: true
+                    .col-md-6
+                      = ff.input :city, label: 'Ville', placeholder: 'Entrez ville', required: true
+                      = ff.input :country, label: 'Pays'
+
+          .col-md-1
+        .row
+          .col-md-1
+          .col-md-10
+            .form-actions
+              = link_to 'Annuler', user_path(user), class: 'btn btn-default'
+              .pull-right
+                = f.button :submit, "Sauvegarder", class: "btn btn-default"
+          .col-md-1

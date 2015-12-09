@@ -1,0 +1,26 @@
+.panel.panel-default
+  .panel-heading Dictionnaires
+  .panel-body#static_pages
+    %ul.nav.nav-tabs
+      %li{:class => ('active' if params[:tab] == 'species')}
+        = link_to 'Espèces', dictionaries_path(tab: 'species')
+      %li{:class => ('active' if params[:tab] == 'treatments')}
+        = link_to 'Traitements', dictionaries_path(tab: 'treatments')
+      %li{:class => ('active' if params[:tab] == 'diseases')}
+        = link_to 'Maladies', dictionaries_path(tab: 'diseases')
+      %li{:class => ('active' if params[:tab] == 'units')}
+        = link_to 'Unités', dictionaries_path(tab: 'units')
+
+    .tab-content
+      #species.tab-pane{:class => ('active' if params[:tab] == 'species')}
+        - if params[:tab] == 'species'
+          = render 'species'
+      #treatments.tab-pane{:class => ('active' if params[:tab] == 'treatments')}
+        - if params[:tab] == 'treatments'
+          = render 'treatments'
+      #diseases.tab-pane{:class => ('active' if params[:tab] == 'diseases')}
+        - if params[:tab] == 'diseases'
+          = render 'diseases'
+      #units.tab-pane{:class => ('active' if params[:tab] == 'units')}
+        - if params[:tab] == 'units'
+          = render 'units'

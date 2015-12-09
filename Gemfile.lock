@@ -1,0 +1,354 @@
+GIT
+  remote: git://github.com/svenfuchs/rails-i18n.git
+  revision: 794f4f5140d8fc10a81cc8af7a590b81ad2f04da
+  branch: master
+  specs:
+    rails-i18n (4.0.5)
+      i18n (~> 0.6)
+      railties (~> 4.0)
+
+GIT
+  remote: git://github.com/zpaulovics/datetimepicker-rails.git
+  revision: 36d21cec5da7f5b214925804f60e63c61c747023
+  branch: master
+  submodules: true
+  specs:
+    datetimepicker-rails (4.7.16)
+      momentjs-rails (>= 2.9.0)
+
+GEM
+  remote: https://rubygems.org/
+  specs:
+    actionmailer (4.2.3)
+      actionpack (= 4.2.3)
+      actionview (= 4.2.3)
+      activejob (= 4.2.3)
+      mail (~> 2.5, >= 2.5.4)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+    actionpack (4.2.3)
+      actionview (= 4.2.3)
+      activesupport (= 4.2.3)
+      rack (~> 1.6)
+      rack-test (~> 0.6.2)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    actionview (4.2.3)
+      activesupport (= 4.2.3)
+      builder (~> 3.1)
+      erubis (~> 2.7.0)
+      rails-dom-testing (~> 1.0, >= 1.0.5)
+      rails-html-sanitizer (~> 1.0, >= 1.0.2)
+    activejob (4.2.3)
+      activesupport (= 4.2.3)
+      globalid (>= 0.3.0)
+    activemodel (4.2.3)
+      activesupport (= 4.2.3)
+      builder (~> 3.1)
+    activerecord (4.2.3)
+      activemodel (= 4.2.3)
+      activesupport (= 4.2.3)
+      arel (~> 6.0)
+    activesupport (4.2.3)
+      i18n (~> 0.7)
+      json (~> 1.7, >= 1.7.7)
+      minitest (~> 5.1)
+      thread_safe (~> 0.3, >= 0.3.4)
+      tzinfo (~> 1.1)
+    arel (6.0.3)
+    autoprefixer-rails (6.0.3)
+      execjs
+      json
+    awesome_print (1.6.1)
+    bcrypt (3.1.10)
+    bootstrap-sass (3.3.5.1)
+      autoprefixer-rails (>= 5.0.0.1)
+      sass (>= 3.3.0)
+    bootswatch-rails (3.3.5)
+      railties (>= 3.1)
+    builder (3.2.2)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
+    carrierwave-postgresql (0.1.5)
+      carrierwave
+    choice (0.2.0)
+    cocoon (1.2.6)
+    coderay (1.1.0)
+    coffee-rails (4.1.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0, < 5.0)
+    coffee-script (2.4.1)
+      coffee-script-source
+      execjs
+    coffee-script-source (1.9.1.1)
+    cookies_eu (1.2.0)
+      jquery-cookie-rails
+      jquery-rails
+    countries (1.1.0)
+      currencies (~> 0.4.2)
+      i18n_data (~> 0.7.0)
+    country_select (2.4.0)
+      countries (~> 1.1.0)
+      sort_alphabetical (~> 1.0)
+    currencies (0.4.2)
+    decent_decoration (0.0.6)
+      decent_exposure (>= 2.0)
+    decent_exposure (2.3.2)
+    devise (3.5.2)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 3.2.6, < 5)
+      responders
+      thread_safe (~> 0.1)
+      warden (~> 1.2.3)
+    devise-i18n (0.12.1)
+    draper (2.1.0)
+      actionpack (>= 3.0)
+      activemodel (>= 3.0)
+      activesupport (>= 3.0)
+      request_store (~> 1.0)
+    enum_help (0.0.14)
+    erubis (2.7.0)
+    execjs (2.6.0)
+    ffaker (2.1.0)
+    font-awesome-rails (4.4.0.0)
+      railties (>= 3.2, < 5.0)
+    font-awesome-sass (4.4.0)
+      sass (>= 3.2)
+    globalid (0.3.6)
+      activesupport (>= 4.1.0)
+    gravtastic (3.2.6)
+    haml (4.0.7)
+      tilt
+    haml-rails (0.9.0)
+      actionpack (>= 4.0.1)
+      activesupport (>= 4.0.1)
+      haml (>= 4.0.6, < 5.0)
+      html2haml (>= 1.0.1)
+      railties (>= 4.0.1)
+    hirb (0.7.3)
+    html2haml (2.0.0)
+      erubis (~> 2.7.0)
+      haml (~> 4.0.0)
+      nokogiri (~> 1.6.0)
+      ruby_parser (~> 3.5)
+    i18n (0.7.0)
+    i18n_data (0.7.0)
+    jbuilder (2.3.2)
+      activesupport (>= 3.0.0, < 5)
+      multi_json (~> 1.2)
+    jquery-cookie-rails (1.3.1.1)
+      railties (>= 3.2.0, < 5.0)
+    jquery-rails (4.0.5)
+      rails-dom-testing (~> 1.0)
+      railties (>= 4.2.0)
+      thor (>= 0.14, < 2.0)
+    jquery-ui-rails (5.0.5)
+      railties (>= 3.2.16)
+    json (1.8.3)
+    kaminari (0.16.3)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+    libv8 (3.16.14.13)
+    loofah (2.0.3)
+      nokogiri (>= 1.5.9)
+    mail (2.6.3)
+      mime-types (>= 1.16, < 3)
+    method_source (0.8.2)
+    mime-types (2.6.2)
+    mini_magick (4.3.6)
+    mini_portile (0.6.2)
+    minitest (5.8.2)
+    momentjs-rails (2.10.6)
+      railties (>= 3.1)
+    multi_json (1.11.2)
+    nested_form (0.3.2)
+    nokogiri (1.6.6.2)
+      mini_portile (~> 0.6.0)
+    orm_adapter (0.5.0)
+    pdf-core (0.6.0)
+    pg (0.18.3)
+    postgresql_lo_streamer (0.1.2)
+      rails (>= 3.2.8)
+    prawn (2.0.2)
+      pdf-core (~> 0.6.0)
+      ttfunk (~> 1.4.0)
+    prawnto (0.1.1)
+      prawn
+      rails (>= 2.1)
+    pry (0.10.2)
+      coderay (~> 1.1.0)
+      method_source (~> 0.8.1)
+      slop (~> 3.4)
+    puma (2.14.0)
+    quiet_assets (1.1.0)
+      railties (>= 3.1, < 5.0)
+    rack (1.6.4)
+    rack-pjax (0.8.0)
+      nokogiri (~> 1.5)
+      rack (~> 1.1)
+    rack-test (0.6.3)
+      rack (>= 1.0)
+    rails (4.2.3)
+      actionmailer (= 4.2.3)
+      actionpack (= 4.2.3)
+      actionview (= 4.2.3)
+      activejob (= 4.2.3)
+      activemodel (= 4.2.3)
+      activerecord (= 4.2.3)
+      activesupport (= 4.2.3)
+      bundler (>= 1.3.0, < 2.0)
+      railties (= 4.2.3)
+      sprockets-rails
+    rails-deprecated_sanitizer (1.0.3)
+      activesupport (>= 4.2.0.alpha)
+    rails-dom-testing (1.0.7)
+      activesupport (>= 4.2.0.beta, < 5.0)
+      nokogiri (~> 1.6.0)
+      rails-deprecated_sanitizer (>= 1.0.1)
+    rails-erd (1.4.3)
+      activerecord (>= 3.2)
+      activesupport (>= 3.2)
+      choice (~> 0.2.0)
+      ruby-graphviz (~> 1.2)
+    rails-html-sanitizer (1.0.2)
+      loofah (~> 2.0)
+    rails_12factor (0.0.3)
+      rails_serve_static_assets
+      rails_stdout_logging
+    rails_admin (0.7.0)
+      builder (~> 3.1)
+      coffee-rails (~> 4.0)
+      font-awesome-rails (>= 3.0, < 5)
+      haml (~> 4.0)
+      jquery-rails (>= 3.0, < 5)
+      jquery-ui-rails (~> 5.0)
+      kaminari (~> 0.14)
+      nested_form (~> 0.3)
+      rack-pjax (~> 0.7)
+      rails (~> 4.0)
+      remotipart (~> 1.0)
+      safe_yaml (~> 1.0)
+      sass-rails (>= 4.0, < 6)
+    rails_serve_static_assets (0.0.4)
+    rails_stdout_logging (0.0.4)
+    railties (4.2.3)
+      actionpack (= 4.2.3)
+      activesupport (= 4.2.3)
+      rake (>= 0.8.7)
+      thor (>= 0.18.1, < 2.0)
+    rake (10.4.2)
+    rdoc (4.2.0)
+    recaptcha (0.4.0)
+    ref (2.0.0)
+    remotipart (1.2.1)
+    request_store (1.2.0)
+    responders (2.1.0)
+      railties (>= 4.2.0, < 5)
+    ruby-graphviz (1.2.2)
+    ruby_parser (3.7.1)
+      sexp_processor (~> 4.1)
+    safe_yaml (1.0.4)
+    sass (3.4.18)
+    sass-rails (5.0.4)
+      railties (>= 4.0.0, < 5.0)
+      sass (~> 3.1)
+      sprockets (>= 2.8, < 4.0)
+      sprockets-rails (>= 2.0, < 4.0)
+      tilt (>= 1.1, < 3)
+    sdoc (0.4.1)
+      json (~> 1.7, >= 1.7.7)
+      rdoc (~> 4.0)
+    sexp_processor (4.6.0)
+    simple_form (3.1.1)
+      actionpack (~> 4.0)
+      activemodel (~> 4.0)
+    simple_form_fancy_uploads (0.2.0)
+      carrierwave
+      rails (>= 4.0.0)
+      simple_form (~> 3.1)
+    slop (3.6.0)
+    sort_alphabetical (1.0.2)
+      unicode_utils (>= 1.2.2)
+    sprockets (3.4.0)
+      rack (> 1, < 3)
+    sprockets-rails (2.3.3)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      sprockets (>= 2.8, < 4.0)
+    therubyracer (0.12.2)
+      libv8 (~> 3.16.14.0)
+      ref
+    thor (0.19.1)
+    thread_safe (0.3.5)
+    tilt (2.0.1)
+    ttfunk (1.4.0)
+    turbolinks (2.5.3)
+      coffee-rails
+    tzinfo (1.2.2)
+      thread_safe (~> 0.1)
+    uglifier (2.7.2)
+      execjs (>= 0.3.0)
+      json (>= 1.8.0)
+    unicode_utils (1.4.0)
+    warden (1.2.3)
+      rack (>= 1.0)
+    will_paginate (3.0.7)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  awesome_print
+  bootstrap-sass
+  bootswatch-rails
+  carrierwave
+  carrierwave-postgresql
+  cocoon
+  coffee-rails (~> 4.1.0)
+  cookies_eu
+  countries
+  country_select
+  datetimepicker-rails!
+  decent_decoration
+  decent_exposure
+  devise
+  devise-i18n
+  draper
+  enum_help
+  ffaker
+  font-awesome-sass (~> 4.4.0)
+  gravtastic
+  haml-rails
+  hirb
+  html2haml
+  jbuilder (~> 2.0)
+  jquery-rails
+  mini_magick
+  momentjs-rails
+  pg
+  postgresql_lo_streamer
+  prawn
+  prawnto
+  pry
+  puma (= 2.14.0)
+  quiet_assets
+  rails (= 4.2.3)
+  rails-erd
+  rails-i18n!
+  rails_12factor
+  rails_admin
+  recaptcha
+  sass-rails (~> 5.0)
+  sdoc (~> 0.4.0)
+  simple_form (~> 3.1.0rc)
+  simple_form_fancy_uploads
+  therubyracer (= 0.12.2)
+  turbolinks
+  uglifier (>= 1.3.0)
+  will_paginate (~> 3.0.6)
+
+BUNDLED WITH
+   1.10.6

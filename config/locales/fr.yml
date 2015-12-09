@@ -1,0 +1,242 @@
+fr:
+  date:
+    formats:
+      short: "%B %Y"
+    month_names:
+    -
+    - Janvier
+    - Février
+    - Mars
+    - Avril
+    - Mai
+    - Juin
+    - Juillet
+    - Aout
+    - Septembre
+    - Octobre
+    - Novembre
+    - Décembre
+  will_paginate:
+    previous_label: "&#8592; Antérieur"
+    next_label: "Prochaine &#8594;"
+    page_gap: "&hellip;"
+  errors:
+    messages:
+      carrierwave_processing_error: ne peut pas être traitées
+      carrierwave_integrity_error: Type de fichier illégal
+      carrierwave_download_error: Erreur de téléchargement
+      extension_white_list_error: "Vous ne pouvez pas télécharger un fichier avec cette extension %{extension}, types de fichiers autorisés: %{allowed_types}"
+      extension_black_list_error: "Vous ne pouvez pas télécharger un fichier avec cette extension %{extension}, types de fichiers interdits: %{prohibited_types}"
+      rmagick_processing_error: "Echec pour analyser le fichier en utilisant RMagick, peut-être ce n'est pas une image? Contenu d'origine avec erreur: %{e}"
+      mime_types_processing_error: "Echec pour analyser le fichier en utilisant MIME::Types, peut-être le type de contenu est incorrect? Contenu d'origine avec erreur: %{e}"
+      mini_magick_processing_error: "Echec pour analyser le fichier en utilisant MiniMagick, est-ce une image? Contenu d'origine avec erreur: %{e}"
+      min_size_error: "Taille du fichier doit être supérieure à %{min_size}"
+      max_size_error: "Taille du fichier doit être inférieure à %{max_size}"
+  activerecord:
+    models:
+      address:
+        one: "adresse"
+        few: "adresses"
+        many: "adresses"
+        other: "adresses"
+      animal:
+        one: "Animal"
+        few: "Animaux"
+        many: "Animal"
+        other: "Animaux"
+      disease:
+        one: "Maladie"
+        few: "Maladies"
+        many: "Maladie"
+        other: "Maladie"
+      medical_record:
+        one: "Fiche du consultation"
+        few: "Fiches de consultation"
+        many: "Fiches de consultation"
+        other: "Fiches de consultation"
+      medicine:
+        one: "Médicament"
+        few: "Médicaments"
+        many: "Médicament"
+        other: "Médicaments"
+      picture:
+        one: "Image"
+        few: "Images"
+        many: "Image"
+        other: "Images"
+      species:
+        one: "Espèce"
+        few: "Espèces"
+        many: "Espèce"
+        other: "Espèces"
+      unit:
+        one: "Unité"
+        few: "Unités"
+        many: "Unités"
+        other: "Unités"
+      treatment:
+        one: "Traitement"
+        few: "Traitements"
+        many: "Traitement"
+        other: "Traitements"
+      proprio:
+        one: "Propriétaire"
+        few: "Propriétaires"
+        many: "Propriétaires"
+        other: "Propriétaires"
+      user:
+        one: "Utilisateur"
+        few: "Utilisateurs"
+        many: "Utilisateurs"
+        other: "Utilisateurs"
+      vacation:
+        one: "Vacances"
+        few: "Vacances"
+        many: "Vacances"
+        other: "Vacances"
+      veterinarian:
+        one: "Vétérinaire"
+        few: "Vétérinaires"
+        many: "Vétérinaires"
+        other: "Vétérinaires"
+      working_day:
+        one: "Jour de travail"
+        few: "Jour de travail"
+        many: "Jour de travail"
+        other: "Jour de travail"
+    attributes:
+      address:
+        street: "Rue"
+        house_number: "Numéro"
+        flat_number: "Numéro d'appartement"
+        city: "Ville"
+        country: "Pays"
+        created_at: "date de création"
+        updated_at: "date de mise à jour"
+        zip_code: "Code postal"
+        user_id: "Utilisateur"
+      animal:
+        id_number: "Numéro d'identification"
+        name: "Nom"
+        birth_date: "Date de naissance"
+        amount: "Taille"
+        weight: "Poid"
+        gender: "Genre"
+        age: "Age"
+        description: "Description"
+        created_at: "date de création"
+        updated_at: "date de mise à jour"
+        user_id: "Utilisateur"
+        species_id: "Espèce"
+      disease:
+        name: "Nom"
+        created_at: "date de création"
+        updated_at: "date de mise à jour"
+      medical_record:
+        anamnesis: "Anamnèse"
+        description: "Description"
+        comment: "Commentaires"
+        additional_cost: "Coût supplémentaire"
+        total_cost: "Cout total"
+        created_at: "date de création"
+        updated_at: "date de mise à jour"
+        user_id: "Utilisateur"
+        proprio_id: "Propriétaire"
+        veterinarian_id: "Vétérinaire"
+      medicine:
+        name: "Nom"
+        description: "Description"
+        amount: "Quantité"
+        grace_period: "délai de paiement"
+        price: "Prix"
+        serial_number: "Numéro de lot"
+        dosage: "Dosage"
+        created_at: "date de création"
+        updated_at: "date de mise à jour"
+        unit_id: "Unité"
+      picture:
+        name: "Nom"
+        description: "Description"
+        image: "Image"
+        created_at: "date de création"
+        updated_at: "date de mise à jour"
+        user_id: "Utilisateur"
+        proprio_id: "Propriétaire"
+      species:
+        name: "Nom"
+        created_at: "date de création"
+        updated_at: "date de mise à jour"
+      treatment:
+        name: "Nom"
+        description: "Description"
+        cost: "Coût"
+        created_at: "date de création"
+        updated_at: "date de mise à jour"
+      unit:
+        name: "Nom"
+        created_at: "date de création"
+        updated_at: "date de mise à jour"
+      user:
+        email: "email"
+        password: 'Mot de passe'
+        encrypted_password: "Mot de passe crypté"
+        reset_password_token: "réinisialisation du mot de passe"
+        reset_password_sent_at: "Date d'envoi du mot de passe"
+        remember_created_at: "Se souvenir de la date de création"
+        sign_in_count: "Nombre de connexion"
+        current_sign_in_ip: "Adresse IP de la connexion"
+        current_sign_in_at: "Date de la connexion"
+        last_sign_in_at: "Date de la dernière connexion"
+        last_sign_in_ip: "Adresse IP de la dernière connexion"
+        confirmation_token: "Confirmation du mot de passe"
+        confirmed_at: "Date de confirmation"
+        confirmation_sent_at: "Date d'envoi de la confirmation"
+        unconfirmed_email: "Email incorrect"
+        failed_attempts: "Erreur de connexion"
+        unlock_token: "Mot de passe de dévérouillage"
+        locked_at: "Date de vérouillage"
+        created_at: "date de création"
+        updated_at: "date de mise à jour"
+        role: "Rôle"
+        first_name: "Prénom"
+        last_name: "Nom"
+        phone_number: "Numéro de téléphone"
+      proprio:
+        email: "email"
+        remember_created_at: "Se souvenir de la date de création"
+        created_at: "date de création"
+        updated_at: "date de mise à jour"
+        role: "Rôle"
+        first_name: "Prénom"
+        last_name: "Nom"
+        phone_number: "Numéro de téléphone"
+        street: "Rue"
+        house_number: "Numéro"
+        flat_number: "Numéro d'appartement"
+        city: "Ville"
+        country: "Pays"
+        zip_code: "Code postal"
+      vacation:
+        start: "Début"
+        end: "Fin"
+        created_at: "date de création"
+        updated_at: "date de mise à jour"
+        veterinarian_id: "Vétérinaire"
+      veterinarian:
+        title: "Titre"
+        specialization: "Spécialisation"
+        pwz: "pwz"
+        created_at: "date de création"
+        updated_at: "date de mise à jour"
+        user_id: "Utilisateur"
+      working_day:
+        created_at: "date de création"
+        updated_at: "date de mise à jour"
+        monday: "Lundi"
+        tuesday: "Mardi"
+        wednesday: "Mercredi"
+        thursday: "Jeudi"
+        friday: "Vendredi"
+        saturday: "Samedi"
+        sunday: "Dimanche"
+        veterinarian_id: "Vétérinaire"

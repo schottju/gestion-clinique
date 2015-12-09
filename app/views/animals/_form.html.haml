@@ -1,0 +1,29 @@
+= simple_form_for [ proprio, animal ] do |f|
+  = f.error_notification
+  .form-inputs
+    .row
+      .col-md-1
+      .col-md-3
+        = f.input :id_number, label: 'N° indentification', placeholder: 'N° identif.', autofocus: true
+        = f.input :birth_date, label: 'Date de naissance', placeholder: 'dd/mm/aa', as: :date_picker
+      .col-md-3
+        = f.input :name, label: 'Nom', placeholder: 'Mettre le nom'
+        = f.input :species_id, label: 'Espèce', collection: @species
+      .col-md-2
+        = f.input :gender, label: 'Sexe'
+        = f.input :amount, label: 'Quantité', placeholder: 'Nombre', as: :string
+      .col-md-1
+    .row
+      .col-md-1
+      .col-md-10
+        = f.input :description, label: 'Description', placeholder: 'couleur, caractéristiques physiques,race'
+      .col-md-1
+  .row
+    .form-actions
+      .col-md-1
+      .col-md-5
+        = link_to "Annuler", proprio_animals_path, class: "btn btn-default"
+      .col-md-5
+        .pull-right
+          = f.button :submit, "Sauvegarder", class: "btn btn-default"
+      .col-md-1

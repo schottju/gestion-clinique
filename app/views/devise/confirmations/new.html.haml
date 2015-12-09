@@ -1,0 +1,14 @@
+.row
+  .col-md-3
+  .col-md-6
+    .panel.panel-default
+      .panel-heading Envoyer les instructions pour confirmer votre adresse e-mail
+      .panel-body
+        = simple_form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f|
+          = f.error_notification
+          = f.full_error :confirmation_token
+          .form-inputs
+            = f.input :email, label: 'Email', placeholder: 'Entrez email', autofocus: true
+          .form-actions.pull-right
+            = f.button :submit, "Envoyer"
+  .col-md-3

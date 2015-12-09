@@ -1,0 +1,2 @@
+module VeterinariansHelper
+end

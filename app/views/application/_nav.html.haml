@@ -1,0 +1,49 @@
+%body
+  %nav.navbar.navbar-default.navbar-static-top
+    .container-fluid
+      .navbar-header
+        %span.navbar-brand= link_to icon('heartbeat', 'Clinique Vétérinaire de Saint Junien'), authenticated_root_path
+      - if user_signed_in?
+        - if current_user.veterinaire?
+          %ul.nav.navbar-nav
+            %li{:class => active_class(proprios_path)}= link_to icon('users', 'Patients'), proprios_path
+          %ul.nav.navbar-nav.navbar-right
+            %li{:class => active_class(dictionaries_path)}= link_to icon('book', 'Dictionnaires'), dictionaries_path(tab: 'species')
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                = icon('user')
+                = current_user.full_name
+              %ul.dropdown-menu
+                %li= link_to icon('user', 'Profil'), profile_path
+                %li.divider{role: "separator"}
+                %li= link_to icon('question-circle','Aide'), help_page_path
+                %li.divider{role: "separator"}
+                %li= link_to icon('power-off','Déconnexion'), destroy_user_session_path, method: :delete
+
+        - elsif current_user.admin?
+          %ul.nav.navbar-nav
+          %ul.nav.navbar-nav.navbar-right
+            %li{:class => active_class("#{rails_admin.dashboard_path}")}= link_to icon('bar-chart', 'Administration'), "#{rails_admin.dashboard_path}"
+            %li.dropdown
+              %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
+                = icon('user')
+                = current_user.full_name
+              %ul.dropdown-menu
+                %li= link_to icon('user', 'Profil'), profile_path
+                %li.divider{role: "separator"}
+                %li= link_to icon('question-circle','Aide'), help_page_path
+                %li.divider{role: "separator"}
+                %li= link_to icon('power-off','Déconnexion'), destroy_user_session_path, method: :delete
+
+      - else
+        %ul.nav.navbar-nav
+          %li{:class => active_class(help_page_path)}= link_to icon('question-circle','Aide'), help_page_path
+          %li{:class => active_class(treatments_path)}= link_to icon('file-text-o', 'Liste des prix'), treatments_path
+          %li{:class => active_class(veterinarians_path)}= link_to icon('user-md', 'Vétérinaires'), veterinarians_path
+        %ul.nav.navbar-nav.navbar-right
+          %li{:class => active_class(about_path)}= link_to icon('envelope-o','Contact'), about_path
+          %li{:class => active_class(new_user_registration_path)}= link_to icon('sign-in', 'Régistration'), new_user_registration_path
+          - if current_page?(unauthenticated_root_path)
+            %li{:class => active_class(unauthenticated_root_path)}= link_to icon('lock', 'Connexion'), new_user_session_path
+          - else
+            %li{:class => active_class(new_user_session_path)}= link_to icon('lock', 'Connexion'), new_user_session_path

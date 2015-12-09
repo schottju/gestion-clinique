@@ -1,0 +1,30 @@
+.panel.panel-default
+  .panel-heading Propriétaires
+  .panel-body
+    = render 'search_form'
+    - if proprios.empty?
+      .alert.alert-warning.table-warning Pas de propriétaires.
+    - else
+      %table.table.table-striped
+        %thead
+          %tr
+            %th= sortable 'first_name', "Prénom"
+            %th= sortable 'last_name', "Nom"
+            %th= sortable 'phone_number', "Téléphone"
+            %th
+
+        %tbody
+          - proprios.each do |proprio|
+            %tr
+              %td= change_blank_to_dash(proprio.first_name)
+              %td= change_blank_to_dash(proprio.last_name)
+              %td= change_blank_to_dash(proprio.phone_number)
+              %td
+                .pull-right
+                  = link_to icon('list-alt'), proprio_path(proprio), title: 'Détails', class: "btn btn-default"
+
+    .pull-right
+      = link_to "Ajouter", new_proprio_path(proprio), class: "btn btn-default"
+
+      .flickr_pagination
+        = will_paginate proprios

@@ -1,0 +1,18 @@
+.panel.panel-default
+  .panel-heading Calendrier
+  .panel-body
+    #veterinarians
+      %h2#month
+        = link_to icon('chevron-left'), date: @date.prev_month
+        = l(@date, format: :short)
+        = link_to icon('chevron-right'), date: @date.next_month
+      = calendar @date do |date|
+        = date.day
+        %br
+        - if Date.today <= date
+          - if @veterinarian.on_vacation?(date)
+            = link_to "Vacances", '#', class: "btn btn-warning disabled"
+          - else
+            = link_to "Journée de repos", '#', class: "btn btn-warning disabled"
+        - else
+          %h4= "-"

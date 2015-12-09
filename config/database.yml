@@ -1,0 +1,16 @@
+connection: &connection
+  adapter:  postgresql
+  host:     localhost
+  encoding: unicode
+  pool:     5
+  username: postgres
+  password: password
+development:
+  <<: *connection
+  database: gestion_clinic_development
+test:
+  <<: *connection
+  database: gestion_clinic_test
+production:
+  <<: *connection
+  database: gestion_clinic_production

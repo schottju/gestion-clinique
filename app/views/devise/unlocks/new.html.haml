@@ -1,0 +1,14 @@
+.row
+  .col-md-3
+  .col-md-6
+    .panel.panel-default
+      .panel-heading Envoyer des instructions pour déverrouiller votre compte
+      .panel-body
+        = simple_form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f|
+          = f.error_notification
+          = f.full_error :unlock_token
+          .form-inputs
+            = f.input :email, label: 'Email', placeholder: 'Entrez email', required: true, autofocus: true
+          .form-actions.pull-right
+            = f.button :submit, "Valider"
+  .col-md-3

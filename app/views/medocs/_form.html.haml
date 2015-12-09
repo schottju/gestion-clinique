@@ -1,0 +1,12 @@
+= simple_form_for medoc do |f|
+  = f.error_notification
+  .row
+    .col-md-1
+    .col-md-10
+      .form-input
+        = f.input :name, label: 'Nom', placeholder: 'Entrez le nom de unité', required: true, autofocus: true
+      .form-actions
+        = link_to "Annuler", dictionaries_path(tab: 'medocs'), class: "btn btn-default"
+        .pull-right
+          = f.button :submit, "Sauvegarder", class: "btn btn-default"
+    .col-md-1

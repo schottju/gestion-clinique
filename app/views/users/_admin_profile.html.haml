@@ -1,0 +1,45 @@
+.panel.panel-default
+  .panel-heading Données du profil
+  .panel-body
+    .row
+      .col-md-3
+        = image_tag current_user.gravatar_url(size: 200)
+      .col-md-4
+        %table.table
+          %thead
+            %tr
+              %td
+          %tbody
+            %tr
+              %th Prénom:
+              %td= change_blank_to_dash(current_user.first_name)
+            %tr
+              %th Nom:
+              %td= change_blank_to_dash(current_user.last_name)
+            %tr
+              %th Téléphone:
+              %td= change_blank_to_dash(current_user.phone_number)
+            %tr
+              %th Email:
+              %td= change_blank_to_dash(current_user.email)
+            %tr
+              %th Nationalité:
+              %td= change_blank_to_dash(current_user.try(:address).try(:decorate).try(:full_country_name))
+      .col-md-4
+        %table.table
+          %thead
+            %tr
+              %td
+          %tbody
+            %tr
+              %th Rue:
+              %td= change_blank_to_dash(current_user.try(:address).try(:decorate).try(:full_street))
+            %tr
+              %th Code postal:
+              %td= change_blank_to_dash(current_user.try(:address).try(:zip_code))
+            %tr
+              %th Ville:
+              %td= change_blank_to_dash(current_user.try(:address).try(:city))
+      .col-md-4
+    .pull-right
+      = link_to "Modifier", edit_registration_path(current_user), class: "btn btn-default"

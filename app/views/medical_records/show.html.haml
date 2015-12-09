@@ -1,0 +1,181 @@
+.panel.panel-default
+  .panel-heading= "Fichier nr #{medical_record.id}/#{medical_record.created_at.to_date}"
+  .panel-body
+    .panel.panel-info
+      .panel-heading
+        .row
+          .col-md-4
+            %th Propriétaire
+          .col-md-4
+            %th Vétérinaire
+          .col-md-4
+            %th Animal
+          .col-md-1
+  .panel-body
+    .row
+      .col-md-4
+        %table.table
+          %thead
+            %tr
+              %td
+          %tbody
+            %tr
+              %th Prénom:
+              %td= change_blank_to_dash(proprio.first_name)
+            %tr
+              %th Nom:
+              %td= change_blank_to_dash(proprio.last_name)
+            %tr
+              %th Téléphone:
+              %td= change_blank_to_dash(proprio.phone_number)
+
+      .col-md-4
+        %table.table
+          %thead
+            %tr
+              %td
+          %tbody
+            %tr
+              %th Prénom:
+              %td= change_blank_to_dash(medical_record.veterinarian.user.first_name)
+              %tr
+                %th Nom:
+                %td= change_blank_to_dash(medical_record.veterinarian.user.last_name)
+              %tr
+                %th N° d'ordre:
+                %td= change_blank_to_dash(medical_record.veterinarian.pwz)
+      .col-md-4
+        - medical_record.animals.each do |animal|
+          %table.table
+            %tbody
+              %tr
+                %th.col-md-2 N° identification:
+                %td= change_blank_to_dash(animal.id_number)
+              %tr
+                %th.col-md-2 Nom:
+                %td= change_blank_to_dash(animal.name)
+              %tr
+                %th.col-md-2 Quantité:
+                %td= change_blank_to_dash(animal.amount)
+              %tr
+                %th.col-md-2 Sexe:
+                %td= change_blank_to_dash(animal.gender)
+              %tr
+                %th.col-md-2 Poids (kg):
+                %td= change_blank_to_dash(medical_record.poids)
+              %tr
+                %th.col-md-2 Date de naissance:
+                %td= change_blank_to_dash(animal.birth_date)
+              %tr
+                %th.col-md-2 Espèce:
+                %td= change_blank_to_dash(animal.try(:species).try(:name))
+              %tr
+                %th.col-md-2 Informations complémentaires:
+                %td= change_blank_to_dash(animal.description)
+              %tr
+                %th
+                %td
+      .col-md-1
+
+    .panel.panel-info
+      .panel-heading Maladie ou acte prophylactique
+      .panel-body
+        %table.table
+          %tbody
+          %tr
+            %th.col-md-2 Maladie ou vaccin
+            %td= change_blank_to_dash(medical_record.decorate.name_of_disease)
+
+    .panel.panel-info
+      .panel-heading Traitements
+      .panel-body
+        %table.table
+          %thead
+            %tr
+              %th Nom
+              %th Description
+          %tbody
+            - medical_record.treatments.each do |treatment|
+              %tr
+                %td= change_blank_to_dash(treatment.name)
+
+                %td= change_blank_to_dash(treatment.description)
+
+    .panel.panel-info
+      .panel-heading Médicaments
+      .panel-body
+        %table.table
+          %tbody
+          %tr
+            %th.col-md-2 Poids (kg):
+            %td= change_blank_to_dash(medical_record.poids)
+      .panel-body
+        - medical_record.medicines.each do |medicine|
+          %table.table
+            %tbody
+              %tr
+                %th.col-md-2 N° lot:
+                %td= change_blank_to_dash(medicine.serial_number)
+              %tr
+                %th.col-md-2 Nom:
+                %td= change_blank_to_dash(medicine.name)
+                %td= change_blank_to_dash(medicine.decorate.name_with_medoc)
+              %tr
+                %th.col-md-2 Quantité:
+                %td= change_blank_to_dash(medicine.decorate.amount_with_unit)
+              %tr
+                %th.col-md-2 Posologie:
+                %td= change_blank_to_dash(medicine.dosage)
+
+              %tr
+                %th.col-md-2 Infos complémentaires (apparait sur ordonnance):
+                %td= change_blank_to_dash(medicine.description)
+
+              %tr
+                %th
+                %td
+
+    .panel.panel-info
+      .panel-heading Images
+      .panel-body
+        - if medical_record.pictures.empty?
+          Pas d'images.
+        - else
+          %table.table
+            %thead
+              %tr
+                %th Nom
+                %th Animal
+                %th Image
+                %th Description
+
+            %tbody
+              - medical_record.pictures.each do |picture|
+                %tr
+                  %td= change_blank_to_dash(picture.name)
+                  %td= picture.decorate.print_animal_id
+                  %td= link_to image_tag(picture.image, width: 100), picture.image.url
+                  %td= change_blank_to_dash(picture.description)
+
+    .panel.panel-info
+      .panel-heading Informations complémentaires
+      .panel-body
+        %table.table
+          %tbody
+            %tr
+              %th.col-md-2 Cause consultation:
+              %td= change_blank_to_dash(medical_record.anamnesis)
+            %tr
+              %th.col-md-2 Description consultation:
+              %td= change_blank_to_dash(medical_record.description)
+            %tr
+              %th.col-md-2 Commentaires (apparait sur ordonnance):
+              %td= change_blank_to_dash(medical_record.comment)
+
+
+    .pull-left
+      = link_to "Ordonnance", proprio_medical_record_path(proprio, medical_record.id, :format => 'pdf'), class: "btn btn-default"
+
+    .pull-right
+      = link_to icon('edit'), edit_proprio_medical_record_path(proprio, medical_record.id), title: 'Modifier', class: "btn btn-default"
+      = link_to "Retour", proprio_path(proprio), class: "btn btn-default"

@@ -1,0 +1,13 @@
+.row
+  .col-md-3
+  .col-md-6
+    .panel.panel-default
+      .panel-heading Mot de passe oublié
+      .panel-body
+        = simple_form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f|
+          = f.error_notification
+          .form-inputs
+            = f.input :email, label: 'Email', placeholder: 'Entrez email', required: true, autofocus: true
+          .form-actions.pull-right
+            = f.button :submit, "Envoyer"
+  .col-md-3

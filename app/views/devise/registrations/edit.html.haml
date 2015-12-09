@@ -1,0 +1,55 @@
+.panel.panel-default
+  .panel-heading Modifier les données de l'utilisateur
+  .panel-body
+    = simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f|
+      = f.error_notification
+      .row
+        .col-md-1
+        .col-md-10
+          .panel.panel-info
+            .panel-heading Données de base
+            .panel-body
+              .form-inputs
+                .row
+                  .col-md-6
+                    = f.input :first_name, label: 'Prénom', placeholder: 'Entrez prénom', required: true, autofocus: true
+                    = f.input :email, label: 'Email', placeholder: 'Entrez email'
+                    - if devise_mapping.confirmable? && resource.pending_reconfirmation?
+                      %p
+                        En attente de confirmation de email: #{resource.unconfirmed_email}
+                    = f.input :password, label: 'Nouveau mot de passe', placeholder: 'Entrez mot de passe', autocomplete: "off", hint: "Laissez en blanc si vous ne voulez pas changer votre mot de passe"
+                    = f.input :current_password, label: 'Mot de passe actuel', placeholder: 'Entrez mot de passe', hint: "Il est nécessaire de taper votre mot de passe actuel pour confirmer vos modifications"
+                  .col-md-6
+                    = f.input :last_name, label: 'Nom', placeholder: 'Entrez le nom', required: true
+                    = f.input :password_confirmation, label: 'Confirmer le nouveau mot de passe', placeholder: 'Entrez de nouveau le mot de passe'
+                    = f.input :phone_number, label: 'Téléphone', placeholder: 'Entrez Numéro', required: true
+        .col-md-1
+      .row
+        .col-md-1
+        .col-md-10
+          .panel.panel-info
+            .panel-heading Coordonnées
+            .panel-body
+              = f.simple_fields_for :address do |a|
+                .row
+                  .col-md-6
+                    = a.input :street, label: 'Rue', placeholder: 'Entrez le nom', required: true
+                  .col-md-3
+                    = a.input :house_number, label: 'Numéro', placeholder: 'Entrez le numéro de la rue'
+                  .col-md-3
+                    = a.input :flat_number, label: 'Appartement', placeholder: 'Entrez le numéro'
+                .row
+                  .col-md-6
+                    = a.input :zip_code, label: 'Code postal', placeholder: 'Entrez le code postal', required: true
+                  .col-md-6
+                    = a.input :city, label: 'Ville', placeholder: 'Entrez le nom', required: true
+                    = a.input :country, label: 'Pays'
+        .col-md-1
+      .row
+        .col-md-1
+        .col-md-10
+          .form-actions
+            = link_to "Annuler", profile_path, class: "btn btn-default"
+            .pull-right
+              = f.button :submit, "Sauvegarder", class: "btn btn-default"
+        .col-md-1

@@ -1,0 +1,33 @@
+.panel.panel-default
+  .panel-heading Images
+  .panel-body
+    = render 'search_form'
+    - if pictures.empty?
+      .alert.alert-warning.table-warning Aucune image.
+    - else
+      %table.table.table-striped
+        %thead
+          %tr
+            %th= sortable 'name', "Nom"
+            %th Animal
+            %th Image
+            %th= sortable 'description', "Description"
+            %th.btn-row-2
+
+        %tbody
+          - pictures.each do |picture|
+            %tr
+              %td= change_blank_to_dash(picture.name)
+              %td= change_blank_to_dash(picture.animal.name)
+              %td= link_to image_tag(picture.image, width: 100), picture.image.url
+              %td= change_blank_to_dash(picture.description)
+              %td
+                .pull-right
+                  = link_to icon('list-alt'), proprio_picture_path(proprio, picture), title: 'Détails', class: "btn btn-default"
+                  = link_to icon('edit'), edit_proprio_picture_path(proprio, picture), title: 'Modifier', class: "btn btn-default"
+
+    .pull-right
+      = link_to 'Vers le profil du propriétaire', proprio_path(proprio), class: 'btn btn-default'
+
+    .flickr_pagination
+      = will_paginate pictures

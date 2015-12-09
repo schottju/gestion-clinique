@@ -1,0 +1,19 @@
+.panel.panel-default
+  .panel-heading Modifier le médicament
+  .panel-body
+    = simple_form_for medoc do |f|
+      = f.error_notification
+      .row
+        .col-md-1
+        .col-md-10
+          .form-inputs
+            .row
+              .col-md-8
+                = f.input :name, label: 'Nom', placeholder: 'Entrez le nom du médicament', required: true, autofocus: true
+              .col-md-4
+                = f.input :status, label: 'Status', required: true
+          .form-actions
+            = link_to "Annuler", dictionaries_path(tab: 'medocs'), class: "btn btn-default"
+            .pull-right
+              = f.button :submit, "Sauvegarder", class: "btn btn-default"
+        .col-md-1

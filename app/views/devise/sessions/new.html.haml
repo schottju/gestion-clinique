@@ -1,0 +1,15 @@
+.row
+  .col-md-3
+  .col-md-6
+    .panel.panel-default
+      .panel-heading Connexion
+      .panel-body#static_pages
+        = simple_form_for(resource, as: resource_name, url: session_path(resource_name)) do |f|
+          .form-inputs
+            = f.input :email, label: 'Email', placeholder: 'Entrez email', required: false, autofocus: true
+            = f.input :password, label: 'Mot de passe', placeholder: 'Entrez le ici', required: false
+            = f.input :remember_me, label: 'Se souvenir de moi', as: :boolean if devise_mapping.rememberable?
+          .form-actions.pull-right
+            = f.button :submit, "Connectez-vous"
+  .col-md-3
+

@@ -1,0 +1,142 @@
+.panel.panel-default
+  .panel-heading= "Animal nr #{change_blank_to_dash(animal.id_number)}"
+  .panel-body
+    .panel.panel-info
+      .panel-heading Données de l'animal
+      .panel-body
+        .row
+          .col-md-1
+          .col-md-5
+            %table.table
+              %thead
+                %tr
+                  %th
+              %tbody
+                %tr
+                  %th N° identification:
+                  %td= change_blank_to_dash(animal.id_number)
+                %tr
+                  %th Nom:
+                  %td= change_blank_to_dash(animal.name)
+                %tr
+                  %th Date de naissance:
+                  %td= change_blank_to_dash(animal.birth_date)
+                %tr
+                  %th Quantité:
+                  %td= change_blank_to_dash(animal.amount)
+                %tr
+                  %td
+          .col-md-5
+            %table.table
+              %thead
+                %tr
+                  %th
+              %tbody
+                %tr
+                  %th Sexe:
+                  %td= change_blank_to_dash(animal.gender)
+                %tr
+                  %th Espèce:
+                  %td= change_blank_to_dash(animal.try(:species).try(:name))
+                %tr
+                  %th Description:
+                  %td= change_blank_to_dash(animal.description)
+                %tr
+                  %td
+          .col-md-1
+    .panel.panel-info
+      .panel-heading Données du propriétaire
+      .panel-body
+        .row
+          .col-md-4
+            %table.table
+              %thead
+                %tr
+                  %td
+              %tbody
+                %tr
+                  %th Prénom:
+                  %td= change_blank_to_dash(proprio.first_name)
+                %tr
+                  %th Nom:
+                  %td= change_blank_to_dash(proprio.last_name)
+                %tr
+                  %th Téléphone:
+                  %td= change_blank_to_dash(proprio.phone_number)
+                %tr
+                  %th Adresse:
+                  %td= change_blank_to_dash(animal.try(:proprio).try(:addressp).try(:decorate).try(:full_country_name))
+          .col-md-4
+            %table.table
+              %thead
+                %tr
+                  %td
+              %tbody
+                %tr
+                  %th Rue:
+                  %td= change_blank_to_dash(animal.try(:proprio).try(:addressp).try(:decorate).try(:full_street))
+                %tr
+                  %th Code postal:
+                  %td= change_blank_to_dash(animal.try(:proprio).try(:addressp).try(:zip_code))
+                %tr
+                  %th Ville:
+                  %td= change_blank_to_dash(animal.try(:proprio).try(:addressp).try(:city))
+          .col-md-1
+
+.panel.panel-default
+  .panel-heading Fichiers consultation
+  .panel-body
+    - if @medical_records.empty?
+      .alert.alert-warning.table-warning Pas de fiche.
+    - else
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Cause consultation
+            %th Maladie ou vaccin
+            %th Vétérinaire
+            %th Description
+            %th Date
+            %th
+
+        %tbody
+          - @medical_records.each do |medical_record|
+            %tr
+              %td= change_blank_to_dash(medical_record.anamnesis)
+              %td= change_blank_to_dash(medical_record.decorate.name_of_disease)
+              %td= change_blank_to_dash(medical_record.veterinarian.user.last_name)
+              %td= change_blank_to_dash(medical_record.description)
+              %td= change_blank_to_dash(medical_record.created_at.to_date)
+              %td
+
+                .pull-right
+                  = link_to icon('list-alt'), proprio_medical_record_path(proprio, medical_record), title: 'Détails', class: "btn btn-default"
+          .flickr_pagination
+            = will_paginate @medical_records, param_name: 'medical_records_page'
+
+    .panel.panel-info
+      .panel-heading Images de l'animal
+      .panel-body
+        - if @pictures.empty?
+          Pas d'images.
+        - else
+          %table.table.table-striped
+            %thead
+              %tr
+                %th Nom
+                %th Image
+                %th Description
+
+            %tbody
+              - @pictures.each do |picture|
+                %tr
+                  %td= change_blank_to_dash(picture.name)
+                  %td= link_to image_tag(picture.image, width: 100), picture.image.url
+                  %td= change_blank_to_dash(picture.description)
+
+          .flickr_pagination
+            = will_paginate @pictures, param_name: 'pictures_page'
+
+    .pull-right
+      = link_to "Ajouter fiche", new_proprio_medical_record_path(proprio), class: "btn btn-default"
+      = link_to "Retour", proprio_animals_path(proprio), class: "btn btn-default"

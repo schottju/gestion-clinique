@@ -1,0 +1,27 @@
+.panel.panel-default
+  .panel-heading Utilisateurs
+  .panel-body
+    = render 'search_form'
+    - if users.empty?
+      .alert.alert-warning.table-warning Aucun enregistrement.
+    - else
+      %table.table.table-striped
+        %thead
+          %tr
+            %th= sortable 'first_name', "Prénom"
+            %th= sortable 'last_name', "Nom"
+            %th= sortable 'phone_number', "Téléphone"
+            %th
+
+        %tbody
+          - users.each do |user|
+            %tr
+              %td= change_blank_to_dash(user.first_name)
+              %td= change_blank_to_dash(user.last_name)
+              %td= change_blank_to_dash(user.phone_number)
+              %td
+                .pull-right
+                  = link_to icon('list-alt'), user_path(user), title: 'Détails', class: "btn btn-default"
+
+      .flickr_pagination
+        = will_paginate veterinarians

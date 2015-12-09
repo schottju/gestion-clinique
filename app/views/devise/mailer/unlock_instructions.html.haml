@@ -1,0 +1,5 @@
+%p
+  Bienvenue #{@resource.email}!
+%p Votre compte a été bloqué en raison de trop nombreux échecs de connexion.
+%p Cliquez sur le lien ci-dessous pour déverrouiller un compte:
+%p= link_to 'Déverrouiller le compte', unlock_url(@resource, unlock_token: @token)

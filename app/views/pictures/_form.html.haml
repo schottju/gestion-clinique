@@ -1,0 +1,20 @@
+= simple_form_for [ proprio, picture ] do |f|
+  = f.error_notification
+  .row
+    .form-inputs
+      .col-md-1
+      .col-md-5
+        = f.input :name, label: 'Nom', placeholder: 'Tapez un nom de fichier', autofocus: true
+        = f.input :description, label: 'Description', placeholder: 'Entrez une description de la photo'
+        = f.input :animal_id, label: 'Animal', collection: @animals
+      .col-md-5
+        = f.input :image, label: 'Image', as: :image_preview
+      .col-md-1
+  .row
+    .col-md-1
+    .col-md-10
+      .form-actions
+        .pull-right
+          = f.button :submit, "Sauvegarder", class: "btn btn-default"
+        = link_to "Annuler", proprio_pictures_path(proprio), class: "btn btn-default"
+    .col-md-1

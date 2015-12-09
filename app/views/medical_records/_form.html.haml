@@ -1,0 +1,37 @@
+= simple_form_for [ proprio, medical_record ] do |f|
+  = f.error_notification
+  .form-inputs
+    .row
+      .col-md-6
+        = f.input :anamnesis, label: 'Cause consultation', placeholder: 'Entrez anamnèse', autofocus: true
+      .col-md-1
+        = f.input :poids, label: 'Poids', placeholder: 'Entrez le poids'
+      .col-md-5
+        = f.input :animal_ids, label: 'Animaux', collection: @animals, input_html: { multiple: true }
+    = f.hidden_field :veterinarian_id, value: current_user.try(:veterinarian).try(:id)
+    = f.hidden_field :proprio_id, value: proprio.id
+    .row
+      .col-md-4
+        = f.input :treatment_ids, label: 'Traitements effectués', collection: @treatments, input_html: { multiple: true }
+      .col-md-4
+        = f.input :disease_id, label: 'Maladies ou acte prophylo', collection: @diseases
+      .col-md-4
+        = f.input :picture_ids, label: 'Images', collection: @pictures, input_html: { multiple: true }
+    .panel.panel-info
+      .panel-heading Médicaments
+      .panel-body
+        #medicines
+          = f.simple_fields_for :medicines do |medicine|
+            = render 'medicine_fields', f: medicine
+          .links.centered
+            = link_to_add_association 'Ajouter un médicament', f, :medicines, class: 'btn btn-default'
+    .row
+      .col-md-6
+        = f.input :description, label: 'Description consultation', placeholder: 'Entrez description'
+      .col-md-5
+        = f.input :comment, label: 'Commentaires sur ordonnance', placeholder: 'Entrez commentaires'
+
+  .form-actions
+    = link_to 'Annuler', proprio_medical_records_path, class: 'btn btn-default'
+    .pull-right
+      = f.button :submit, "Sauvegarder"

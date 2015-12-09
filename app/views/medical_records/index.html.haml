@@ -1,0 +1,30 @@
+.panel.panel-default
+  .panel-heading Fichier
+  .panel-body
+    = render 'search_form'
+    %table.table.table-striped
+      %thead
+        %tr
+          %th= sortable 'anamnesis', "Cause consultation"
+          %th Maladie
+          %th Vétérinaire
+          %th.date-row= sortable 'created_at', "Date"
+          %th.btn-row-2
+
+      %tbody
+        - medical_records.each do |medical_record|
+          %tr
+            %td= change_blank_to_dash(medical_record.anamnesis)
+            %td= change_blank_to_dash(medical_record.decorate.name_of_disease)
+            %td= change_blank_to_dash(medical_record.try(:veterinarian).try(:user). try(:decorate).try(:last_name))
+            %td= change_blank_to_dash(medical_record.created_at.to_date)
+            %td
+              .pull-right
+                = link_to icon('list-alt'), proprio_medical_record_path(proprio, medical_record), title: 'Détails', class: "btn btn-default"
+                = link_to icon('edit'), edit_proprio_medical_record_path(proprio, medical_record), title: 'Modifier', class: "btn btn-default"
+
+    .pull-right
+      = link_to 'Vers le profil du propriétaire', proprio_path(proprio), class: 'btn btn-default'
+
+    .flickr_pagination
+      = will_paginate medical_records

@@ -1,0 +1,43 @@
+= simple_form_for proprio do |f|
+  = f.error_notification
+  .form-inputs
+    .row
+      .col-md-1
+      .col-md-10
+        .panel.panel-info
+          .panel-heading Données de base
+          .panel-body
+            .row
+              .col-md-6
+                = f.input :first_name, label: 'Prénom', placeholder: 'Entrez le prénom', required: true, autofocus: true
+                = f.input :phone_number, label: 'Téléphone', placeholder: 'Entrez Téléphone', required: true
+              .col-md-6
+                = f.input :last_name, label: 'Nom', placeholder: 'Entrez le nom', required: true
+          .col-md-1
+      .row
+        .col-md-1
+        .col-md-10
+          .panel.panel-info
+            .panel-heading Coordonnées
+            .panel-body
+              .row
+                .col-md-6
+                  = f.input :flat_number, label: 'Numéro appartement', placeholder: 'Entrez N° appartement'
+              .row
+                .col-md-6
+                  = f.input :house_number, label: 'Numéro', placeholder: 'Entrez numéro'
+                  = f.input :zip_code, label: 'Code postal', placeholder: 'Entrez code postal', required: true
+                .col-md-6
+                  = f.input :street, label: 'Rue', placeholder: 'Entrez nouvelle rue', required: true
+                  = f.input :city, label: 'Ville', placeholder: 'Entrez ville', required: true
+                  = f.input :country, label: 'Pays'
+
+        .col-md-1
+        .row
+          .col-md-1
+          .col-md-10
+            .form-actions
+              = link_to 'Annuler', proprios_path, class: 'btn btn-default'
+              .pull-right
+                = f.button :submit, "Sauvegarder", class: "btn btn-default"
+          .col-md-1

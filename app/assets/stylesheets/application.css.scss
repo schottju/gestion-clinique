@@ -1,0 +1,250 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ *= require bootstrap-datetimepicker
+ *= require cookies_eu
+ */
+
+
+@import "font-awesome-sprockets";
+@import "font-awesome";
+@import "bootswatch/flatly/variables";
+@import "bootstrap";
+@import "bootswatch/flatly/bootswatch";
+
+$bgDefault      : #00BC8C;
+$bgHighlight    : #15A589;
+$colDefault     : #fdfdfd;
+$colHighlight   : #ffffff;
+$bgPanel        : $bgDefault;
+$dropDown       : false;
+.navbar-default {
+  background-color: $bgDefault;
+  border-color: $bgHighlight;
+  .navbar-brand {
+    color: $colDefault;
+    &:hover, &:focus {
+      color: $colDefault; }}
+  .navbar-text {
+    color: $colDefault; }
+  .navbar-nav {
+    > li {
+      > a {
+        color: $colDefault;
+        &:hover,  &:focus {
+          color: $colHighlight;
+          background-color: $bgHighlight; }}
+      @if $dropDown {
+        > .dropdown-menu {
+          background-color: $bgDefault;
+          > li > a {
+            color: $colDefault;
+            &:hover,  &:focus {
+              color: $colHighlight;
+              background-color: $bgHighlight; }}
+          .divider {
+            background-color: $bgHighlight;}}}
+    }
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}
+    > .open {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+  .navbar-toggle {
+    border-color: $bgHighlight;
+    &:hover, &:focus {
+      background-color: $bgHighlight; }
+    .icon-bar {
+      background-color: $colDefault; }}
+  .navbar-collapse,
+  .navbar-form {
+    border-color: $colDefault; }
+  .navbar-link {
+    color: $colDefault;
+    &:hover {
+      color: $colHighlight; }}}
+@media (max-width: 767px) {
+  .navbar-default .navbar-nav .open .dropdown-menu {
+    > li > a {
+      color: $colDefault;
+      &:hover, &:focus {
+        color: $colHighlight; }}
+    > .active {
+      > a, > a:hover, > a:focus {
+        color: $colHighlight;
+        background-color: $bgHighlight; }}}
+}
+
+
+img {
+   margin: 10px;
+}
+
+.panel-default {
+  border-color: $bgPanel;
+}
+
+.panel-default > .panel-heading {
+  color: white;
+  background-color: $bgPanel;
+  border-color: $bgPanel;
+}
+
+.panel-info {
+  border-color: #F1F1F1;
+}
+
+.panel-info > .panel-heading {
+  color: black;
+  background-color: #F1F1F1;
+  border-color: #F1F1F1;
+}
+
+
+.flickr_pagination {
+  margin-top: 25px;
+  text-align: center;
+  padding: 0.3em;
+  cursor: default;
+  a, span, em {
+    padding: 0.2em 0.5em;
+  }
+  .disabled {
+    color: #aaaaaa;
+  }
+  .current {
+    font-style: normal;
+    font-weight: bold;
+    color: $bgDefault;
+  }
+  a {
+    border: 1px solid #dddddd;
+    color: $bgDefault;
+    text-decoration: none;
+    &:hover, &:focus {
+      border-color: $bgDefault;
+      background: $bgDefault;
+      color: white;
+    }
+  }
+  .page_info {
+    color: #aaaaaa;
+    padding-top: 0.8em;
+  }
+  .previous_page, .next_page {
+    border-width: 2px;
+  }
+  .previous_page {
+    margin-right: 1em;
+  }
+  .next_page {
+    margin-left: 1em;
+  }
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+td {
+  a {
+  color: black;
+  text-decoration: none !important;
+  }
+}
+
+a:hover, a:focus {
+  color: black;
+  text-decoration: underline;
+}
+
+
+.navbar-brand {
+  a {
+  color: $colDefault;
+  text-decoration: none;}
+}
+
+.centered {
+  text-align: center;
+}
+
+
+th.date-row {
+  width: 100px;
+}
+
+th.price-row {
+  width: 100px;
+}
+
+th.btn-row-2 {
+  width: 120px;
+}
+
+th.btn-row-3 {
+  width: 170px;
+}
+
+th.btn-row-4 {
+  width: 220px;
+}
+
+.image_preview {
+  img {
+    width: 350px;
+  }
+}
+
+body {
+  background-color: #e8fcf6;
+}
+
+
+.table-striped>tbody>tr:hover>td, .table-striped>tbody>tr:hover>th {
+  background-color: #e8fcf6;
+  color: black;
+}
+
+th .current {
+  padding-right: 12px;
+  background-repeat: no-repeat;
+  background-position: right center;
+}
+th .asc {
+  background-image: image-url('up_arrow.gif');
+}
+
+th .desc {
+  background-image: image-url('down_arrow.gif');
+}
+
+th {
+  a {
+  text-decoration: none !important;
+  }
+}
+
+
+tbody.table-centered td{
+   text-align: center;
+}
+
+thead.table-centered th{
+   text-align: center;
+}

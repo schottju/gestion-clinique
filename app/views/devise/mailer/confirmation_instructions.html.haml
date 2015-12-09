@@ -1,0 +1,4 @@
+%p
+  Bienvenue #{@email}!
+%p Vous pouvez confirmer le compte de courriel en cliquant sur le lien suivant link:
+%p= link_to 'Confirmez mon compte de courriel', confirmation_url(@resource, confirmation_token: @token)

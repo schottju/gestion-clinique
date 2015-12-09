@@ -1,0 +1,35 @@
+= form_tag treatments_search_path, method: :get do
+  = hidden_field_tag :direction, params[:direction]
+  = hidden_field_tag :sort, params[:sort]
+  = hidden_field_tag :tab, 'treatments'
+  .form-inline
+    = text_field_tag :search, params[:search], placeholder: 'Entrez un nom de traitement', class: 'form-control'
+    = submit_tag "Recherche", name: nil, class: 'btn btn-default'
+
+    .pull-right
+      = link_to 'Ajoutez un traitement', new_treatment_path, class: "btn btn-default"
+
+- if @treatments.empty?
+  .alert.alert-warning.table-warning Pas d'enregistrement.
+- else
+  %table.table.table-striped
+    %thead
+      %tr
+        %th= sortable 'name', "Nom"
+
+        %th= sortable 'status', "Status"
+        %th= sortable 'description', "Description"
+        %th
+    %tbody
+      - @treatments.each do |treatment|
+        %tr
+          %td= change_blank_to_dash(treatment.name)
+
+          %td= change_blank_to_dash(treatment.status)
+          %td= change_blank_to_dash(treatment.description)
+          %td
+            .pull-right
+              = link_to icon('edit'), edit_treatment_path(treatment), title: 'Modifier', class: "btn btn-default"
+
+  .flickr_pagination
+    = will_paginate @treatments, param_name: 'treatments_page'
