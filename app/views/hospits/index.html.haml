@@ -1,0 +1,30 @@
+.panel.panel-default
+  .panel-heading Fichier
+  .panel-body
+    = render 'search_form'
+    %table.table.table-striped
+      %thead
+        %tr
+          %th= sortable 'anamnesis', "Cause hospitalisation"
+          %th Diagnostic ou suspicion
+          %th Vétérinaire
+          %th.date-row= sortable 'created_at', "Date"
+          %th.btn-row-2
+
+      %tbody
+        - hospits.each do |hospit|
+          %tr
+            %td= change_blank_to_dash(hospit.anamnesis)
+            %td= change_blank_to_dash(hospit.decorate.name_of_disease)
+            %td= change_blank_to_dash(hospit.try(:veterinarian).try(:user). try(:decorate).try(:last_name))
+            %td= change_blank_to_dash(hospit.created_at.to_date)
+            %td
+              .pull-right
+                = link_to icon('list-alt'), proprio_hospit_path(proprio, hospit), title: 'Détails', class: "btn btn-default"
+                = link_to icon('edit'), edit_proprio_hospit_path(proprio, hospit), title: 'Modifier', class: "btn btn-default"
+
+    .pull-right
+      = link_to 'Vers le profil du propriétaire', proprio_path(proprio), class: 'btn btn-default'
+
+    .flickr_pagination
+      = will_paginate hospits

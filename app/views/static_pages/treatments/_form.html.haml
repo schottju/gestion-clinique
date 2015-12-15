@@ -1,0 +1,18 @@
+= simple_form_for treatment do |f|
+  = f.error_notification
+  .form-inputs
+    .row
+      .col-md-1
+      .col-md-5
+        = f.input :name, label: 'Nom', placeholder: 'Entrez un nom de traitement', required: true, autofocus: true
+
+      .col-md-1
+    .row
+      .col-md-1
+      .col-md-10
+        = f.input :description, label: 'Description', placeholder: 'Entrez la description'
+        .form-actions
+          = link_to "Annuler", dictionaries_path(tab: 'treatments'), class: "btn btn-default"
+          .pull-right
+            = f.button :submit, "Sauvegarder", class: "btn btn-default"
+      .col-md-1

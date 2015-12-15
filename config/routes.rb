@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   resources :proprios, only: [ :index, :show, :new, :create, :edit, :update ] do
     resources :animals , only: [ :index, :show, :new, :create, :edit, :update ]
     resources :medical_records, only: [ :index, :show, :new, :create, :edit, :update ]
+    resources :hospits, only: [ :index, :show, :new, :create, :edit, :update ]
     resources :pictures, only: [ :index, :show, :new, :create, :edit, :update ]
   end
   resources :users, only: [ :index, :show, :new, :create, :edit, :update ] do

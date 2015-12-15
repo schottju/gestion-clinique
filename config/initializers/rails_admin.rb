@@ -390,6 +390,9 @@ RailsAdmin.config do |config|
       field :medical_records do
         filterable false
       end
+      field :hospits do
+        filterable false
+      end
       field :pictures do
         filterable false
       end
@@ -454,6 +457,9 @@ RailsAdmin.config do |config|
       field :medical_records do
         inline_add false
       end
+      field :hospits do
+        inline_add false
+      end
       field :pictures do
         inline_add false
       end
@@ -474,6 +480,7 @@ RailsAdmin.config do |config|
       field :species
       field :proprio
       field :medical_records
+      field :hospits
       field :pictures
     end
   end
@@ -481,6 +488,9 @@ RailsAdmin.config do |config|
   config.model 'Disease' do
     configure :medical_records do
       label "Fiche consultation"
+    end
+    configure :hospits do
+      label "Fiche hospitalisation"
     end
 
     object_label_method do
@@ -500,6 +510,9 @@ RailsAdmin.config do |config|
       field :medical_records do
         filterable false
       end
+      field :hospits do
+        filterable false
+      end
       field :created_at
       field :updated_at
     end
@@ -509,6 +522,7 @@ RailsAdmin.config do |config|
       field :name
       field :status
       field :medical_records
+      field :hospits
       field :created_at
       field :updated_at
     end
@@ -523,6 +537,9 @@ RailsAdmin.config do |config|
       field :medical_records do
         inline_add false
       end
+      field :hospits do
+        inline_add false
+      end
     end
 
     export do
@@ -532,6 +549,7 @@ RailsAdmin.config do |config|
       field :created_at
       field :updated_at
       field :medical_records
+      field :hospits
     end
   end
 
@@ -591,7 +609,7 @@ RailsAdmin.config do |config|
         filterable false
       end
       field :anamnesis do
-        filterable false        
+        filterable false
       end
       field :medicines do
         filterable false
@@ -689,6 +707,209 @@ RailsAdmin.config do |config|
     end
   end
 
+  config.model 'Hospit' do
+    configure :proprios do
+      label "Propriétaire"
+    end
+
+    configure :veterinarian do
+      label "Vétérinaire"
+    end
+
+    configure :animals do
+      label "Animal"
+    end
+
+    configure :diseases do
+      label "Maladie"
+    end
+
+    configure :hospit_actes do
+      label "Soins"
+    end
+
+    configure :pictures do
+      label "Image"
+    end
+
+    configure :treatments do
+      label "Traitement"
+    end
+
+    object_label_method do
+      :custom_label_method
+    end
+
+    list do
+      sort_by :id
+
+      field :id do
+        sort_reverse false
+      end
+      field :proprios do
+        filterable false
+      end
+      field :veterinarian do
+        filterable false
+      end
+      field :user do
+        filterable false
+      end
+      field :animals do
+        filterable false
+      end
+      field :anamnesis do
+        filterable false
+      end
+      field :hospit_actes do
+        filterable false
+      end
+      field :pictures do
+        filterable false
+      end
+      field :treatments do
+        filterable false
+      end
+      field :diseases do
+        filterable false
+      end
+      field :comment
+      field :description
+      field :additional_cost
+      field :total_cost
+      field :created_at
+      field :updated_at
+    end
+
+    show do
+      field :id
+      field :proprios
+      field :veterinarian
+      field :user
+      field :animals
+      field :anamnesis
+      field :diseases
+      field :hospit_actes
+      field :pictures
+      field :treatments
+      field :comment
+      field :description
+      field :additional_cost
+      field :total_cost
+      field :created_at
+      field :updated_at
+    end
+
+    edit do
+      field :veterinarian do
+        inline_add false
+        inline_edit false
+      end
+      field :animals do
+        inline_add false
+      end
+      field :anamnesis
+      field :diseases do
+        inline_add false
+      end
+      field :hospit_actes do
+        nested_form false
+        inline_add false
+      end
+      field :pictures do
+        inline_add false
+      end
+      field :treatments do
+        inline_add false
+      end
+      field :user
+      field :comment
+      field :description
+      field :additional_cost
+
+    export do
+      field :id
+      field :proprios
+      field :animals
+      field :veterinarian
+      field :user
+      field :anamnesis
+      field :comment
+      field :description
+      field :additional_cost
+      field :total_cost
+      field :created_at
+      field :updated_at
+      field :diseases
+      field :hospit_actes
+      field :medocs
+      field :pictures
+      field :treatments
+      end
+    end
+  end
+
+  config.model 'hospit_acte' do
+    configure :unit do
+      label "Unité"
+    end
+
+    configure :hospits do
+      label "Fiche consultation"
+    end
+
+    object_label_method do
+      :custom_label_method
+    end
+
+    list do
+      sort_by :id
+
+      field :id do
+        sort_reverse false
+      end
+      field :comment
+      field :soin
+      field :hospits do
+        filterable false
+      end
+      field :created_at
+      field :updated_at
+    end
+
+    show do
+      field :id
+      field :comment
+      field :soin
+      field :hospits
+      field :created_at
+      field :updated_at
+    end
+
+    create do
+      field :comment
+      field :soin
+    end
+
+    update do
+      field :comment
+      field :soin
+      field :hospits do
+        inline_add false
+      end
+    end
+
+    export do
+      field :id
+      field :comment
+      field :soin
+      field :hospits
+      field :created_at
+      field :updated_at
+    end
+  end
+
+
   config.model 'Medicine' do
     configure :unit do
       label "Unité"
@@ -740,6 +961,7 @@ RailsAdmin.config do |config|
       field :serial_number
       field :description
       field :medical_records
+      field :hospits
       field :created_at
       field :updated_at
     end
@@ -800,6 +1022,10 @@ RailsAdmin.config do |config|
       label "Fiche consultation"
     end
 
+    configure :hospits do
+      label "Fiche hospitalisation"
+    end
+
     configure :animal do
       label "Animal"
     end
@@ -823,6 +1049,9 @@ RailsAdmin.config do |config|
       field :medical_records do
         filterable false
       end
+      field :hospits do
+        filterable false
+      end
       field :animal do
         filterable false
       end
@@ -837,6 +1066,7 @@ RailsAdmin.config do |config|
       field :image
       field :proprio
       field :medical_records
+      field :hospits
       field :animal
       field :created_at
       field :updated_at
@@ -867,6 +1097,9 @@ RailsAdmin.config do |config|
       field :medical_records do
         inline_add false
       end
+      field :hospits do
+        inline_add false
+      end
       field :animal do
         inline_add false
         inline_edit false
@@ -882,6 +1115,7 @@ RailsAdmin.config do |config|
       field :updated_at
       field :proprio
       field :medical_records
+      field :hospits
       field :animal
     end
   end
@@ -948,6 +1182,10 @@ RailsAdmin.config do |config|
       label "Fiche consultation"
     end
 
+    configure :hospits do
+      label "Fiche hospitalisation"
+    end
+
     object_label_method do
       :custom_label_method
     end
@@ -967,6 +1205,9 @@ RailsAdmin.config do |config|
       field :medical_records do
         filterable false
       end
+      field :hospits do
+        filterable false
+      end
       field :created_at
       field :updated_at
     end
@@ -978,6 +1219,7 @@ RailsAdmin.config do |config|
       field :status
       field :description
       field :medical_records
+      field :hospits
       field :created_at
       field :updated_at
     end
@@ -996,6 +1238,9 @@ RailsAdmin.config do |config|
       field :medical_records do
         inline_add false
       end
+      field :hospits do
+        inline_add false
+      end
     end
 
     export do
@@ -1007,6 +1252,7 @@ RailsAdmin.config do |config|
       field :created_at
       field :updated_at
       field :medical_records
+      field :hospits
     end
   end
 
@@ -1186,6 +1432,10 @@ RailsAdmin.config do |config|
       label "Fiche client"
     end
 
+    configure :hospits do
+      label "Fiche hospitalisation"
+    end
+
     configure :vacations do
       label "Vacances"
     end
@@ -1204,6 +1454,10 @@ RailsAdmin.config do |config|
       end
 
       configure :medical_records do
+        hide
+      end
+
+      configure :hospits do
         hide
       end
 
@@ -1237,6 +1491,9 @@ RailsAdmin.config do |config|
       field :medical_records do
         filterable false
       end
+      field :hospits do
+        filterable false
+      end
       field :created_at
       field :updated_at
     end
@@ -1250,6 +1507,7 @@ RailsAdmin.config do |config|
       field :vacations
       field :working_day
       field :medical_records
+      field :hospits
       field :created_at
       field :updated_at
     end
@@ -1283,6 +1541,9 @@ RailsAdmin.config do |config|
       field :medical_records do
         inline_add false
       end
+      field :hospits do
+        inline_add false
+      end
     end
 
     export do
@@ -1296,6 +1557,7 @@ RailsAdmin.config do |config|
       field :vacations
       field :working_day
       field :medical_records
+      field :hospits
     end
   end
 

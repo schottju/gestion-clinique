@@ -1,0 +1,33 @@
+= simple_form_for [ proprio, hospit ] do |f|
+  = f.error_notification
+  .form-inputs
+    .row
+      .col-md-6
+        = f.input :anamnesis, label: 'Cause hospitalisation', placeholder: 'Entrez anamnèse', autofocus: true
+      .col-md-1
+        = f.input :poids, label: 'Poids', placeholder: 'Entrez le poids'
+      .col-md-5
+        = f.input :animal_ids, label: 'Animaux', collection: @animals, input_html: { multiple: true }
+    = f.hidden_field :veterinarian_id, value: current_user.try(:veterinarian).try(:id)
+    = f.hidden_field :proprio_id, value: proprio.id
+    .row
+      .col-md-4
+        = f.input :disease_id, label: 'Diagnostic ou suspicion', collection: @diseases
+      .col-md-4
+        = f.input :picture_ids, label: 'Images', collection: @pictures, input_html: { multiple: true }
+    .panel.panel-info
+      .panel-heading Soins journaliers
+      .panel-body
+        #hospit_actes
+          = f.simple_fields_for :hospit_actes do |hospit_acte|
+            = render 'hospit_acte_fields', f: hospit_acte
+          .links.centered
+            = link_to_add_association 'Ajouter soin', f, :hospit_actes, class: 'btn btn-default'
+    .row
+      .col-md-6
+        = f.input :description, label: 'Observations', placeholder: 'Entrez description'
+
+  .form-actions
+    = link_to 'Annuler', proprio_hospits_path, class: 'btn btn-default'
+    .pull-right
+      = f.button :submit, "Sauvegarder"

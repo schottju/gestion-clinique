@@ -1,0 +1,9 @@
+= form_tag proprio_hospits_path, method: :get do
+  = hidden_field_tag :direction, params[:direction]
+  = hidden_field_tag :sort, params[:sort]
+  .form-inline
+    = text_field_tag :search, params[:search], placeholder: 'Entrez le numéro ou la date de la visite', class: 'form-control', size: 32
+    = submit_tag "Recherche", name: nil, class: 'btn btn-default'
+
+  .pull-right
+    = link_to 'Nouveau fichier', new_proprio_hospit_path, class: 'btn btn-default'

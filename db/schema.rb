@@ -48,6 +48,14 @@ ActiveRecord::Schema.define(version: 20161126003333) do
   add_index "animals", ["proprio_id"], name: "index_animals_on_proprio_id", using: :btree
   add_index "animals", ["species_id"], name: "index_animals_on_species_id", using: :btree
 
+  create_table "animals_hospits", id: false, force: :cascade do |t|
+    t.integer "hospit_id", null: false
+    t.integer "animal_id", null: false
+  end
+
+  add_index "animals_hospits", ["animal_id"], name: "index_animals_hospits_on_animal_id", using: :btree
+  add_index "animals_hospits", ["hospit_id"], name: "index_animals_hospits_on_hospit_id", using: :btree
+
   create_table "animals_medical_records", id: false, force: :cascade do |t|
     t.integer "medical_record_id", null: false
     t.integer "animal_id",         null: false
@@ -62,6 +70,72 @@ ActiveRecord::Schema.define(version: 20161126003333) do
     t.datetime "updated_at",             null: false
     t.integer  "status",     default: 0
   end
+
+  create_table "diseases_hospits", id: false, force: :cascade do |t|
+    t.integer "disease_id", null: false
+    t.integer "hospit_id",  null: false
+  end
+
+  add_index "diseases_hospits", ["disease_id"], name: "index_diseases_hospits_on_disease_id", using: :btree
+  add_index "diseases_hospits", ["hospit_id"], name: "index_diseases_hospits_on_hospit_id", using: :btree
+
+  create_table "hospit_actes", force: :cascade do |t|
+    t.text    "comment"
+    t.text    "soin"
+    t.integer "veterinarian_id"
+  end
+
+  add_index "hospit_actes", ["veterinarian_id"], name: "index_hospit_actes_on_veterinarian_id", using: :btree
+
+  create_table "hospit_actes_hospits", id: false, force: :cascade do |t|
+    t.integer "hospit_id",      null: false
+    t.integer "hospit_acte_id", null: false
+  end
+
+  add_index "hospit_actes_hospits", ["hospit_acte_id"], name: "index_hospit_actes_hospits_on_hospit_acte_id", using: :btree
+  add_index "hospit_actes_hospits", ["hospit_id"], name: "index_hospit_actes_hospits_on_hospit_id", using: :btree
+
+  create_table "hospits", force: :cascade do |t|
+    t.text     "anamnesis"
+    t.text     "description"
+    t.text     "comment"
+    t.string   "poids"
+    t.integer  "proprio_id"
+    t.integer  "veterinarian_id"
+    t.float    "addictional_cost"
+    t.float    "total_cost"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "disease_id"
+  end
+
+  add_index "hospits", ["disease_id"], name: "index_hospits_on_disease_id", using: :btree
+  add_index "hospits", ["proprio_id"], name: "index_hospits_on_proprio_id", using: :btree
+  add_index "hospits", ["veterinarian_id"], name: "index_hospits_on_veterinarian_id", using: :btree
+
+  create_table "hospits_proprios", id: false, force: :cascade do |t|
+    t.integer "proprio_id", null: false
+    t.integer "hospit_id",  null: false
+  end
+
+  add_index "hospits_proprios", ["hospit_id"], name: "index_hospits_proprios_on_hospit_id", using: :btree
+  add_index "hospits_proprios", ["proprio_id"], name: "index_hospits_proprios_on_proprio_id", using: :btree
+
+  create_table "hospits_treatments", id: false, force: :cascade do |t|
+    t.integer "hospit_id",    null: false
+    t.integer "treatment_id", null: false
+  end
+
+  add_index "hospits_treatments", ["hospit_id"], name: "index_hospits_treatments_on_hospit_id", using: :btree
+  add_index "hospits_treatments", ["treatment_id"], name: "index_hospits_treatments_on_treatment_id", using: :btree
+
+  create_table "hospits_veterinarians", id: false, force: :cascade do |t|
+    t.integer "veterinarian_id", null: false
+    t.integer "hospit_id",       null: false
+  end
+
+  add_index "hospits_veterinarians", ["hospit_id"], name: "index_hospits_veterinarians_on_hospit_id", using: :btree
+  add_index "hospits_veterinarians", ["veterinarian_id"], name: "index_hospits_veterinarians_on_veterinarian_id", using: :btree
 
   create_table "medical_records", force: :cascade do |t|
     t.text     "anamnesis"
@@ -267,6 +341,10 @@ ActiveRecord::Schema.define(version: 20161126003333) do
   add_foreign_key "addresses", "users"
   add_foreign_key "animals", "proprios"
   add_foreign_key "animals", "species"
+  add_foreign_key "hospit_actes", "veterinarians"
+  add_foreign_key "hospits", "diseases"
+  add_foreign_key "hospits", "proprios"
+  add_foreign_key "hospits", "veterinarians"
   add_foreign_key "medical_records", "diseases"
   add_foreign_key "medical_records", "proprios"
   add_foreign_key "medical_records", "veterinarians"
