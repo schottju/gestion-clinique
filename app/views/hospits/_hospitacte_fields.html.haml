@@ -1,0 +1,14 @@
+.nested-fields
+  .row
+    .col-md-1
+    .col-md-10
+      .jumbotron
+        .row
+          .col-md-5
+            = f.input :comment, label: 'Observation', placeholder: 'État, vomissement, appetit...'
+          .col-md-5
+            = f.input :soin, label: 'Actes', placeholder: 'Injections, perfusions, Rx, chirurgie...'
+        = f.hidden_field :veterinarian_id, value: current_user.try(:veterinarian).try(:id)
+    .col-md-1
+      .pull-right
+        = link_to_remove_association icon('trash-o'), f, class: 'btn btn-default'

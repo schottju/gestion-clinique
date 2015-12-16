@@ -8,6 +8,7 @@ class Proprio < ActiveRecord::Base
   has_many :animal
 #  has_many :veterinarians
   has_many :medical_records
+  has_many :hospits
   has_many :pictures
 #  accepts_nested_attributes_for :addressp
 

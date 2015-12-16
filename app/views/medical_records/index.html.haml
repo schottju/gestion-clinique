@@ -25,6 +25,7 @@
 
     .pull-right
       = link_to 'Vers le profil du propriétaire', proprio_path(proprio), class: 'btn btn-default'
+      = link_to "Ajouter hospit", new_proprio_hospit_path(proprio), class: "btn btn-default"
 
     .flickr_pagination
       = will_paginate medical_records

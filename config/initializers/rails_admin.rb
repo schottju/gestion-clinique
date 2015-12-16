@@ -724,7 +724,7 @@ RailsAdmin.config do |config|
       label "Maladie"
     end
 
-    configure :hospit_actes do
+    configure :hospitactes do
       label "Soins"
     end
 
@@ -761,7 +761,7 @@ RailsAdmin.config do |config|
       field :anamnesis do
         filterable false
       end
-      field :hospit_actes do
+      field :hospitactes do
         filterable false
       end
       field :pictures do
@@ -789,7 +789,7 @@ RailsAdmin.config do |config|
       field :animals
       field :anamnesis
       field :diseases
-      field :hospit_actes
+      field :hospitactes
       field :pictures
       field :treatments
       field :comment
@@ -812,7 +812,7 @@ RailsAdmin.config do |config|
       field :diseases do
         inline_add false
       end
-      field :hospit_actes do
+      field :hospitactes do
         nested_form false
         inline_add false
       end
@@ -841,7 +841,7 @@ RailsAdmin.config do |config|
       field :created_at
       field :updated_at
       field :diseases
-      field :hospit_actes
+      field :hospitactes
       field :medocs
       field :pictures
       field :treatments
@@ -849,10 +849,7 @@ RailsAdmin.config do |config|
     end
   end
 
-  config.model 'hospit_acte' do
-    configure :unit do
-      label "Unité"
-    end
+  config.model 'hospitacte' do
 
     configure :hospits do
       label "Fiche consultation"

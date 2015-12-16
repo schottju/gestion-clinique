@@ -18,13 +18,13 @@ end
 
 pdf.move_down 100
 
-hospit.hospit_actes.each do |hospit_acte|
+hospit.hospitactes.each do |hospitacte|
 pdf.move_down 20
-pdf.text "<u>#{hospit_acte.comment}</u>", :style => :bold, :size => 12, :inline_format => true
+pdf.text "<u>#{hospitacte.comment}</u>", :style => :bold, :size => 12, :inline_format => true
 pdf.move_down 10
-pdf.text "#{hospit_acte.soin}", :indent_paragraphs => 40
+pdf.text "#{hospitacte.soin}", :indent_paragraphs => 40
 pdf.move_down 10
-pdf.text "Docteur #{hospit_acte.veterinarian.user.last_name} #{hospit_acte.veterinarian.user.first_name}", :size => 12
+pdf.text "Docteur #{hospitacte.veterinarian.user.last_name} #{hospitacte.veterinarian.user.first_name}", :size => 12
 
 end
 

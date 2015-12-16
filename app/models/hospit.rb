@@ -4,26 +4,21 @@ class Hospit < ActiveRecord::Base
   has_and_belongs_to_many :proprios
   has_and_belongs_to_many :animals
 #  has_many :animal
-  belongs_to :disease
-  has_many :hospit_actes
+  has_and_belongs_to_many :diseases
+  has_and_belongs_to_many :hospitactes
   has_and_belongs_to_many :veterinarians
   has_and_belongs_to_many :treatments
   has_and_belongs_to_many :pictures
-  has_many :medocs
+#  has_many :medocs
 #  has_many :users
-  before_save :total_price
+#  before_save :total_price
 
-  accepts_nested_attributes_for :hospit_actes, allow_destroy: true
+  accepts_nested_attributes_for :hospitactes, allow_destroy: true
 #  accepts_nested_attributes_for :medocs
 
-  def total_price
-    sum = hospit_actes.inject(0.0) { |sum, hospit_acte| sum  }
-    sum += treatments.inject(0.0) { |sum, treatment| sum  }
-    self.total_cost = additional_cost.to_f + sum
-  end
 
   def custom_label_method
-    "#{user.try(:decorate).try(:full_name)} #{disease.try(:name)}, Vétérinaire: #{veterinarian.try(:user).try(:decorate).try(:full_name)}"
+    "#{user.try(:decorate).try(:full_name)} #{disease.try(:name)}"
   end
 
   private

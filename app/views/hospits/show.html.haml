@@ -62,7 +62,7 @@
                 %td= change_blank_to_dash(animal.gender)
               %tr
                 %th.col-md-2 Poids (kg):
-                %td= change_blank_to_dash(medical_record.poids)
+                %td= change_blank_to_dash(hospit.poids)
               %tr
                 %th.col-md-2 Date de naissance:
                 %td= change_blank_to_dash(animal.birth_date)
@@ -110,46 +110,24 @@
             %th.col-md-2 Poids (kg):
             %td= change_blank_to_dash(hospit.poids)
       .panel-body
-        - hospit.hospit_actes.each do |hospit_acte|
+        - hospit.hospitactes.each do |hospitacte|
           %table.table
             %tbody
               %tr
                 %th.col-md-2 Observations:
-                %td= change_blank_to_dash(hospit_acte.comment)
+                %td= change_blank_to_dash(hospitacte.comment)
 
               %tr
                 %th.col-md-2 Actes:
-                %td= change_blank_to_dash(hospit_acte.soin)
+                %td= change_blank_to_dash(hospitacte.soin)
 
               %tr
                 %th.col-md-2 Nom:
-               %td= change_blank_to_dash(hospit_acte.veterinarian.user.last_name
+                %td= change_blank_to_dash(hospitacte.try(:veterinarians).try(:last_name))
 
               %tr
                 %th
                 %td
-
-    .panel.panel-info
-      .panel-heading Images
-      .panel-body
-        - if hospit.pictures.empty?
-          Pas d'images.
-        - else
-          %table.table
-            %thead
-              %tr
-                %th Nom
-                %th Animal
-                %th Image
-                %th Description
-
-            %tbody
-              - hospit.pictures.each do |picture|
-                %tr
-                  %td= change_blank_to_dash(picture.name)
-                  %td= picture.decorate.print_animal_id
-                  %td= link_to image_tag(picture.image, width: 100), picture.image.url
-                  %td= change_blank_to_dash(picture.description)
 
     .panel.panel-info
       .panel-heading Informations complémentaires

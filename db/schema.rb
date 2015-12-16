@@ -71,29 +71,21 @@ ActiveRecord::Schema.define(version: 20161126003333) do
     t.integer  "status",     default: 0
   end
 
-  create_table "diseases_hospits", id: false, force: :cascade do |t|
-    t.integer "disease_id", null: false
-    t.integer "hospit_id",  null: false
-  end
-
-  add_index "diseases_hospits", ["disease_id"], name: "index_diseases_hospits_on_disease_id", using: :btree
-  add_index "diseases_hospits", ["hospit_id"], name: "index_diseases_hospits_on_hospit_id", using: :btree
-
-  create_table "hospit_actes", force: :cascade do |t|
+  create_table "hospitactes", force: :cascade do |t|
     t.text    "comment"
     t.text    "soin"
     t.integer "veterinarian_id"
   end
 
-  add_index "hospit_actes", ["veterinarian_id"], name: "index_hospit_actes_on_veterinarian_id", using: :btree
+  add_index "hospitactes", ["veterinarian_id"], name: "index_hospitactes_on_veterinarian_id", using: :btree
 
-  create_table "hospit_actes_hospits", id: false, force: :cascade do |t|
-    t.integer "hospit_id",      null: false
-    t.integer "hospit_acte_id", null: false
+  create_table "hospitactes_hospits", id: false, force: :cascade do |t|
+    t.integer "hospit_id",     null: false
+    t.integer "hospitacte_id", null: false
   end
 
-  add_index "hospit_actes_hospits", ["hospit_acte_id"], name: "index_hospit_actes_hospits_on_hospit_acte_id", using: :btree
-  add_index "hospit_actes_hospits", ["hospit_id"], name: "index_hospit_actes_hospits_on_hospit_id", using: :btree
+  add_index "hospitactes_hospits", ["hospit_id"], name: "index_hospitactes_hospits_on_hospit_id", using: :btree
+  add_index "hospitactes_hospits", ["hospitacte_id"], name: "index_hospitactes_hospits_on_hospitacte_id", using: :btree
 
   create_table "hospits", force: :cascade do |t|
     t.text     "anamnesis"
@@ -341,7 +333,7 @@ ActiveRecord::Schema.define(version: 20161126003333) do
   add_foreign_key "addresses", "users"
   add_foreign_key "animals", "proprios"
   add_foreign_key "animals", "species"
-  add_foreign_key "hospit_actes", "veterinarians"
+  add_foreign_key "hospitactes", "veterinarians"
   add_foreign_key "hospits", "diseases"
   add_foreign_key "hospits", "proprios"
   add_foreign_key "hospits", "veterinarians"

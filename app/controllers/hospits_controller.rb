@@ -12,7 +12,7 @@ helper_method :sort_column, :sort_direction
   expose(:user) { User.find(params[:user_id]) }
   expose(:proprio) { Proprio.find(params[:proprio_id]) }
 #  expose(:veterinarian) { Veterinarian.find(params[:user_id]) }
-  expose(:hospits) { proprio.medical_records.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 8) }
+  expose(:hospits) { proprio.hospits.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 8) }
 
 
   def index
@@ -26,6 +26,7 @@ helper_method :sort_column, :sort_direction
 
   def new
 #    @veterinarians = Veterinarian.where.map { |user| [ "Nom: #{user.last_name}, Prénom: #{user.first_name}"] }
+    @hospit = Hospit.new
     @units = Unit.order(:name).where(status: "actif")
     @diseases = Disease.order(:name).where(status: "actif")
     @medocs = Medoc.order(:name).where(status: "actif")
@@ -37,11 +38,11 @@ helper_method :sort_column, :sort_direction
 
   def create
 #    medical_record.additional_cost = change_comma_to_period(params[:hospit][:additional_cost])
-
-    params[:hospit][:hospit_actes_attributes].values.each_with_index do |hospit_acte, i|
-      hospit.hospit_actes[i].comment = change_comma_to_period(hospit_acte[:comment])
-      hospit.hospit_actes[i].soin = change_comma_to_period(hospit_acte[:soin])
-    end if params[:hospit] and params[:hospit][:hospit_actes_attributes]
+    @hospit = Hospit.new
+#    params[:hospit][:hospitactes_attributes].values.each_with_index do |hospitacte, i|
+#      hospit.hospitactes[i].comment = change_comma_to_period(hospitacte[:comment])
+#      hospit.hospitactes[i].soin = change_comma_to_period(hospitacte[:soin])
+#    end if params[:hospit] and params[:hospit][:hospitactes_attributes]
 
     if hospit.save
       redirect_to proprio_hospits_path, notice: 'Nouvelle entrée dans le fichier crée.'
@@ -71,10 +72,10 @@ helper_method :sort_column, :sort_direction
   def update
     hospit.additional_cost = change_comma_to_period(params[:hospit][:additional_cost])
 
-    params[:hospit][:hospit_actes_attributes].values.each_with_index do |hospit_acte, i|
-      hospit.hospit_actes[i].comment = change_comma_to_period(hospit_acte[:comment])
-      hospit.hospit_actes[i].soin = change_comma_to_period(hospit_acte[:soin])
-    end if params[:hospit] and params[:hospit][:hospit_actes_attributes]
+#    params[:hospit][:hospitactes_attributes].values.each_with_index do |hospitacte, i|
+#      hospit.hospitactes[i].comment = change_comma_to_period(hospitacte[:comment])
+#      hospit.hospitactes[i].soin = change_comma_to_period(hospitacte[:soin])
+#    end if params[:hospit] and params[:hospit][:hospitactes_attributes]
 
     if hospit.save
       redirect_to proprio_hospit_path, notice: 'La fiche a été modifiée.'
@@ -99,8 +100,8 @@ helper_method :sort_column, :sort_direction
     def hospit_params
       params.require(:hospit).permit(
           :anamnesis, :description, :comment, :poids, :proprio_id, :user_id, :veterinarian_id, :additional_cost, :total_cost, :disease_id,
-          treatment_ids: [], picture_ids: [], animal_ids: [],
-          hospit_actes_attributes: [ :id, :comment, :soin, :veterinarian_id, :_destroy ]
+          treatment_ids: [], animal_ids: [],
+          hospitactes_attributes: [ :id, :comment, :soin, :veterinarian_id, :_destroy ]
       )
     end
 

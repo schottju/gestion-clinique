@@ -33,6 +33,7 @@ class PropriosController < ApplicationController
   def show
     @animals = proprio.animals.order(created_at: :desc).limit(3)
     @medical_records = proprio.medical_records.order(created_at: :desc).limit(8)
+    @hospits = proprio.hospits.order(created_at: :desc).limit(8)
     @pictures = proprio.pictures.order(created_at: :desc).limit(3)
   end
 
@@ -76,6 +77,7 @@ class PropriosController < ApplicationController
     if current_proprio?
       @animals = current_proprio.animals.order(created_at: :desc).limit(3)
       @medical_records = current_proprio.medical_records.order(created_at: :desc).limit(8)
+      @hospits = proprio.hospits.order(created_at: :desc).limit(8)
       @pictures = current_proprio.pictures.order(created_at: :desc).limit(3)
     end
   end
