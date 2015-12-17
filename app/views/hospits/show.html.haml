@@ -1,5 +1,5 @@
 .panel.panel-default
-  .panel-heading= "Fichier nr #{hospit.id}/#{hospit.created_at.to_date}"
+  .panel-heading= "Hospit nr #{hospit.id}/#{hospit.created_at.to_date}"
   .panel-body
     .panel.panel-info
       .panel-heading
@@ -123,7 +123,7 @@
 
               %tr
                 %th.col-md-2 Nom:
-                %td= change_blank_to_dash(hospitacte.try(:veterinarians).try(:last_name))
+                %td= change_blank_to_dash(hospitacte.veterinarian.user.last_name)
 
               %tr
                 %th

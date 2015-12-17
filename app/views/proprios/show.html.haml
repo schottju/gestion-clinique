@@ -136,7 +136,7 @@
               %td= change_blank_to_dash(hospit.created_at.to_date)
               %td
                 .pull-right
-                  = link_to icon('list-alt'), proprio_medical_record_path(proprio, hospit), title: 'Détails', class: "btn btn-default"
+                  = link_to icon('list-alt'), proprio_hospit_path(proprio, hospit), title: 'Détails', class: "btn btn-default"
                   = link_to icon('edit'), edit_proprio_hospit_path(proprio, hospit), title: 'Modifier', class: "btn btn-default"
       .pull-right
         = link_to "Ajouter", new_proprio_hospit_path(proprio), class: "btn btn-default"
