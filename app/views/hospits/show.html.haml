@@ -87,53 +87,31 @@
             %td= change_blank_to_dash(hospit.decorate.name_of_disease)
 
     .panel.panel-info
-      .panel-heading Traitements
+      .panel-heading Actes
       .panel-body
         %table.table
           %thead
             %tr
+              %th Observations
+              %th Actes
               %th Nom
-              %th Description
           %tbody
-            - hospit.treatments.each do |treatment|
+            - hospit.hospitactes.each do |hospitacte|
               %tr
-                %td= change_blank_to_dash(treatment.name)
-
-                %td= change_blank_to_dash(treatment.description)
-
-    .panel.panel-info
-      .panel-heading Actes
-      .panel-body
-        %table.table
-          %tbody
-          %tr
-            %th.col-md-2 Poids (kg):
-            %td= change_blank_to_dash(hospit.poids)
-      .panel-body
-        - hospit.hospitactes.each do |hospitacte|
-          %table.table
-            %tbody
-              %tr
-                %th.col-md-2 Observations:
                 %td= change_blank_to_dash(hospitacte.comment)
 
-              %tr
-                %th.col-md-2 Actes:
                 %td= change_blank_to_dash(hospitacte.soin)
 
-              %tr
-                %th.col-md-2 Nom:
                 %td= change_blank_to_dash(hospitacte.veterinarian.user.last_name)
-
-              %tr
-                %th
-                %td
 
     .panel.panel-info
       .panel-heading Informations complémentaires
       .panel-body
         %table.table
           %tbody
+            %tr
+              %th.col-md-2 Poids (kg):
+              %td= change_blank_to_dash(hospit.poids)
             %tr
               %th.col-md-2 Cause hospitalisation:
               %td= change_blank_to_dash(hospit.anamnesis)

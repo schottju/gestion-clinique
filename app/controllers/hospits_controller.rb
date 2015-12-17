@@ -60,6 +60,7 @@ helper_method :sort_column, :sort_direction
 
   def edit
 #    @veterinarians = Veterinarian.find(params[:user_id]).map { |user| [ "Nom: #{user.last_name}, Prénom: #{user.first_name}"] }
+#    @hospit = Hospit.new(entry_params)
     @units = Unit.order(:name).map { |unit| [ "#{unit.name} #{"(Inactif)" if unit.inactif?}", unit.id ] }
     @medocs = Medoc.order(:name).map { |medoc| [ "#{medoc.name} #{"(Inactif)" if medoc.inactif?}", medoc.id ] }
     @diseases = Disease.order(:name).map { |disease| [ "#{disease.name} #{"(Inactif)" if disease.inactif?}", disease.id ] }
@@ -70,13 +71,13 @@ helper_method :sort_column, :sort_direction
   end
 
   def update
-    hospit.additional_cost = change_comma_to_period(params[:hospit][:additional_cost])
+#    hospit.additional_cost = change_comma_to_period(params[:hospit][:additional_cost])
 
 #    params[:hospit][:hospitactes_attributes].values.each_with_index do |hospitacte, i|
 #      hospit.hospitactes[i].comment = change_comma_to_period(hospitacte[:comment])
 #      hospit.hospitactes[i].soin = change_comma_to_period(hospitacte[:soin])
 #    end if params[:hospit] and params[:hospit][:hospitactes_attributes]
-
+#    @hospit = Hospit.new(entry_params)
     if hospit.save
       redirect_to proprio_hospit_path, notice: 'La fiche a été modifiée.'
     else

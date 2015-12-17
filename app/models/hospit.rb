@@ -4,7 +4,7 @@ class Hospit < ActiveRecord::Base
   has_and_belongs_to_many :proprios
   has_and_belongs_to_many :animals
 #  has_many :animal
-  has_and_belongs_to_many :diseases
+  belongs_to :disease
   has_and_belongs_to_many :hospitactes
   has_and_belongs_to_many :veterinarians
   has_and_belongs_to_many :treatments
