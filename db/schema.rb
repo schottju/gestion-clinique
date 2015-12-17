@@ -72,9 +72,11 @@ ActiveRecord::Schema.define(version: 20161126003333) do
   end
 
   create_table "hospitactes", force: :cascade do |t|
-    t.text    "comment"
-    t.text    "soin"
-    t.integer "veterinarian_id"
+    t.text     "comment"
+    t.text     "soin"
+    t.integer  "veterinarian_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
   end
 
   add_index "hospitactes", ["veterinarian_id"], name: "index_hospitactes_on_veterinarian_id", using: :btree
