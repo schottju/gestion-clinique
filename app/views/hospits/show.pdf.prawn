@@ -20,11 +20,8 @@ pdf.move_down 100
 
 hospit.hospitactes.each do |hospitacte|
 pdf.move_down 20
-pdf.text "<u>#{hospitacte.comment}</u>", :style => :bold, :size => 12, :inline_format => true
-pdf.move_down 10
-pdf.text "#{hospitacte.soin}", :indent_paragraphs => 40
-pdf.move_down 10
-pdf.text "Docteur #{hospitacte.veterinarian.user.last_name} #{hospitacte.veterinarian.user.first_name}", :size => 12
+pdf.text  "=> <u>Date</u> : #{hospitacte.created_at}    <u>Observations</u> : #{hospitacte.comment}    <u>Soins</u> : #{hospitacte.soin}  <u>Intervenant</u> : Dr #{hospitacte.veterinarian.user.last_name}", :size => 9, :inline_format => true
+
 
 end
 
