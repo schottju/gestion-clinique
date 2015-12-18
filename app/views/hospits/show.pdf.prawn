@@ -5,22 +5,22 @@ pdf.draw_text "CLINIQUE VÉTÉRINAIRE DE SAINT JUNIEN", :style => :bold, :size =
 pdf.draw_text "Médecine, Imagerie, Chirurgie", :style => :bold, :size => 15, :at => [200, 730]
 pdf.draw_text "Urgence assurée 24/24", :size => 12, :at => [230, 710]
 
-pdf.draw_text " Saint Junien, le #{hospit.created_at.to_date}", :size => 12, :at => [350, 690]
-pdf.move_down 80
-if hospit.comment.blank?
+pdf.draw_text " Date d'hospitalisation #{hospit.created_at.to_date}", :size => 12, :at => [350, 680]
+pdf.move_down 90
+if hospit.anamnesis.blank?
  pdf.text "  "
 else
- pdf.text "<u>Remarque</u> : #{hospit.comment}", :style => :bold, :indent_paragraphs => 90, :inline_format => true
+ pdf.text "Cause de l'hospitalisation : #{hospit.anamnesis}", :style => :bold, :indent_paragraphs => 60, :inline_format => true
 end
 hospit.animals.each do |animal|
-pdf.draw_text "Pour le #{animal.try(:species).try(:name)} #{animal.name} de #{proprio.last_name} #{proprio.first_name}", :style => :bold, :size => 12, :at => [150, 550]
+pdf.draw_text "Fiche d'hospitalisation du #{animal.try(:species).try(:name)} #{animal.name} de #{proprio.last_name} #{proprio.first_name}", :style => :bold, :size => 12, :at => [120, 650]
 end
 
-pdf.move_down 100
-
+pdf.move_down 10
+pdf.text "Chronologie des évènements :", :style => :bold, :indent_paragraphs => 180, :inline_format => true
 hospit.hospitactes.each do |hospitacte|
 pdf.move_down 20
-pdf.text  "=> <u>Date</u> : #{hospitacte.created_at}    <u>Observations</u> : #{hospitacte.comment}    <u>Soins</u> : #{hospitacte.soin}  <u>Intervenant</u> : Dr #{hospitacte.veterinarian.user.last_name}", :size => 9, :inline_format => true
+pdf.text  "=> <u>Date/heure</u> : #{hospitacte.created_at}    <u>Observations</u> : #{hospitacte.comment}    <u>Soins</u> : #{hospitacte.soin}  <u>Intervenant</u> : Dr #{hospitacte.veterinarian.user.last_name}", :size => 9, :inline_format => true
 
 
 end
