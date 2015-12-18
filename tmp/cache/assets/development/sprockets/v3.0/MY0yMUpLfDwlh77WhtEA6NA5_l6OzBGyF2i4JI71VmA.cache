@@ -1,9 +1,0 @@
-I"f(function() {
-  ({
-    nested: {
-      fieldAdded: hospitacte_fields
-    }
-  });
-
-}).call(this);
-:ET

@@ -1,9 +1,0 @@
-I"^(function() {
-  ({
-    nested: {
-      fieldAdded: medicines
-    }
-  });
-
-}).call(this);
-:ET

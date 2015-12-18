@@ -1,9 +1,0 @@
-I"a(function() {
-  ({
-    nested: {
-      fieldAdded: medoc_fields
-    }
-  });
-
-}).call(this);
-:ET

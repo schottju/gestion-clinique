@@ -1,9 +1,0 @@
-I"a(function() {
-  ({
-    nested: {
-      fieldAdded: medicine_dic
-    }
-  });
-
-}).call(this);
-:ET
