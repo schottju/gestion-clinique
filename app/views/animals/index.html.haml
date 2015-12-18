@@ -1,5 +1,5 @@
 .panel.panel-default
-  .panel-heading Animal
+  .panel-heading Listing animaux
   .panel-body
     = render 'search_form'
     - if animals.empty?
@@ -28,7 +28,7 @@
                   = link_to icon('edit'), edit_proprio_animal_path(proprio, animal), title: 'Modifier', class: "btn btn-default"
 
     .pull-right
-      = link_to "Ajouter", new_proprio_animal_path(proprio), class: "btn btn-default"
+      = link_to "Nouvel animal", new_proprio_animal_path(proprio), class: "btn btn-default"
       = link_to "Vers le profil du propriétaire", proprio_path(proprio), class: "btn btn-default"
 
     .flickr_pagination

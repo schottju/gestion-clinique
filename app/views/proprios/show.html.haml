@@ -38,7 +38,7 @@
       .col-md-1
     .pull-right
       = link_to "Modifier", edit_proprio_path, class: "btn btn-default"
-      = link_to "Nouvelle fiche", new_proprio_medical_record_path(proprio), class: "btn btn-default"
+      = link_to "Nouvelle consult", new_proprio_medical_record_path(proprio), class: "btn btn-default"
 
 
 .panel.panel-default
@@ -47,7 +47,7 @@
     - if @animals.empty?
       .alert.alert-warning.table-warning Pas d'animaux.
       .pull-right
-        = link_to "Ajouter", new_proprio_animal_path(proprio), class: "btn btn-default"
+        = link_to "Nouvel animal", new_proprio_animal_path(proprio), class: "btn btn-default"
     - else
       %table.table.table-striped
         %thead
@@ -72,16 +72,16 @@
                   = link_to icon('list-alt'), proprio_animal_path(proprio, animal), title: 'Détails', class: "btn btn-default"
                   = link_to icon('edit'), edit_proprio_animal_path(proprio, animal), title: 'Modifier', class: "btn btn-default"
       .pull-right
-        = link_to "Ajouter", new_proprio_animal_path(proprio), class: "btn btn-default"
-        = link_to "Plus", proprio_animals_path(proprio), class: "btn btn-default"
+        = link_to "Nouvel animal", new_proprio_animal_path(proprio), class: "btn btn-default"
+        = link_to "Listing animaux", proprio_animals_path(proprio), class: "btn btn-default"
 
 .panel.panel-default
-  .panel-heading Fichier
+  .panel-heading Consultations
   .panel-body
     - if @medical_records.empty?
       .alert.alert-warning.table-warning Pas de fichier.
       .pull-right
-        = link_to "Ajouter", new_proprio_medical_record_path(proprio), class: "btn btn-default"
+        = link_to "Nouvelle consult", new_proprio_medical_record_path(proprio), class: "btn btn-default"
     - else
       %table.table.table-striped
         %thead
@@ -106,7 +106,7 @@
                   = link_to icon('list-alt'), proprio_medical_record_path(proprio, medical_record), title: 'Détails', class: "btn btn-default"
                   = link_to icon('edit'), edit_proprio_medical_record_path(proprio, medical_record), title: 'Modifier', class: "btn btn-default"
       .pull-right
-        = link_to "Ajouter", new_proprio_medical_record_path(proprio), class: "btn btn-default"
+        = link_to "Nouvelle consult", new_proprio_medical_record_path(proprio), class: "btn btn-default"
 
 .panel.panel-default
   .panel-heading Hospitalisation
@@ -114,7 +114,7 @@
     - if @hospits.empty?
       .alert.alert-warning.table-warning Pas de fichier.
       .pull-right
-        = link_to "Ajouter", new_proprio_hospit_path(proprio), class: "btn btn-default"
+        = link_to "Nouvelle hospit", new_proprio_hospit_path(proprio), class: "btn btn-default"
     - else
       %table.table.table-striped
         %thead
@@ -139,7 +139,7 @@
                   = link_to icon('list-alt'), proprio_hospit_path(proprio, hospit), title: 'Détails', class: "btn btn-default"
                   = link_to icon('edit'), edit_proprio_hospit_path(proprio, hospit), title: 'Modifier', class: "btn btn-default"
       .pull-right
-        = link_to "Ajouter", new_proprio_hospit_path(proprio), class: "btn btn-default"
+        = link_to "Nouvelle hospit", new_proprio_hospit_path(proprio), class: "btn btn-default"
 
 .panel.panel-default
   .panel-heading Photos

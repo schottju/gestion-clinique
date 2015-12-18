@@ -4,11 +4,12 @@ class MedicalRecord < ActiveRecord::Base
   belongs_to :proprios
   has_and_belongs_to_many :animals
 #  has_many :animal
-  has_many :diseases
+  has_and_belongs_to_many :diseases
   has_and_belongs_to_many :medicines
   has_and_belongs_to_many :treatments
   has_and_belongs_to_many :pictures
   has_many :medocs
+  belongs_to :disease
 #  has_many :users
   before_save :total_price
 

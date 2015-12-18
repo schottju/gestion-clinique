@@ -114,6 +114,37 @@
           .flickr_pagination
             = will_paginate @medical_records, param_name: 'medical_records_page'
 
+    .panel.panel-default
+      .panel-heading Hospitalisation
+      .panel-body
+        - if @hospits.empty?
+          .alert.alert-warning.table-warning Pas de fichier.
+          .pull-right
+            = link_to "Ajouter", new_proprio_hospit_path(proprio), class: "btn btn-default"
+        - else
+          %table.table.table-striped
+            %thead
+              %tr
+                %th Cause hospitalisation
+                %th Diagnostic ou suspicion
+                %th Vétérinaire
+                %th Observations
+                %th.date-row Date d'entrée
+                %th.btn-row-2
+
+            %tbody
+              - @hospits.each do |hospit|
+                %tr
+                  %td= change_blank_to_dash(hospit.anamnesis)
+                  %td= change_blank_to_dash(hospit.decorate.name_of_disease)
+                  %td= change_blank_to_dash(hospit.veterinarian.user.last_name)
+                  %td= change_blank_to_dash(hospit.description)
+                  %td= change_blank_to_dash(hospit.created_at.to_date)
+                  %td
+                    .pull-right
+                      = link_to icon('list-alt'), proprio_hospit_path(proprio, hospit), title: 'Détails', class: "btn btn-default"
+                      = link_to icon('edit'), edit_proprio_hospit_path(proprio, hospit), title: 'Modifier', class: "btn btn-default"
+
     .panel.panel-info
       .panel-heading Images de l'animal
       .panel-body

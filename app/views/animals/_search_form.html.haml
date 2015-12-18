@@ -4,5 +4,3 @@
   .form-inline
     = text_field_tag :search, params[:search], placeholder: 'identification ou nom animal', class: 'form-control', size: 45
     = submit_tag "Recherche", name: nil, class: 'btn btn-default'
-  .pull-right
-    = link_to 'Nouvel animal', new_proprio_animal_path(params[:proprio_id]), class: "btn btn-default"

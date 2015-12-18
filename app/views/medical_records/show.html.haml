@@ -1,5 +1,5 @@
 .panel.panel-default
-  .panel-heading= "Fichier nr #{medical_record.id}/#{medical_record.created_at.to_date}"
+  .panel-heading= "Consultation nr #{medical_record.id}/#{medical_record.created_at.to_date}"
   .panel-body
     .panel.panel-info
       .panel-heading
@@ -55,14 +55,8 @@
                 %th.col-md-2 Nom:
                 %td= change_blank_to_dash(animal.name)
               %tr
-                %th.col-md-2 Quantité:
-                %td= change_blank_to_dash(animal.amount)
-              %tr
                 %th.col-md-2 Sexe:
                 %td= change_blank_to_dash(animal.gender)
-              %tr
-                %th.col-md-2 Poids (kg):
-                %td= change_blank_to_dash(medical_record.poids)
               %tr
                 %th.col-md-2 Date de naissance:
                 %td= change_blank_to_dash(animal.birth_date)
@@ -110,30 +104,26 @@
             %th.col-md-2 Poids (kg):
             %td= change_blank_to_dash(medical_record.poids)
       .panel-body
-        - medical_record.medicines.each do |medicine|
-          %table.table
-            %tbody
+        %table.table
+          %thead
+            %tr
+              %th N° lot:
+              %th Nom(hors dico):
+              %th Nom:
+              %th Posologie:
+              %th Infos complémentaires (apparait sur ordonnance):
+          %tbody
+            - medical_record.medicines.each do |medicine|
               %tr
-                %th.col-md-2 N° lot:
                 %td= change_blank_to_dash(medicine.serial_number)
-              %tr
-                %th.col-md-2 Nom:
+
                 %td= change_blank_to_dash(medicine.name)
+
                 %td= change_blank_to_dash(medicine.decorate.name_with_medoc)
-              %tr
-                %th.col-md-2 Quantité:
-                %td= change_blank_to_dash(medicine.decorate.amount_with_unit)
-              %tr
-                %th.col-md-2 Posologie:
+
                 %td= change_blank_to_dash(medicine.dosage)
 
-              %tr
-                %th.col-md-2 Infos complémentaires (apparait sur ordonnance):
                 %td= change_blank_to_dash(medicine.description)
-
-              %tr
-                %th
-                %td
 
     .panel.panel-info
       .panel-heading Images
