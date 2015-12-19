@@ -623,7 +623,7 @@ RailsAdmin.config do |config|
       field :treatments do
         filterable false
       end
-      field :diseases do
+      field :disease do
         filterable false
       end
       field :comment

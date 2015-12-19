@@ -71,6 +71,22 @@ ActiveRecord::Schema.define(version: 20161126003333) do
     t.integer  "status",     default: 0
   end
 
+  create_table "diseases_hospits", id: false, force: :cascade do |t|
+    t.integer "disease_id", null: false
+    t.integer "hospit_id",  null: false
+  end
+
+  add_index "diseases_hospits", ["disease_id"], name: "index_diseases_hospits_on_disease_id", using: :btree
+  add_index "diseases_hospits", ["hospit_id"], name: "index_diseases_hospits_on_hospit_id", using: :btree
+
+  create_table "diseases_medical_records", id: false, force: :cascade do |t|
+    t.integer "disease_id",        null: false
+    t.integer "medical_record_id", null: false
+  end
+
+  add_index "diseases_medical_records", ["disease_id"], name: "index_diseases_medical_records_on_disease_id", using: :btree
+  add_index "diseases_medical_records", ["medical_record_id"], name: "index_diseases_medical_records_on_medical_record_id", using: :btree
+
   create_table "hospitactes", force: :cascade do |t|
     t.text     "comment"
     t.text     "soin"
@@ -157,6 +173,14 @@ ActiveRecord::Schema.define(version: 20161126003333) do
   add_index "medical_records_medicines", ["medical_record_id"], name: "index_medical_records_medicines_on_medical_record_id", using: :btree
   add_index "medical_records_medicines", ["medicine_id"], name: "index_medical_records_medicines_on_medicine_id", using: :btree
 
+  create_table "medical_records_medocs", id: false, force: :cascade do |t|
+    t.integer "medoc_id",          null: false
+    t.integer "medical_record_id", null: false
+  end
+
+  add_index "medical_records_medocs", ["medical_record_id"], name: "index_medical_records_medocs_on_medical_record_id", using: :btree
+  add_index "medical_records_medocs", ["medoc_id"], name: "index_medical_records_medocs_on_medoc_id", using: :btree
+
   create_table "medical_records_pictures", id: false, force: :cascade do |t|
     t.integer "medical_record_id", null: false
     t.integer "picture_id",        null: false
@@ -205,6 +229,14 @@ ActiveRecord::Schema.define(version: 20161126003333) do
 
   add_index "medicines", ["medoc_id"], name: "index_medicines_on_medoc_id", using: :btree
   add_index "medicines", ["unit_id"], name: "index_medicines_on_unit_id", using: :btree
+
+  create_table "medicines_medocs", id: false, force: :cascade do |t|
+    t.integer "medicine_id", null: false
+    t.integer "medoc_id",    null: false
+  end
+
+  add_index "medicines_medocs", ["medicine_id"], name: "index_medicines_medocs_on_medicine_id", using: :btree
+  add_index "medicines_medocs", ["medoc_id"], name: "index_medicines_medocs_on_medoc_id", using: :btree
 
   create_table "medocs", force: :cascade do |t|
     t.string   "name"
