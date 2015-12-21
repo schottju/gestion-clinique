@@ -35,7 +35,7 @@ Rails.application.routes.draw do
 
   resources :units, only: [ :new, :create, :edit, :update ]
   resources :diseases, only: [ :new, :create, :edit, :update ]
-  resources :treatments, only: [ :index, :new, :create, :edit, :update ]
+  resources :treatments, only: [ :new, :create, :edit, :update ]
   resources :species, only: [ :new, :create, :edit, :update ]
   resources :medocs, only: [ :new, :create, :edit, :update ]
 

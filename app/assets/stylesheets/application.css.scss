@@ -29,6 +29,9 @@ $colDefault     : #fdfdfd;
 $colHighlight   : #ffffff;
 $bgPanel        : $bgDefault;
 $dropDown       : false;
+th.logo {
+   background-image: image-url('logo.png');
+}
 .navbar-default {
   background-color: $bgDefault;
   border-color: $bgHighlight;

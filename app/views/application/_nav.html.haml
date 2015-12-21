@@ -2,7 +2,7 @@
   %nav.navbar.navbar-default.navbar-static-top
     .container-fluid
       .navbar-header
-        %span.navbar-brand= link_to icon('heartbeat', 'Clinique Vétérinaire de Saint Junien'), authenticated_root_path
+        %span.navbar-brand= link_to icon('logo', 'Clinique Vétérinaire de Saint Junien'), authenticated_root_path
       - if user_signed_in?
         - if current_user.veterinaire?
           %ul.nav.navbar-nav
