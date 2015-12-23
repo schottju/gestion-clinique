@@ -64,6 +64,24 @@ ActiveRecord::Schema.define(version: 20161126003333) do
   add_index "animals_medical_records", ["animal_id"], name: "index_animals_medical_records_on_animal_id", using: :btree
   add_index "animals_medical_records", ["medical_record_id"], name: "index_animals_medical_records_on_medical_record_id", using: :btree
 
+  create_table "comments", force: :cascade do |t|
+    t.text     "num"
+    t.text     "comment"
+    t.integer  "veterinarian_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
+  add_index "comments", ["veterinarian_id"], name: "index_comments_on_veterinarian_id", using: :btree
+
+  create_table "comments_medical_records", id: false, force: :cascade do |t|
+    t.integer "medical_record_id", null: false
+    t.integer "comment_id",        null: false
+  end
+
+  add_index "comments_medical_records", ["comment_id"], name: "index_comments_medical_records_on_comment_id", using: :btree
+  add_index "comments_medical_records", ["medical_record_id"], name: "index_comments_medical_records_on_medical_record_id", using: :btree
+
   create_table "diseases", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",             null: false
@@ -367,6 +385,7 @@ ActiveRecord::Schema.define(version: 20161126003333) do
   add_foreign_key "addresses", "users"
   add_foreign_key "animals", "proprios"
   add_foreign_key "animals", "species"
+  add_foreign_key "comments", "veterinarians"
   add_foreign_key "hospitactes", "veterinarians"
   add_foreign_key "hospits", "diseases"
   add_foreign_key "hospits", "proprios"

@@ -1,0 +1,12 @@
+.nested-fields
+  .row
+    .col-md-1
+    .col-md-10
+      .jumbotron
+        .row
+          .col-md-6
+            = f.input :num, label: 'N° de la remarque', placeholder: 'Numérotez si plusieurs remarques'
+            = f.input :comment, label: 'Remarque', placeholder: 'Délai du retrait des fils ou du pansement, diète, repos, etc...'
+    .col-md-1
+      .pull-right
+        = link_to_remove_association icon('trash-o'), f, class: 'btn btn-default'

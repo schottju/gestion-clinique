@@ -7,11 +7,15 @@ pdf.draw_text "Urgence assurée 24/24", :size => 12, :at => [230, 710]
 
 pdf.draw_text " Saint Junien, le #{medical_record.created_at.to_date}", :size => 12, :at => [350, 690]
 pdf.move_down 80
-if medical_record.comment.blank?
+
+if medical_record.comments.blank?
  pdf.text "  "
 else
- pdf.text "<u>Remarque</u> : #{medical_record.comment}", :style => :bold, :indent_paragraphs => 90, :inline_format => true
+  medical_record.comments.each do |comment|
+  pdf.text "<u>Remarque N°</u> #{comment.num} : #{comment.comment}", :style => :bold, :indent_paragraphs => 90, :inline_format => true
 end
+end
+
 medical_record.animals.each do |animal|
 pdf.draw_text "Pour le #{animal.try(:species).try(:name)} #{animal.name} de #{proprio.last_name} #{proprio.first_name}", :style => :bold, :size => 12, :at => [150, 550]
 end

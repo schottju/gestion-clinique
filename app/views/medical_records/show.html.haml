@@ -124,6 +124,20 @@
                 %td= change_blank_to_dash(medicine.dosage)
 
                 %td= change_blank_to_dash(medicine.description)
+    .panel.panel-info
+      .panel-heading Remarques générales sur ordonnance
+      .panel-body
+        %table.table
+          %thead
+            %tr
+            %th Remarque N°
+            %th Observations
+          %tbody
+            - medical_record.comments.each do |comment|
+              %tr
+                %td= change_blank_to_dash(comment.num)
+
+                %td= change_blank_to_dash(comment.comment)
 
     .panel.panel-info
       .panel-heading Images
