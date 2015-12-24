@@ -574,6 +574,10 @@ RailsAdmin.config do |config|
       label "Médicaments"
     end
 
+    configure :comments do
+      label "Remarques sur ordo"
+    end
+
     configure :medocs do
       label "Médicaments de la liste"
     end
@@ -614,6 +618,9 @@ RailsAdmin.config do |config|
       field :medicines do
         filterable false
       end
+      field :comments do
+        filterable false
+      end
       field :medocs do
         filterable false
       end
@@ -626,7 +633,6 @@ RailsAdmin.config do |config|
       field :disease do
         filterable false
       end
-      field :comment
       field :description
       field :additional_cost
       field :total_cost
@@ -643,6 +649,7 @@ RailsAdmin.config do |config|
       field :anamnesis
       field :diseases
       field :medicines
+      field :comments
       field :medocs
       field :pictures
       field :treatments
@@ -670,6 +677,10 @@ RailsAdmin.config do |config|
         nested_form false
         inline_add false
       end
+      field :comments do
+        nested_form false
+        inline_add false
+      end
       field :medocs do
         nested_form false
         inline_add false
@@ -681,7 +692,6 @@ RailsAdmin.config do |config|
         inline_add false
       end
       field :user
-      field :comment
       field :description
       field :additional_cost
 
@@ -692,7 +702,6 @@ RailsAdmin.config do |config|
       field :veterinarian
       field :user
       field :anamnesis
-      field :comment
       field :description
       field :additional_cost
       field :total_cost
@@ -852,7 +861,7 @@ RailsAdmin.config do |config|
   config.model 'hospitacte' do
 
     configure :hospits do
-      label "Fiche consultation"
+      label "Fiche d'hospitalisation"
     end
 
     object_label_method do
@@ -905,6 +914,58 @@ RailsAdmin.config do |config|
       field :updated_at
     end
   end
+
+  config.model 'comment' do
+
+    configure :medical_records do
+      label "Fiche consultation"
+    end
+
+    object_label_method do
+      :custom_label_method
+    end
+
+    list do
+      sort_by :id
+
+      field :id do
+        sort_reverse false
+      end
+      field :num
+      field :comment
+      field :medical_records do
+        filterable false
+      end
+    end
+
+    show do
+      field :id
+      field :num
+      field :comment
+      field :medical_records
+    end
+
+    create do
+      field :num
+      field :comment
+    end
+
+    update do
+      field :num
+      field :comment
+      field :medical_records do
+        inline_add false
+      end
+    end
+
+    export do
+      field :id
+      field :num
+      field :comment
+      field :medical_records
+    end
+  end
+
 
 
   config.model 'Medicine' do
