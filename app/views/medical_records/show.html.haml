@@ -72,6 +72,21 @@
       .col-md-1
 
     .panel.panel-info
+      .panel-heading Informations générales
+      .panel-body
+        %table.table
+          %tbody
+            %tr
+              %th.col-md-2 Cause consultation:
+              %td= change_blank_to_dash(medical_record.anamnesis)
+            %tr
+              %th.col-md-2 Description consultation:
+              %td= change_blank_to_dash(medical_record.description)
+            %tr
+              %th.col-md-2 Commentaires (apparait sur ordonnance):
+              %td= change_blank_to_dash(medical_record.comment)
+
+    .panel.panel-info
       .panel-heading Maladie ou acte prophylactique
       .panel-body
         %table.table
@@ -160,21 +175,6 @@
                   %td= picture.decorate.print_animal_id
                   %td= link_to image_tag(picture.image, width: 100), picture.image.url
                   %td= change_blank_to_dash(picture.description)
-
-    .panel.panel-info
-      .panel-heading Informations complémentaires
-      .panel-body
-        %table.table
-          %tbody
-            %tr
-              %th.col-md-2 Cause consultation:
-              %td= change_blank_to_dash(medical_record.anamnesis)
-            %tr
-              %th.col-md-2 Description consultation:
-              %td= change_blank_to_dash(medical_record.description)
-            %tr
-              %th.col-md-2 Commentaires (apparait sur ordonnance):
-              %td= change_blank_to_dash(medical_record.comment)
 
 
     .pull-left
