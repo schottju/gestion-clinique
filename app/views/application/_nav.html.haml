@@ -6,9 +6,9 @@
       - if user_signed_in?
         - if current_user.veterinaire?
           %ul.nav.navbar-nav
-            %li{:class => active_class(proprios_path)}= link_to icon('users', 'Patients'), proprios_path
+            %li{:class => active_class(proprios_path)}= link_to icon('users', 'Clients'), proprios_path
           %ul.nav.navbar-nav.navbar-right
-            %li{:class => active_class(dictionaries_path)}= link_to icon('book', 'Dictionnaires'), dictionaries_path(tab: 'species')
+            %li{:class => active_class(dictionaries_path)}= link_to icon('book', 'Dictionnaires'), dictionaries_path(tab: 'diseases')
             %li.dropdown
               %a.dropdown-toggle{"aria-expanded" => "false", "aria-haspopup" => "true", "data-toggle" => "dropdown", :href => "#", :role => "button"}
                 = icon('user')
