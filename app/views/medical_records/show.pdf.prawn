@@ -12,11 +12,7 @@ if medical_record.comments.blank?
  pdf.text "  "
 else
   medical_record.comments.each do |comment|
-    if comment.num.blank?
-     pdf.text "<u>Remarque</u>  : #{comment.comment}", :style => :bold, :indent_paragraphs => 90, :inline_format => true
-    else
-  pdf.text "<u>Remarque N°</u> #{comment.num} : #{comment.comment}", :style => :bold, :indent_paragraphs => 90, :inline_format => true
-end
+  pdf.text "-  #{comment.comment}", :style => :bold, :indent_paragraphs => 150, :inline_format => true
 end
 end
 
