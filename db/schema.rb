@@ -39,10 +39,11 @@ ActiveRecord::Schema.define(version: 20161126003333) do
     t.integer  "gender"
     t.float    "age"
     t.text     "description"
-    t.datetime "created_at",  null: false
-    t.datetime "updated_at",  null: false
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "proprio_id"
     t.integer  "species_id"
+    t.integer  "statut",      default: 0
   end
 
   add_index "animals", ["proprio_id"], name: "index_animals_on_proprio_id", using: :btree
