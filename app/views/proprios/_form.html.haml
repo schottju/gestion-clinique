@@ -2,42 +2,34 @@
   = f.error_notification
   .form-inputs
     .row
-      .col-md-1
-      .col-md-10
-        .panel.panel-info
-          .panel-heading Données de base
-          .panel-body
-            .row
-              .col-md-6
-                = f.input :first_name, label: 'Prénom', placeholder: 'Entrez le prénom', required: true, autofocus: true
-                = f.input :phone_number, label: 'Téléphone', placeholder: 'Entrez Téléphone', required: true
-              .col-md-6
-                = f.input :last_name, label: 'Nom', placeholder: 'Entrez le nom', required: true
-          .col-md-1
-      .row
-        .col-md-1
-        .col-md-10
-          .panel.panel-info
-            .panel-heading Coordonnées
-            .panel-body
-              .row
-                .col-md-6
-                  = f.input :flat_number, label: 'Numéro appartement', placeholder: 'Entrez N° appartement'
-              .row
-                .col-md-6
-                  = f.input :house_number, label: 'Numéro', placeholder: 'Entrez numéro'
-                  = f.input :zip_code, label: 'Code postal', placeholder: 'Entrez code postal'
-                .col-md-6
-                  = f.input :street, label: 'Rue', placeholder: 'Entrez nouvelle rue'
-                  = f.input :city, label: 'Ville', placeholder: 'Entrez ville'
-                  = f.input :country, label: 'Pays'
+      .col-md-6
+        = f.input :first_name, label: 'Prénom', placeholder: 'Entrez le prénom', required: true, autofocus: true
+        = f.input :phone_number, label: 'Téléphone', placeholder: 'Entrez Téléphone'
+      .col-md-6
+        = f.input :last_name, label: 'Nom', placeholder: 'Entrez le nom', required: true
+      .panel-heading Infos compémentaires (autre contact, tutelle, mauvais payeur...)
+      .panel-body
+        #contacts
+          = f.simple_fields_for :contacts do |contact|
+            = render 'contact_fields', f: contact
+          .links.centered
+            = link_to_add_association 'Ajouter info', f, :contacts, class: 'btn btn-default'
+      .panel.panel-info
+        .panel-heading Coordonnées
+        .panel-body
+          .row
+            .col-md-6
+              = f.input :flat_number, label: 'Numéro appartement', placeholder: 'Entrez N° appartement'
+          .row
+            .col-md-6
+              = f.input :house_number, label: 'Numéro', placeholder: 'Entrez numéro'
+              = f.input :zip_code, label: 'Code postal', placeholder: 'Entrez code postal'
+            .col-md-6
+              = f.input :street, label: 'Rue', placeholder: 'Entrez nouvelle rue'
+              = f.input :city, label: 'Ville', placeholder: 'Entrez ville'
+              = f.input :country, label: 'Pays'
 
-        .col-md-1
-        .row
-          .col-md-1
-          .col-md-10
-            .form-actions
-              = link_to 'Annuler', proprios_path, class: 'btn btn-default'
-              .pull-right
-                = f.button :submit, "Sauvegarder", class: "btn btn-default"
-          .col-md-1
+  .form-actions
+    = link_to 'Annuler', proprios_path, class: 'btn btn-default'
+    .pull-right
+      = f.button :submit, "Sauvegarder", class: "btn btn-default"

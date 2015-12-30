@@ -1,0 +1,13 @@
+.nested-fields
+  .row
+    .col-md-1
+    .col-md-10
+      .jumbotron
+        .row
+          .col-md-4
+            = f.input :chose, label: 'Caractéristique', placeholder: 'autre contact, tutelle, mauvais payeur...'
+          .col-md-8
+            = f.input :info, label: 'Info', placeholder: 'Préciser entre parenthèses si autre personne'
+    .col-md-1
+      .pull-right
+        = link_to_remove_association icon('trash-o'), f, class: 'btn btn-default'

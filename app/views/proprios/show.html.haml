@@ -35,10 +35,24 @@
             %tr
               %th Ville:
               %td= change_blank_to_dash(proprio.city)
+      .col-md-4
+    .pull-right
+      = link_to "Modifier", edit_proprio_path, class: "btn btn-default"
+  .panel-heading Infos compémentaires (autre contact, tutelle, mauvais payeur...)
+  .panel-body
+    %table.table.table-striped
+      %thead
+        %tr
+          %th Type d'info
+          %th Description
+      %tbody
+        - proprio.contacts.each do |contact|
+          %tr
+            %td= change_blank_to_dash(contact.chose)
+            %td= change_blank_to_dash(contact.info)
       .col-md-1
     .pull-right
       = link_to "Modifier", edit_proprio_path, class: "btn btn-default"
-      = link_to "Nouvelle consult", new_proprio_medical_record_path(proprio), class: "btn btn-default"
 
 
 .panel.panel-default

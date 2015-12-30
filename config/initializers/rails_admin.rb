@@ -256,6 +256,10 @@ RailsAdmin.config do |config|
 
  config.model 'Proprio' do
 
+    configure :contacts do
+      label "Contacts"
+    end
+
     configure :animal do
       label "Animal"
     end
@@ -272,6 +276,9 @@ RailsAdmin.config do |config|
       field :id do
         sort_reverse false
       end
+      field :contacts do
+        filterable false
+      end
       field :first_name
       field :last_name
       field :phone_number
@@ -287,6 +294,7 @@ RailsAdmin.config do |config|
       field :first_name
       field :last_name
       field :phone_number
+      field :contacts
       field :flat_number
       field :house_number
       field :street
@@ -301,6 +309,10 @@ RailsAdmin.config do |config|
       field :first_name
       field :last_name
       field :phone_number
+      field :contacts do
+        nested_form false
+        inline_add false
+      end
       field :flat_number
       field :house_number
       field :street
@@ -320,6 +332,10 @@ RailsAdmin.config do |config|
       field :first_name
       field :last_name
       field :phone_number
+      field :contacts do
+        nested_form false
+        inline_add false
+      end
       field :flat_number
       field :house_number
       field :street
@@ -335,6 +351,7 @@ RailsAdmin.config do |config|
       field :first_name
       field :last_name
       field :phone_number
+      field :contacts
       field :flat_number
       field :house_number
       field :street
@@ -345,6 +362,57 @@ RailsAdmin.config do |config|
       field :updated_at
     end
     end
+    end
+
+    config.model 'contact' do
+
+      configure :proprios do
+        label "Propriétaire"
+      end
+
+      object_label_method do
+        :custom_label_method
+      end
+
+      list do
+        sort_by :id
+
+        field :id do
+          sort_reverse false
+        end
+        field :chose
+        field :info
+        field :proprios do
+          filterable false
+        end
+      end
+
+      show do
+        field :id
+        field :chose
+        field :info
+        field :proprios
+      end
+
+      create do
+        field :chose
+        field :info
+      end
+
+      update do
+        field :chose
+        field :info
+        field :proprios do
+          inline_add false
+        end
+      end
+
+      export do
+        field :id
+        field :chose
+        field :info
+        field :proprios
+      end
     end
 
 

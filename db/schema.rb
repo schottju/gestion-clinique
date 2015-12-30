@@ -82,6 +82,19 @@ ActiveRecord::Schema.define(version: 20161126003333) do
   add_index "comments_medical_records", ["comment_id"], name: "index_comments_medical_records_on_comment_id", using: :btree
   add_index "comments_medical_records", ["medical_record_id"], name: "index_comments_medical_records_on_medical_record_id", using: :btree
 
+  create_table "contacts", force: :cascade do |t|
+    t.string "chose"
+    t.string "info"
+  end
+
+  create_table "contacts_proprios", id: false, force: :cascade do |t|
+    t.integer "proprio_id", null: false
+    t.integer "contact_id", null: false
+  end
+
+  add_index "contacts_proprios", ["contact_id"], name: "index_contacts_proprios_on_contact_id", using: :btree
+  add_index "contacts_proprios", ["proprio_id"], name: "index_contacts_proprios_on_proprio_id", using: :btree
+
   create_table "diseases", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at",             null: false

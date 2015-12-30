@@ -18,7 +18,7 @@ class PropriosController < ApplicationController
    before_action :authenticate_veterinarian!, only: [ :new, :create, :edit, :update ]
 
   expose(:proprios) { Proprio.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 8) }
-  expose(:proprio)
+  expose(:proprio, attributes: :proprio_params)
   expose(:user, attributes: :user_params)
 #  expose(:proprio) { Proprio.find(params[:id]) }
 
@@ -39,15 +39,15 @@ class PropriosController < ApplicationController
 
 
   def update
-    proprio.first_name = (params[:proprio][:first_name])
-    proprio.last_name = (params[:proprio][:last_name])
-    proprio.phone_number = change_comma_to_period(params[:proprio][:phone_number])
-    proprio.street = (params[:proprio][:street])
-    proprio.house_number = (params[:proprio][:house_number])
-    proprio.flat_number = (params[:proprio][:flat_number])
-    proprio.city = (params[:proprio][:city])
-    proprio.country = (params[:proprio][:country])
-    proprio.zip_code = (params[:proprio][:zip_code])
+#    proprio.first_name = (params[:proprio][:first_name])
+#    proprio.last_name = (params[:proprio][:last_name])
+#    proprio.phone_number = change_comma_to_period(params[:proprio][:phone_number])
+#    proprio.street = (params[:proprio][:street])
+#    proprio.house_number = (params[:proprio][:house_number])
+#    proprio.flat_number = (params[:proprio][:flat_number])
+#    proprio.city = (params[:proprio][:city])
+#    proprio.country = (params[:proprio][:country])
+#    proprio.zip_code = (params[:proprio][:zip_code])
     if proprio.save
       redirect_to proprio_path(proprio), notice: 'Propriétaire modifié avec succès.'
    else
@@ -85,7 +85,10 @@ class PropriosController < ApplicationController
   private
 
     def proprio_params
-      params.require(:proprio).permit(:first_name, :last_name, :phone_number, :street, :house_number, :flat_number, :city, :country, :zip_code)
+      params.require(:proprio).permit(
+          :first_name, :last_name, :phone_number, :street, :house_number, :flat_number, :city, :country, :zip_code,
+          contacts_attributes: [ :id, :chose, :info, :_destroy ]
+      )
     end
 
     def sort_column

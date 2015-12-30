@@ -6,12 +6,13 @@ class Proprio < ActiveRecord::Base
 #  has_one :addressp
   has_many :animals
   has_many :animal
+  has_and_belongs_to_many :contacts
 #  has_many :veterinarians
   has_many :medical_records
   has_many :hospits
   has_many :pictures
 #  accepts_nested_attributes_for :addressp
-
+  accepts_nested_attributes_for :contacts, allow_destroy: true
 #  devise :database_authenticatable, :registerable,
 #         :recoverable, :rememberable, :trackable, :validatable,
 #         :confirmable, :lockable
