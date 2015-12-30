@@ -1,6 +1,6 @@
 class Animal < ActiveRecord::Base
   enum gender: [ :male, :femelle, :F_neutered, :M_neutered ]
-
+  enum statut: [ :vivant, :DCD ]
   belongs_to :proprio
   belongs_to :species
   has_many :pictures

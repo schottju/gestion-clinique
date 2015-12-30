@@ -68,7 +68,7 @@
           %tr
             %th N° d'identification
             %th Nom
-            %th Nombre
+            %th Statut
             %th Sexe
             %th Espèce
             %th.btn-row-2
@@ -78,7 +78,7 @@
             %tr
               %td= change_blank_to_dash(animal.id_number)
               %td= change_blank_to_dash(animal.name)
-              %td= change_blank_to_dash(animal.amount)
+              %td= change_blank_to_dash(animal.statut)
               %td= change_blank_to_dash(animal.gender)
               %td= change_blank_to_dash(animal.try(:species).try(:name))
               %td

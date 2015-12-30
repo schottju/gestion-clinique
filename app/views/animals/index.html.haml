@@ -11,7 +11,7 @@
             %th= sortable 'id_number', "N° indentification"
             %th= sortable 'name', "Nom"
             %th= sortable 'gender', "Sexe"
-            %th= sortable 'amount', "Quantité"
+            %th= sortable 'statut', "Statut"
             %th Espèce
             %th.btn-row-2
         %tbody
@@ -20,7 +20,7 @@
               %td= change_blank_to_dash(animal.id_number)
               %td= change_blank_to_dash(animal.name)
               %td= change_blank_to_dash(animal.gender)
-              %td= change_blank_to_dash(animal.amount)
+              %td= change_blank_to_dash(animal.statut)
               %td= change_blank_to_dash(animal.try(:species).try(:name))
               %td
                 .pull-right
