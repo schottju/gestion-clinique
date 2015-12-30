@@ -5,7 +5,7 @@
       .col-md-1
       .col-md-3
         = f.input :id_number, label: 'N° indentification', placeholder: 'N° identif.', autofocus: true
-        = f.input :birth_date, label: 'Date de naissance', placeholder: 'dd/mm/aa', as: :date_picker
+        = f.input :birth_date, label: 'Date de naissance', placeholder: 'dd/mm/aaaa', as: :date_picker
       .col-md-3
         = f.input :name, label: 'Nom', placeholder: 'Mettre le nom'
         = f.input :species_id, label: 'Espèce', collection: @species

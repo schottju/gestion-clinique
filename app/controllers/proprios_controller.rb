@@ -17,7 +17,7 @@ class PropriosController < ApplicationController
    before_action :authenticate_user!, only: [ :index, :show ]
    before_action :authenticate_veterinarian!, only: [ :new, :create, :edit, :update ]
 
-  expose(:proprios) { Proprio.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 8) }
+  expose(:proprios) { Proprio.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 20) }
   expose(:proprio, attributes: :proprio_params)
   expose(:user, attributes: :user_params)
 #  expose(:proprio) { Proprio.find(params[:id]) }
@@ -26,8 +26,12 @@ class PropriosController < ApplicationController
 
   def index
     if params[:search]
-      self.proprios = Proprio.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 8)
+      @proprios = Proprio.search(params[:search]).order("created_at DESC")
+    else
+      @proprios = Proprio.all.order('created_at DESC')
     end
+#      self.proprios = Proprio.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 20)
+
   end
 
   def show

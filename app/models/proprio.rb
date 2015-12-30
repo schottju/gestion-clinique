@@ -26,6 +26,10 @@ class Proprio < ActiveRecord::Base
 #      where("(lower(id_number) like :q OR lower(name) like :q) AND proprio_id = :u", { q: "%#{query.downcase}%", u: proprio_id })
 #    end
 
+def self.search(query)
+  where("lower(last_name) like ?", "%#{query.downcase}%")
+end
+
     def trim(num)
       if num.blank?
         "Aucun"
