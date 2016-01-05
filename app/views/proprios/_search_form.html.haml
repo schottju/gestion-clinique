@@ -1,6 +1,6 @@
-= form_tag proprios_path, method: :get do
+= form_tag proprios_search_path, method: :get do
   = hidden_field_tag :direction, params[:direction]
   = hidden_field_tag :sort, params[:sort]
   .form-inline
-    = text_field_tag :search, params[:search], placeholder: 'Entrez nom ou prénom', class: 'form-control', size: 25
-    = submit_tag "Recherche", name: nil, class: 'btn btn-default'
+    = text_field_tag :search, params[:search], placeholder: 'Entrez nom', class: 'form-control', size: 25
+    = submit_tag "Recherche", last_name: nil, class: 'btn btn-default'

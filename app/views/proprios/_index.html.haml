@@ -27,4 +27,4 @@
       = link_to "Ajouter", new_proprio_path(proprio), class: "btn btn-default"
 
       .flickr_pagination
-        = will_paginate @proprios
+        = will_paginate @proprios, param_name: 'proprios_page'

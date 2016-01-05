@@ -15,11 +15,6 @@ Rails.application.routes.draw do
 
   get '/profile', to: 'users#show_profile'
 
-#  get '/veterinarians', to: 'veterinarians#index'
-#  get '/proprios/:id', to: 'proprios#proprio', as: 'proprio'
-#  get '/proprios/:id/create', to: 'proprios#create_proprio', as: 'create_proprio'
-#  get '/proprios/:id/edit', to: 'proprios#edit_proprio', as: 'edit_proprio'
-#  patch '/proprios/:id/update', to: 'proprios#update_proprio', as: 'update_proprio'
 
   #Static pages
   get '/help_page', to: 'static_pages#help_page'
@@ -38,19 +33,20 @@ Rails.application.routes.draw do
   resources :treatments, only: [ :new, :create, :edit, :update ]
   resources :species, only: [ :new, :create, :edit, :update ]
   resources :medocs, only: [ :new, :create, :edit, :update ]
-
+  get '/proprios_search', to: 'proprios#proprios_search'
   resources :veterinarians, only: [ :index, :show, :new, :create, :edit, :update ]
+  resources :proprios, only: [ :index, :new, :create, :edit, :update ]
 
   resources :proprios, only: [ :index, :show, :new, :create, :edit, :update ] do
     resources :animals , only: [ :index, :show, :new, :create, :edit, :update ]
     resources :medical_records, only: [ :index, :show, :new, :create, :edit, :update ]
     resources :hospits, only: [ :index, :show, :new, :create, :edit, :update ]
     resources :pictures, only: [ :index, :show, :new, :create, :edit, :update ]
+#    get '/proprios_search', to: 'proprios#_search_form'
   end
   resources :users, only: [ :index, :show, :new, :create, :edit, :update ] do
     resources :veterinarians, only: [ :index, :show, :new, :create, :edit, :update ]
     get '/veterinarians', to: 'veterinarians#index_veterinarians'
     get '/veterinarians/:id/calendar', to: 'veterinarians#show_calendar', as: 'veterinarian_calendar'
-
   end
 end

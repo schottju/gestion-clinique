@@ -14,24 +14,19 @@ class PropriosController < ApplicationController
 
 #  end
 
-   before_action :authenticate_user!, only: [ :index, :show ]
+#   before_action :authenticate_user!, only: [ :index, :show ]
    before_action :authenticate_veterinarian!, only: [ :new, :create, :edit, :update ]
 
-  expose(:proprios) { Proprio.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 20) }
   expose(:proprio, attributes: :proprio_params)
-  expose(:user, attributes: :user_params)
-#  expose(:proprio) { Proprio.find(params[:id]) }
 
-#  expose(:proprios) { animal.proprios.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 8) }
+  def proprios_search
+    @proprios = Proprio.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:proprios_page], per_page: 20)
+  end
 
-  def index
-    if params[:search]
-      @proprios = Proprio.search(params[:search]).order("created_at DESC")
-    else
-      @proprios = Proprio.all.order('created_at DESC')
-    end
 #      self.proprios = Proprio.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 20)
 
+  def index
+    @proprios = Proprio.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 20)
   end
 
   def show
@@ -43,15 +38,15 @@ class PropriosController < ApplicationController
 
 
   def update
-#    proprio.first_name = (params[:proprio][:first_name])
-#    proprio.last_name = (params[:proprio][:last_name])
-#    proprio.phone_number = change_comma_to_period(params[:proprio][:phone_number])
-#    proprio.street = (params[:proprio][:street])
-#    proprio.house_number = (params[:proprio][:house_number])
-#    proprio.flat_number = (params[:proprio][:flat_number])
-#    proprio.city = (params[:proprio][:city])
-#    proprio.country = (params[:proprio][:country])
-#    proprio.zip_code = (params[:proprio][:zip_code])
+    proprio.first_name = (params[:proprio][:first_name])
+    proprio.last_name = (params[:proprio][:last_name])
+    proprio.phone_number = change_comma_to_period(params[:proprio][:phone_number])
+    proprio.street = (params[:proprio][:street])
+    proprio.house_number = (params[:proprio][:house_number])
+    proprio.flat_number = (params[:proprio][:flat_number])
+    proprio.city = (params[:proprio][:city])
+    proprio.country = (params[:proprio][:country])
+    proprio.zip_code = (params[:proprio][:zip_code])
     if proprio.save
       redirect_to proprio_path(proprio), notice: 'Propriétaire modifié avec succès.'
    else
@@ -71,7 +66,7 @@ class PropriosController < ApplicationController
     proprio.country = (params[:proprio][:country])
     proprio.zip_code = (params[:proprio][:zip_code])
     if proprio.save
-      redirect_to proprio_path(proprio), notice: 'Propriétaire crée avec succès.'
+      redirect_to proprio_path(proprio), notice: 'Propriétaire créé avec succès.'
    else
       render :new
     end
