@@ -1,0 +1,6 @@
+= form_tag searchas_search_path, method: :get do
+  = hidden_field_tag :direction, params[:direction]
+  = hidden_field_tag :sort, params[:sort]
+  .form-inline
+    = text_field_tag :search, params[:search], placeholder: 'identification ou nom animal', class: 'form-control', size: 45
+    = submit_tag "Recherche", name: nil, class: 'btn btn-default'

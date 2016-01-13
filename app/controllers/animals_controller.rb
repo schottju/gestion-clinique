@@ -10,9 +10,13 @@ class AnimalsController < ApplicationController
   expose(:animal, attributes: :animal_params)
   expose(:animals) { proprio.animals.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 8) }
 
+#  def searchas
+#    @animals = Animal.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:proprios_page], per_page: 20)
+#  end
+
   def index
     if params[:search]
-      self.animals = Animal.search(params[:search], params[:proprio_id]).order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 8)
+      self.animals = Animal.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 8)
     end
   end
 

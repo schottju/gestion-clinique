@@ -7,6 +7,8 @@
         - if current_user.veterinaire?
           %ul.nav.navbar-nav
             %li{:class => active_class(proprios_path)}= link_to icon('users', 'Clients'), proprios_path
+          %ul.nav.navbar-nav
+            %li{:class => active_class(searchas_path)}= link_to icon('users', 'Animaux'), searchas_path
           %ul.nav.navbar-nav.navbar-right
             %li{:class => active_class(dictionaries_path)}= link_to icon('book', 'Dictionnaires'), dictionaries_path(tab: 'diseases')
             %li.dropdown
