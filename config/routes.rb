@@ -27,7 +27,7 @@ Rails.application.routes.draw do
   get '/diseases_search', to: 'static_pages#diseases_search'
   get '/treatments_search', to: 'static_pages#treatments_search'
   get '/medocs_search', to: 'static_pages#medocs_search'
-#  get '/proprios/0/animals', to: 'animals#searchas'
+
   get '/searchas_search', to: 'searchas#searchas_search'
   resources :units, only: [ :new, :create, :edit, :update ]
   resources :diseases, only: [ :new, :create, :edit, :update ]
@@ -45,7 +45,7 @@ Rails.application.routes.draw do
     resources :medical_records, only: [ :index, :show, :new, :create, :edit, :update ]
     resources :hospits, only: [ :index, :show, :new, :create, :edit, :update ]
     resources :pictures, only: [ :index, :show, :new, :create, :edit, :update ]
-#    get '/proprios_search', to: 'proprios#_search_form'
+
   end
   resources :users, only: [ :index, :show, :new, :create, :edit, :update ] do
     resources :veterinarians, only: [ :index, :show, :new, :create, :edit, :update ]

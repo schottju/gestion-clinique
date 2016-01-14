@@ -1,8 +1,6 @@
 class Proprio < ActiveRecord::Base
   include Gravtastic
-#  gravtastic default: 'mm', secure: true, rating: 'PG'
-#  has_and_belongs_to_many :veterinarians
-#  has_one :addressp
+
   has_many :animals
   has_many :animal
   has_and_belongs_to_many :contacts

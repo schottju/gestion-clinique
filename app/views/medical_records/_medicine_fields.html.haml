@@ -11,12 +11,6 @@
           .col-md-5
             = f.input :name, label: 'Médicament hors dico', placeholder: 'Entrez le nom du nouveau médicament'
         .row
-          .col-md-3
-            = f.input :amount, label: 'Quantité', placeholder: 'Entrez la quantité', as: :string, input_html: { value: change_period_to_comma(f.object.amount) }
-          .col-md-3
-            = f.input :unit_id, label: 'Unité', collection: @units
-
-        .row
           .col-md-6
             = f.input :dosage, label: 'Posologie', placeholder: 'Entrez la posologie'
           .col-md-6

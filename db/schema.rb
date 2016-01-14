@@ -248,9 +248,6 @@ ActiveRecord::Schema.define(version: 20161126003333) do
   create_table "medicines", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
-    t.float    "amount"
-    t.integer  "grace_period"
-    t.float    "price"
     t.string   "serial_number"
     t.text     "dosage"
     t.integer  "unit_id"
