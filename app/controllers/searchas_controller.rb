@@ -4,7 +4,6 @@ class SearchasController < ApplicationController
   before_action :authenticate_veterinarian!, only: [ :new, :create, :edit, :update ]
   expose(:proprio) { proprio.find(params[:proprio_id]) }
   expose(:animal, attributes: :animal_params)
-#  expose(:animals) { animals.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 8) }
 
 
   def searchas_search
