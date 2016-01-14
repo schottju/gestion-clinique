@@ -23,7 +23,7 @@ class SearchasController < ApplicationController
 
 
     def animal_params
-      params.require(:animal).permit(:id_number, :name, :statut, :gender,:proprio_id)
+      params.require(:animal).permit(:id_number, :name, :statut, :gender, :proprio_id)
     end
 
     def sort_column

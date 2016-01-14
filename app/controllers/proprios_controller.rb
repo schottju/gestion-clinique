@@ -16,7 +16,7 @@ class PropriosController < ApplicationController
   end
 
   def show
-    @animals = proprio.animals.order(created_at: :desc).limit(3)
+    @animals = proprio.animals.order(created_at: :desc).limit(10)
     @medical_records = proprio.medical_records.order(created_at: :desc).limit(8)
     @hospits = proprio.hospits.order(created_at: :desc).limit(8)
     @pictures = proprio.pictures.order(created_at: :desc).limit(3)
