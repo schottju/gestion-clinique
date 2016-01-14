@@ -23,8 +23,6 @@
               %td= change_blank_to_dash(animal.statut)
               %td= change_blank_to_dash(animal.try(:proprio).try(:last_name))
               %td
-                .pull-right
-                  = link_to icon('list-alt'), proprio_path(animal), title: 'Détails', class: "btn btn-default"
 
     .flickr_pagination
       = will_paginate @animals

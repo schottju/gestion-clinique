@@ -8,14 +8,11 @@ class SearchasController < ApplicationController
 
 
   def searchas_search
-#    @animals = Animal.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:animals_page], per_page: 20)
     @animals = Animal.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:animals_page], per_page: 20)
   end
 
 
   def index
-#    @animals = Animal.search(params[:search]).order(sort_column + " " + sort_direction).paginate(page: params[:animals_page], per_page: 20)
-
     @animals = Animal.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 20)
   end
 
