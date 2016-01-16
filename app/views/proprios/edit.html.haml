@@ -3,6 +3,7 @@
   .form-inputs
     .row
       .col-md-6
+        = f.label :first_name.capitalize
         = f.input :first_name, label: 'Prénom', placeholder: 'Entrez le prénom', required: true, autofocus: true
         = f.input :phone_number, label: 'Téléphone', placeholder: 'Entrez Téléphone'
       .col-md-6

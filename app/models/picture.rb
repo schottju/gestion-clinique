@@ -5,7 +5,7 @@ class Picture < ActiveRecord::Base
   belongs_to :animal
   has_and_belongs_to_many :medical_records
 
-  validates_presence_of :name, :image
+  validates_presence_of :name, :image, :animal_id
 
   def custom_label_method
     "##{id} #{name}"
