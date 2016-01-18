@@ -17,7 +17,7 @@ class Proprio < ActiveRecord::Base
   private
 
   def self.search(query)
-    where("lower(last_name) like ?", "%#{query.downcase}%")
+    where("lower(last_name) ILIKE ?", "%#{query.downcase}%")
   end
 
 end

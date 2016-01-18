@@ -8,7 +8,7 @@ class Searcha < ActiveRecord::Base
   private
 
   def self.search(search)
-      joins(:proprio).where("(lower(animals.name) LIKE ? or lower(animals.id_number) LIKE ?)", "%#{search}%", "%#{search}%")
+      joins(:proprio).where("(lower(animals.name) ILIKE ? or lower(animals.id_number) ILIKE ?)", "%#{search}%", "%#{search}%")
   end
 
     def trim(num)

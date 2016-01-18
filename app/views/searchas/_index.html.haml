@@ -18,10 +18,10 @@
           - @animals.each do |animal|
             %tr
               %td= change_blank_to_dash(animal.id_number)
-              %td= change_blank_to_dash(animal.name)
+              %td= change_blank_to_dash(animal.name.capitalize)
               %td= change_blank_to_dash(animal.gender)
               %td= change_blank_to_dash(animal.statut)
-              %td= change_blank_to_dash(animal.try(:proprio).try(:last_name))
+              %td= change_blank_to_dash(animal.try(:proprio).try(:last_name).capitalize)
               %td
                 .pull-right
                   = link_to icon('list-alt'), proprio_path(change_blank_to_dash(animal.try(:proprio).try(:id))), title: 'Détails', class: "btn btn-default"

@@ -3,8 +3,8 @@
   .form-inputs
     .row
       .col-md-6
-        = f.input :last_name, label: 'Nom', placeholder: 'Entrez le nom', required: true
-        = f.input :first_name, label: 'Prénom', placeholder: 'Entrez le prénom', autofocus: true
+        = f.input :last_name, label: 'Nom', placeholder: 'Entrez le nom', required: true, autofocus: true
+        = f.input :first_name, label: 'Prénom', placeholder: 'Entrez le prénom'
       .col-md-6
         = f.input :phone_number, label: 'Téléphone', placeholder: 'Entrez Téléphone'
       .panel-heading Infos compémentaires (autre contact, tutelle, mauvais payeur...)

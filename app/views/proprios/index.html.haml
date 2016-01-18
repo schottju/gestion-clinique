@@ -1,6 +1,8 @@
 .panel.panel-default
   .panel-heading Propriétaires
   .panel-body
+    .pull-right
+      = link_to "Ajouter", new_proprio_path(proprio), class: "btn btn-default"
     = render 'search_form'
     - if @proprios.empty?
       .alert.alert-warning.table-warning Pas de propriétaires.
