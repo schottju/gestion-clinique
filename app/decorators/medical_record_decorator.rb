@@ -18,4 +18,8 @@ class MedicalRecordDecorator < Draper::Decorator
     "#{medical_record.anamnesis}. #{medical_record.description}"
   end
 
+  def name_of_animal
+    "#{self.try(:animals).try(:name)}"
+  end
+
 end

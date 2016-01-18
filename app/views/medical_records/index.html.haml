@@ -5,7 +5,7 @@
     %table.table.table-striped
       %thead
         %tr
-          %th= sortable 'anamnesis', "Cause consultation"
+          %th Description consultation
           %th Maladie ou acte prophylo
           %th Vétérinaire
           %th.date-row= sortable 'created_at', "Date"
@@ -14,7 +14,7 @@
       %tbody
         - medical_records.each do |medical_record|
           %tr
-            %td= change_blank_to_dash(medical_record.anamnesis)
+            %td= change_blank_to_dash(medical_record.decorate.consultation)
             %td= change_blank_to_dash(medical_record.decorate.name_of_disease)
             %td= change_blank_to_dash(medical_record.try(:veterinarian).try(:user). try(:decorate).try(:last_name))
             %td= change_blank_to_dash(medical_record.created_at.to_date)
