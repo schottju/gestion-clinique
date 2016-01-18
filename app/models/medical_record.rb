@@ -12,8 +12,8 @@ class MedicalRecord < ActiveRecord::Base
   has_many :medocs
   belongs_to :disease
 #  has_many :users
-  before_save :total_price
-  validates_presence_of  :animal_ids, :anamnesis, :description
+#  before_save :total_price
+  validates_presence_of  :animal_ids, :anamnesis
   accepts_nested_attributes_for :medicines, allow_destroy: true
   accepts_nested_attributes_for :comments, allow_destroy: true
 

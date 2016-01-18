@@ -3,10 +3,10 @@
   .form-inputs
     .row
       .col-md-6
-        = f.input :first_name, label: 'Prénom', placeholder: 'Entrez le prénom', required: true, autofocus: true
-        = f.input :phone_number, label: 'Téléphone', placeholder: 'Entrez Téléphone'
-      .col-md-6
+        = f.input :first_name, label: 'Prénom', placeholder: 'Entrez le prénom', autofocus: true
         = f.input :last_name, label: 'Nom', placeholder: 'Entrez le nom', required: true
+      .col-md-6
+        = f.input :phone_number, label: 'Téléphone', placeholder: 'Entrez Téléphone'
       .panel-heading Infos compémentaires (autre contact, tutelle, mauvais payeur...)
       .panel-body
         #contacts
@@ -23,9 +23,9 @@
           .row
             .col-md-6
               = f.input :house_number, label: 'Numéro', placeholder: 'Entrez numéro'
-              = f.input :zip_code, label: 'Code postal', placeholder: 'Entrez code postal'
-            .col-md-6
               = f.input :street, label: 'Rue', placeholder: 'Entrez nouvelle rue'
+            .col-md-6
+              = f.input :zip_code, label: 'Code postal', placeholder: 'Entrez code postal'  
               = f.input :city, label: 'Ville', placeholder: 'Entrez ville'
               = f.input :country, label: 'Pays'
 

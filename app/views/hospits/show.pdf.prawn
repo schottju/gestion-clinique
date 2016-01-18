@@ -13,20 +13,20 @@ else
  pdf.text "Cause de l'hospitalisation : #{hospit.anamnesis}", :style => :bold, :indent_paragraphs => 60, :inline_format => true
 end
 hospit.animals.each do |animal|
-pdf.draw_text "Fiche d'hospitalisation du #{animal.try(:species).try(:name)} #{animal.name} de #{proprio.last_name} #{proprio.first_name}", :style => :bold, :size => 12, :at => [120, 650]
+pdf.draw_text "Fiche d'hospitalisation du #{animal.try(:species).try(:name)} #{animal.name.titleize} de #{proprio.last_name.titleize} #{proprio.first_name.titleize}", :style => :bold, :size => 12, :at => [120, 650]
 end
 
 pdf.move_down 10
 pdf.text "Chronologie des évènements :", :style => :bold, :indent_paragraphs => 180, :inline_format => true
 hospit.hospitactes.each do |hospitacte|
 pdf.move_down 20
-pdf.text  "=> <u>Date/heure</u> : #{hospitacte.created_at}    <u>Observations</u> : #{hospitacte.comment}    <u>Soins</u> : #{hospitacte.soin}  <u>Intervenant</u> : Dr #{hospitacte.veterinarian.user.last_name}", :size => 9, :inline_format => true
+pdf.text  "=> <u>Date/heure</u> : #{hospitacte.created_at}    <u>Observations</u> : #{hospitacte.comment}    <u>Soins</u> : #{hospitacte.soin}  <u>Intervenant</u> : Dr #{hospitacte.veterinarian.user.last_name.titleize}", :size => 9, :inline_format => true
 
 
 end
 
 pdf.move_down 100
-pdf.text "Docteur #{hospit.veterinarian.user.last_name} #{hospit.veterinarian.user.first_name}", :size => 12, :indent_paragraphs => 270
+pdf.text "Docteur #{hospit.veterinarian.user.last_name.titleize} #{hospit.veterinarian.user.first_name.titleize}", :size => 12, :indent_paragraphs => 270
 pdf.text "N° d'ordre : #{hospit.veterinarian.pwz}", :size => 12, :indent_paragraphs => 280
 
 pdf.draw_text "ZI de la Croix Blanche - 87 200 SAINT JUNIEN", :size => 12, :at => [150, 12]

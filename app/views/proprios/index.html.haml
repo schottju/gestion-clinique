@@ -16,8 +16,8 @@
         %tbody
           - @proprios.each do |proprio|
             %tr
-              %td= change_blank_to_dash(proprio.first_name)
-              %td= change_blank_to_dash(proprio.last_name)
+              %td= change_blank_to_dash(proprio.first_name.capitalize)
+              %td= change_blank_to_dash(proprio.last_name.capitalize)
               %td= change_blank_to_dash(proprio.phone_number)
               %td
                 .pull-right

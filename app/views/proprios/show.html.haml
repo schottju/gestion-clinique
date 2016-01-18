@@ -10,10 +10,10 @@
           %tbody
             %tr
               %th Prénom:
-              %td= change_blank_to_dash(proprio.first_name)
+              %td= change_blank_to_dash(proprio.first_name.capitalize)
             %tr
               %th Nom:
-              %td= change_blank_to_dash(proprio.last_name)
+              %td= change_blank_to_dash(proprio.last_name.capitalize)
             %tr
               %th Téléphone:
               %td= change_blank_to_dash(proprio.phone_number)
@@ -176,7 +176,7 @@
           - @pictures.each do |picture|
             %tr
               %td= change_blank_to_dash(picture.name)
-              %td= change_blank_to_dash(picture.animal.name)
+              %td= change_blank_to_dash(picture.animal.try(:animals).try(:name))
               %td= link_to image_tag(picture.image, width: 100), picture.image.url
               %td= change_blank_to_dash(picture.description)
               %td

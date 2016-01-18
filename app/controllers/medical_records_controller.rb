@@ -36,12 +36,12 @@ helper_method :sort_column, :sort_direction
   end
 
   def create
-    medical_record.additional_cost = change_comma_to_period(params[:medical_record][:additional_cost])
+#    medical_record.additional_cost = change_comma_to_period(params[:medical_record][:additional_cost])
 
-    params[:medical_record][:medicines_attributes].values.each_with_index do |medicine, i|
-      medical_record.medicines[i].price = change_comma_to_period(medicine[:price])
-      medical_record.medicines[i].amount = change_comma_to_period(medicine[:amount])
-    end if params[:medical_record] and params[:medical_record][:medicines_attributes]
+#    params[:medical_record][:medicines_attributes].values.each_with_index do |medicine, i|
+#      medical_record.medicines[i].price = change_comma_to_period(medicine[:price])
+#      medical_record.medicines[i].amount = change_comma_to_period(medicine[:amount])
+#    end if params[:medical_record] and params[:medical_record][:medicines_attributes]
 
     if medical_record.save
       redirect_to proprio_medical_records_path, notice: 'Nouvelle entrée dans le fichier crée.'
@@ -69,12 +69,12 @@ helper_method :sort_column, :sort_direction
   end
 
   def update
-    medical_record.additional_cost = change_comma_to_period(params[:medical_record][:additional_cost])
+#    medical_record.additional_cost = change_comma_to_period(params[:medical_record][:additional_cost])
 
-    params[:medical_record][:medicines_attributes].values.each_with_index do |medicine, i|
-      medical_record.medicines[i].price = change_comma_to_period(medicine[:price])
-      medical_record.medicines[i].amount = change_comma_to_period(medicine[:amount])
-    end if params[:medical_record] and params[:medical_record][:medicines_attributes]
+#    params[:medical_record][:medicines_attributes].values.each_with_index do |medicine, i|
+#      medical_record.medicines[i].price = change_comma_to_period(medicine[:price])
+#      medical_record.medicines[i].amount = change_comma_to_period(medicine[:amount])
+#    end if params[:medical_record] and params[:medical_record][:medicines_attributes]
 
     if medical_record.save
       redirect_to proprio_medical_record_path, notice: 'La fiche a été modifiée.'

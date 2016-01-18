@@ -17,14 +17,14 @@ end
 end
 
 medical_record.animals.each do |animal|
-pdf.draw_text "Pour le #{animal.try(:species).try(:name)} #{animal.name} de #{proprio.last_name} #{proprio.first_name}", :style => :bold, :size => 12, :at => [150, 550]
+pdf.draw_text "Pour le #{animal.try(:species).try(:name)} #{animal.name.titleize} de #{proprio.last_name.titleize} #{proprio.first_name.titleize}", :style => :bold, :size => 12, :at => [150, 550]
 end
 
 pdf.move_down 100
 
 medical_record.medicines.each do |medicine|
 pdf.move_down 20
-pdf.text "<u>#{medicine.name}</u>", :style => :bold, :size => 12, :inline_format => true
+pdf.text "<u>#{medicine.name.titleize}</u>", :style => :bold, :size => 12, :inline_format => true
 pdf.text "<u>#{medicine.decorate.name_with_medoc}</u>", :style => :bold, :size => 12, :inline_format => true
 pdf.move_down 10
 pdf.text "#{medicine.dosage}", :indent_paragraphs => 40
@@ -34,7 +34,7 @@ pdf.text "#{medicine.description}"
 end
 
 pdf.move_down 100
-pdf.text "Docteur #{medical_record.veterinarian.user.last_name} #{medical_record.veterinarian.user.first_name}", :size => 12, :indent_paragraphs => 270
+pdf.text "Docteur #{medical_record.veterinarian.user.last_name.titleize} #{medical_record.veterinarian.user.first_name.titleize}", :size => 12, :indent_paragraphs => 270
 pdf.text "N° d'ordre : #{medical_record.veterinarian.pwz}", :size => 12, :indent_paragraphs => 280
 
 pdf.draw_text "ZI de la Croix Blanche - 87 200 SAINT JUNIEN", :size => 12, :at => [150, 12]

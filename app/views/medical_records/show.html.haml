@@ -21,10 +21,10 @@
           %tbody
             %tr
               %th Prénom:
-              %td= change_blank_to_dash(proprio.first_name)
+              %td= change_blank_to_dash(proprio.first_name.capitalize)
             %tr
               %th Nom:
-              %td= change_blank_to_dash(proprio.last_name)
+              %td= change_blank_to_dash(proprio.last_name.capitalize)
             %tr
               %th Téléphone:
               %td= change_blank_to_dash(proprio.phone_number)
@@ -37,10 +37,10 @@
           %tbody
             %tr
               %th Prénom:
-              %td= change_blank_to_dash(medical_record.veterinarian.user.first_name)
+              %td= change_blank_to_dash(medical_record.veterinarian.user.first_name.capitalize)
               %tr
                 %th Nom:
-                %td= change_blank_to_dash(medical_record.veterinarian.user.last_name)
+                %td= change_blank_to_dash(medical_record.veterinarian.user.last_name.capitalize)
               %tr
                 %th N° d'ordre:
                 %td= change_blank_to_dash(medical_record.veterinarian.pwz)
@@ -53,7 +53,7 @@
                 %td= change_blank_to_dash(animal.id_number)
               %tr
                 %th.col-md-2 Nom:
-                %td= change_blank_to_dash(animal.name)
+                %td= change_blank_to_dash(animal.name.capitalize)
               %tr
                 %th.col-md-2 Sexe:
                 %td= change_blank_to_dash(animal.gender)

@@ -12,7 +12,7 @@
               %td= change_blank_to_dash(picture.name)
             %tr
               %th.col-md-1 Propriétaire:
-              %td= change_blank_to_dash(proprio.last_name)
+              %td= change_blank_to_dash(proprio.last_name.capitalize)
             %tr
               %th.col-md-1 Animal:
               %td= change_blank_to_dash(@animals)
