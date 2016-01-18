@@ -18,7 +18,7 @@
           - animals.each do |animal|
             %tr
               %td= change_blank_to_dash(animal.id_number)
-              %td= change_blank_to_dash(animal.name)
+              %td= change_blank_to_dash(animal.name.capitalize)
               %td= change_blank_to_dash(animal.gender)
               %td= change_blank_to_dash(animal.statut)
               %td= change_blank_to_dash(animal.try(:species).try(:name))

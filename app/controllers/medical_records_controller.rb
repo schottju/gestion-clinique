@@ -32,7 +32,7 @@ helper_method :sort_column, :sort_direction
     @medocs = Medoc.order(:name).where(status: "actif")
     @treatments = Treatment.order(:name).where(status: "actif")
     @pictures = Picture.where(proprio_id: proprio.id).map { |picture| [ "Nom: #{picture.name}, Description: #{picture.description}", picture.id  ] }
-    @animals = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name}, #{animal.try(:species).try(:name)}, #{animal.description}, ID: #{animal.id_number}", animal.id ] }
+    @animals = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name.titleize}, #{animal.try(:species).try(:name)}, #{animal.description}, ID: #{animal.id_number}", animal.id ] }
 #    resource.build_medoc
   end
 
@@ -53,7 +53,7 @@ helper_method :sort_column, :sort_direction
       @diseases = Disease.order(:name).where(status: "actif")
       @treatments = Treatment.order(:name).where(status: "actif")
       @pictures = Picture.where(proprio_id: proprio.id).map { |picture| [ "Nom: #{picture.name}, description: #{picture.description}", picture.id  ] }
-      @animals = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name}, #{animal.try(:species).try(:name)}, #{animal.description}, ID: #{animal.id_number}", animal.id ] }
+      @animals = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name.titleize}, #{animal.try(:species).try(:name)}, #{animal.description}, ID: #{animal.id_number}", animal.id ] }
       render :new
     end
   end
@@ -65,7 +65,7 @@ helper_method :sort_column, :sort_direction
     @diseases = Disease.order(:name).map { |disease| [ "#{disease.name} #{"(Inactif)" if disease.inactif?}", disease.id ] }
     @treatments = Treatment.order(:name).map { |treatment| [ "#{treatment.name} #{"(Inactif)" if treatment.inactif?}", treatment.id ] }
     @pictures = Picture.where(proprio_id: proprio.id).map { |picture| [ "Nom: #{picture.name}, description: #{picture.description}", picture.id  ] }
-    @animals = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name}, #{animal.try(:species).try(:name)}, #{animal.description}, ID: #{animal.id_number}", animal.id ] }
+    @animals = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name.titleize}, #{animal.try(:species).try(:name)}, #{animal.description}, ID: #{animal.id_number}", animal.id ] }
 #    resource.build_medoc
   end
 
@@ -86,7 +86,7 @@ helper_method :sort_column, :sort_direction
       @diseases = Disease.order(:name).map { |disease| [ "#{disease.name} #{"(Inactif)" if disease.inactif?}", disease.id ] }
       @treatments = Treatment.order(:name).map { |treatment| [ "#{treatment.name} #{"(Inactif)" if treatment.inactif?}", treatment.id ] }
       @pictures = Picture.where(proprio_id: proprio.id).map { |picture| [ "Nom: #{picture.name}, description: #{picture.description}", picture.id  ] }
-      @animals = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name}, #{animal.try(:species).try(:name)}, #{animal.description}, ID: #{animal.id_number}", animal.id ] }
+      @animals = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name.titleize}, #{animal.try(:species).try(:name)}, #{animal.description}, ID: #{animal.id_number}", animal.id ] }
 #      resource.build_medoc
       render :edit
     end

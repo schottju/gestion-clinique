@@ -17,7 +17,7 @@
                   %td= change_blank_to_dash(animal.id_number)
                 %tr
                   %th Nom:
-                  %td= change_blank_to_dash(animal.name)
+                  %td= change_blank_to_dash(animal.name.capitalize)
                 %tr
                   %th Date de naissance:
                   %td= change_blank_to_dash(animal.birth_date)
@@ -109,6 +109,7 @@
 
                 .pull-right
                   = link_to icon('list-alt'), proprio_medical_record_path(proprio, medical_record), title: 'Détails', class: "btn btn-default"
+                  = link_to icon('edit'), edit_proprio_medical_record_path(proprio, medical_record), title: 'Modifier', class: "btn btn-default"
           .flickr_pagination
             = will_paginate @medical_records, param_name: 'medical_records_page'
 
@@ -117,8 +118,6 @@
       .panel-body
         - if @hospits.empty?
           .alert.alert-warning.table-warning Pas de fichier.
-          .pull-right
-            = link_to "Ajouter", new_proprio_hospit_path(proprio), class: "btn btn-default"
         - else
           %table.table.table-striped
             %thead
@@ -167,6 +166,6 @@
             = will_paginate @pictures, param_name: 'pictures_page'
 
     .pull-right
-      = link_to "Ajouter fiche", new_proprio_medical_record_path(proprio), class: "btn btn-default"
+      = link_to "Ajouter consult", new_proprio_medical_record_path(proprio), class: "btn btn-default"
       = link_to "Ajouter hospit", new_proprio_hospit_path(proprio), class: "btn btn-default"
       = link_to "Retour", proprio_animals_path(proprio), class: "btn btn-default"
