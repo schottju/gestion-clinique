@@ -176,7 +176,7 @@
           - @pictures.each do |picture|
             %tr
               %td= change_blank_to_dash(picture.name)
-              %td= change_blank_to_dash(picture.animal.try(:animals).try(:name))
+              %td= change_blank_to_dash(picture.animal.name)
               %td= link_to image_tag(picture.image, width: 100), picture.image.url
               %td= change_blank_to_dash(picture.description)
               %td

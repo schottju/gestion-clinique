@@ -2,16 +2,14 @@
   = f.error_notification
   .form-inputs
     .row
-      .col-md-5
-        = f.input :animal_ids, label: 'Animaux', collection: @animals, input_html: { multiple: true }, required: true, autofocus: true
+      .col-md-6
+        = f.input :anamnesis, label: 'Cause consultation', placeholder: 'Entrez anamnèse', autofocus: true
       .col-md-1
         = f.input :poids, label: 'Poids', placeholder: 'Entrez le poids'
+      .col-md-5
+        = f.input :animal_ids, label: 'Animaux', collection: @animals, input_html: { multiple: true }, required: true
     = f.hidden_field :veterinarian_id, value: current_user.try(:veterinarian).try(:id)
     = f.hidden_field :proprio_id, value: proprio.id
-    .panel.panel-info
-      .panel-heading Description de la consultation
-      .panel-body
-      = f.input :description, label: false, placeholder: 'Observations, actes, injections, etc...'
     .row
       .col-md-4
         = f.input :treatment_ids, label: 'Traitements effectués', collection: @treatments, input_html: { multiple: true }
@@ -27,6 +25,11 @@
             = render 'medicine_fields', f: medicine
           .links.centered
             = link_to_add_association 'Ajouter un médicament', f, :medicines, class: 'btn btn-default'
+
+      .panel.panel-info
+        .panel-heading Description de la consultation
+        .panel-body
+        = f.input :description, label: false, placeholder: 'Observations, actes, injections, etc...'
     .row
     .panel.panel-info
       .panel-heading Remarques en haut de l'ordonnance
