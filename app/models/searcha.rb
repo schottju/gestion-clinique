@@ -7,16 +7,16 @@ class Searcha < ActiveRecord::Base
 
   private
 
-  def self.search(search)
-      joins(:proprio).where("(lower(animals.name) ILIKE ? or lower(animals.id_number) ILIKE ?)", "%#{search}%", "%#{search}%")
+  def self.search(query)
+      where(:proprio).where("(lower(animals.name) ILIKE ? or lower(animals.id_number) ILIKE ?)", "%#{query.downcase}%", "%#{query.downcase}%")
   end
 
-    def trim(num)
-      if num.blank?
-        "Aucun"
-      else
-        i, f = num.to_i, num.to_f
-        i == f ? i : f
-      end
-    end
+#    def trim(num)
+#      if num.blank?
+#        "Aucun"
+#      else
+#        i, f = num.to_i, num.to_f
+#        i == f ? i : f
+#      end
+#    end
 end
