@@ -19,7 +19,7 @@ class MedicalRecordDecorator < Draper::Decorator
   end
 
   def name_of_animal
-    "#{self.try(:animals).try(:name)}"
+    "#{self.try(:animal_ids).try(:animal).try(:name)}"
   end
 
 end

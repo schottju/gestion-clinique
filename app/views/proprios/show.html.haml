@@ -112,7 +112,7 @@
             %tr
               %td= change_blank_to_dash(medical_record.decorate.consultation)
               %td= change_blank_to_dash(medical_record.decorate.name_of_disease)
-              %td= change_blank_to_dash(medical_record.veterinarian.user.last_name)
+              %td= change_blank_to_dash(medical_record.veterinarian.user.last_name.capitalize)
               %td= change_blank_to_dash(medical_record.decorate.name_of_animal.capitalize)
               %td= change_blank_to_dash(medical_record.created_at.to_date)
               %td

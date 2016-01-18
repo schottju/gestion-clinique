@@ -10,6 +10,7 @@ helper_method :sort_column, :sort_direction
   expose(:medoc, attributes: :medoc_params)
   expose(:medical_record, attributes: :medical_record_params)
   expose(:user) { User.find(params[:user_id]) }
+  expose(:animal) { Animal.find(params[:animal_id]) }
   expose(:proprio) { Proprio.find(params[:proprio_id]) }
 #  expose(:veterinarian) { Veterinarian.find(params[:user_id]) }
   expose(:medical_records) { proprio.medical_records.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 8) }

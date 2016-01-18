@@ -3,7 +3,7 @@ class MedicalRecord < ActiveRecord::Base
   belongs_to :veterinarian
   belongs_to :proprios
   has_and_belongs_to_many :animals
-#  has_many :animal
+  belongs_to :animal
   has_and_belongs_to_many :diseases
   has_and_belongs_to_many :medicines
   has_and_belongs_to_many :comments
@@ -11,7 +11,6 @@ class MedicalRecord < ActiveRecord::Base
   has_and_belongs_to_many :pictures
   has_many :medocs
   belongs_to :disease
-  belongs_to :animal
 #  has_many :users
 #  before_save :total_price
   validates_presence_of  :animal_ids
