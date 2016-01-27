@@ -35,7 +35,7 @@ gem 'ffaker'
 gem "recaptcha", :require => "recaptcha/rails"
 gem 'enum_help'
 gem 'will_paginate', '~> 3.0.6'
-gem 'rails-i18n', github: 'svenfuchs/rails-i18n', branch: 'master'
+gem 'rails-i18n'
 gem 'devise-i18n'
 gem 'carrierwave'
 gem 'carrierwave-postgresql'
@@ -46,6 +46,8 @@ gem 'countries'
 gem 'cookies_eu'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 gem 'momentjs-rails'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
+
 
 group :development do
   gem 'html2haml'

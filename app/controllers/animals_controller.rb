@@ -2,11 +2,9 @@
 class AnimalsController < ApplicationController
   helper_method :sort_column, :sort_direction
 
-#  before_action :authenticate_proprio!, only: [ :index, :show ]
-#  before_action :authenticate_veterinarian!, only: [ :new, :create, :edit, :update ]
-#  expose(:user) { User.find(params[:user_id]) }
+  before_action :authenticate_user!, only: [ :index, :show ]
+  before_action :authenticate_veterinarian!, only: [ :new, :create, :edit, :update ]
   expose(:proprio) { Proprio.find(params[:proprio_id]) }
-#  expose(:proprios) { proprio.find(params[:proprio_id]) }
   expose(:animal, attributes: :animal_params)
   expose(:animals) { proprio.animals.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 8) }
 

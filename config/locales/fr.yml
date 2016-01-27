@@ -3,7 +3,6 @@ fr:
     formats:
       short: "%B %Y"
     month_names:
-    -
     - Janvier
     - Février
     - Mars
