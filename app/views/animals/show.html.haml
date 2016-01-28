@@ -93,7 +93,6 @@
         %thead
           %tr
             %th Description consultation
-            %th Maladie ou vaccin
             %th Vétérinaire
             %th Date
             %th
@@ -102,7 +101,7 @@
           - @medical_records.each do |medical_record|
             %tr
               %td= change_blank_to_dash(medical_record.decorate.consultation)
-              %td= change_blank_to_dash(medical_record.decorate.name_of_disease)
+              %td= change_blank_to_dash(medical_record.decorate.name_of_animal)
               %td= change_blank_to_dash(medical_record.veterinarian.user.last_name)
               %td= change_blank_to_dash(medical_record.created_at.to_date)
               %td
