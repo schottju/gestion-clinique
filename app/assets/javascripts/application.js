@@ -12,8 +12,9 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require jquery-ui
+//= require jquery_nested_form
 //= require turbolinks
-//= require_tree .
 //= require bootstrap
 //= require moment
 //= require moment/fr.js

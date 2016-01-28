@@ -67,7 +67,7 @@ GEM
     carrierwave-postgresql (0.1.5)
       carrierwave
     choice (0.2.0)
-    cocoon (1.2.6)
+    cocoon (1.2.7)
     coderay (1.1.0)
     coffee-rails (4.1.1)
       coffee-script (>= 2.2.0)
@@ -176,7 +176,7 @@ GEM
       coderay (~> 1.1.0)
       method_source (~> 0.8.1)
       slop (~> 3.4)
-    puma (2.14.0)
+    puma (2.16.0)
     quiet_assets (1.1.0)
       railties (>= 3.1, < 5.0)
     rack (1.6.4)
@@ -239,7 +239,7 @@ GEM
     rake (10.5.0)
     rdoc (4.2.1)
       json (~> 1.4)
-    recaptcha (1.0.2)
+    recaptcha (1.1.0)
       json
     ref (2.0.0)
     remotipart (1.2.1)
@@ -329,12 +329,13 @@ DEPENDENCIES
   jquery-rails
   mini_magick
   momentjs-rails
+  nested_form
   pg
   postgresql_lo_streamer
   prawn
   prawnto
   pry
-  puma (= 2.14.0)
+  puma
   quiet_assets
   rails (= 4.2.3)
   rails-erd
@@ -344,7 +345,7 @@ DEPENDENCIES
   recaptcha
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  simple_form (~> 3.1.0rc)
+  simple_form
   simple_form_fancy_uploads
   therubyracer (= 0.12.2)
   turbolinks
