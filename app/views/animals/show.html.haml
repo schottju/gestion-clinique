@@ -63,24 +63,24 @@
                 %tr
                   %th Téléphone:
                   %td= change_blank_to_dash(proprio.phone_number)
-                %tr
-                  %th Adresse:
-                  %td= change_blank_to_dash(animal.try(:proprio).try(:addressp).try(:decorate).try(:full_country_name))
           .col-md-4
             %table.table
               %thead
                 %tr
                   %td
               %tbody
+                %%tr
+                  %th Numéro:
+                  %td= change_blank_to_dash(animal.try(:proprio).try(:house_number))
                 %tr
                   %th Rue:
-                  %td= change_blank_to_dash(animal.try(:proprio).try(:addressp).try(:decorate).try(:full_street))
+                  %td= change_blank_to_dash(animal.try(:proprio).try(:street))
                 %tr
                   %th Code postal:
-                  %td= change_blank_to_dash(animal.try(:proprio).try(:addressp).try(:zip_code))
+                  %td= change_blank_to_dash(animal.try(:proprio).try(:zip_code))
                 %tr
                   %th Ville:
-                  %td= change_blank_to_dash(animal.try(:proprio).try(:addressp).try(:city))
+                  %td= change_blank_to_dash(animal.try(:proprio).try(:city))
           .col-md-1
 
 .panel.panel-default
@@ -93,6 +93,7 @@
         %thead
           %tr
             %th Description consultation
+            %th Animal
             %th Vétérinaire
             %th Date
             %th
@@ -101,7 +102,7 @@
           - @medical_records.each do |medical_record|
             %tr
               %td= change_blank_to_dash(medical_record.decorate.consultation)
-              %td= change_blank_to_dash(medical_record.decorate.name_of_animal)
+              %td= change_blank_to_dash(medical_record.animal.name)
               %td= change_blank_to_dash(medical_record.veterinarian.user.last_name)
               %td= change_blank_to_dash(medical_record.created_at.to_date)
               %td

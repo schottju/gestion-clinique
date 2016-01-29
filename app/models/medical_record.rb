@@ -3,7 +3,7 @@ class MedicalRecord < ActiveRecord::Base
   belongs_to :veterinarian
   belongs_to :proprios
   has_and_belongs_to_many :animals
-  belongs_to :animal
+  has_and_belongs_to_many :animal
   has_and_belongs_to_many :diseases
   has_and_belongs_to_many :medicines
   has_and_belongs_to_many :comments
