@@ -1,15 +1,16 @@
 class MedicalRecord < ActiveRecord::Base
   belongs_to :user
   belongs_to :veterinarian
-  belongs_to :proprios
+  belongs_to :animal
+  belongs_to :proprio
   has_and_belongs_to_many :animals
-  has_and_belongs_to_many :animal
+#  has_and_belongs_to_many :animal
   has_and_belongs_to_many :diseases
   has_and_belongs_to_many :medicines
   has_and_belongs_to_many :comments
   has_and_belongs_to_many :treatments
   has_and_belongs_to_many :pictures
-  has_many :medocs
+  has_and_belongs_to_many :medocs
   belongs_to :disease
 #  has_many :users
 #  before_save :total_price

@@ -9,6 +9,8 @@ class AnimalDecorator < Draper::Decorator
   #       object.created_at.strftime("%a %m/%d/%y")
   #     end
   #   end
-
+  def full_name
+    "#{name}"
+  end
 
 end

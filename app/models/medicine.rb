@@ -8,6 +8,6 @@ class Medicine < ActiveRecord::Base
 #  validates_presence_of  :amount, :unit_id
 
   def custom_label_method
-    "##{id} #{amount} #{name} #{medoc.try(:name)}, quantité: #{amount} #{unit.try(:name)}"
+    "##{id} #{name} #{medoc.try(:name)} #{unit.try(:name)}"
   end
 end

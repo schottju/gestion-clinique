@@ -100,7 +100,7 @@ helper_method :sort_column, :sort_direction
 
     def hospit_params
       params.require(:hospit).permit(
-          :anamnesis, :description, :comment, :poids, :proprio_id, :user_id, :veterinarian_id, :additional_cost, :total_cost, :disease_id,
+          :anamnesis, :description, :comment, :poids, :proprio_id, :user_id, :veterinarian_id, :additional_cost, :total_cost, :disease_id, :animal_id,
           treatment_ids: [], animal_ids: [],
           hospitactes_attributes: [ :id, :comment, :soin, :veterinarian_id, :_destroy ]
       )

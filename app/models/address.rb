@@ -1,6 +1,6 @@
 class Address < ActiveRecord::Base
-  belongs_to :user
-  has_many :users
+  belongs_to :users
+#  has_many :users
 
   validates_presence_of :street, :city, :zip_code
 

@@ -23,6 +23,7 @@ helper_method :sort_column, :sort_direction
   end
 
   def show
+    @animal = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name.titleize}" ] }
   end
 
   def new
@@ -99,7 +100,7 @@ helper_method :sort_column, :sort_direction
 
     def medical_record_params
       params.require(:medical_record).permit(
-          :anamnesis, :description, :comment, :poids, :proprio_id, :user_id, :veterinarian_id, :additional_cost, :total_cost, :disease_id,
+          :anamnesis, :description, :comment, :poids, :proprio_id, :user_id, :veterinarian_id, :additional_cost, :total_cost, :disease_id, :animal_id,
           treatment_ids: [], picture_ids: [], animal_ids: [],
           medicines_attributes: [ :id, :name, :description, :amount, :grace_period, :price, :serial_number, :dosage, :unit_id, :medoc_id, :_destroy ],
           comments_attributes: [ :id, :num, :comment, :_destroy ]
@@ -114,5 +115,3 @@ helper_method :sort_column, :sort_direction
       %w[asc desc].include?(params[:direction]) ? params[:direction] : "asc"
     end
 end
-
-#enregistrement de nouveaux medocs

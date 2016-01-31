@@ -48,7 +48,7 @@ RailsAdmin.config do |config|
   end
 
   config.model 'Address' do
-    configure :user do
+    configure :users do
       label "Utilisateur"
     end
 
@@ -57,7 +57,7 @@ RailsAdmin.config do |config|
     end
 
     nested do
-      configure :user do
+      configure :users do
         hide
       end
     end
@@ -74,7 +74,7 @@ RailsAdmin.config do |config|
       field :zip_code
       field :city
       field :country
-      field :user do
+      field :users do
         filterable false
         searchable false
       end
@@ -91,7 +91,7 @@ RailsAdmin.config do |config|
       field :country do
         help 'Optionnel. (Entrez abréviation du pays)'
       end
-      field :user do
+      field :users do
         inline_add false
         inline_edit false
       end
@@ -105,7 +105,7 @@ RailsAdmin.config do |config|
       field :zip_code
       field :city
       field :country
-      field :user
+      field :users
       field :created_at
       field :updated_at
     end
@@ -120,7 +120,7 @@ RailsAdmin.config do |config|
       field :country
       field :created_at
       field :updated_at
-      field :user
+      field :users
     end
   end
 
@@ -622,7 +622,7 @@ RailsAdmin.config do |config|
   end
 
   config.model 'MedicalRecord' do
-    configure :proprios do
+    configure :proprio do
       label "Propriétaire"
     end
 
@@ -668,7 +668,7 @@ RailsAdmin.config do |config|
       field :id do
         sort_reverse false
       end
-      field :proprios do
+      field :proprio do
         filterable false
       end
       field :veterinarian do
@@ -710,7 +710,7 @@ RailsAdmin.config do |config|
 
     show do
       field :id
-      field :proprios
+      field :proprio
       field :veterinarian
       field :user
       field :animals
@@ -765,7 +765,7 @@ RailsAdmin.config do |config|
 
     export do
       field :id
-      field :proprios
+      field :proprio
       field :animals
       field :veterinarian
       field :user
@@ -797,16 +797,12 @@ RailsAdmin.config do |config|
       label "Animal"
     end
 
-    configure :diseases do
+    configure :disease do
       label "Maladie"
     end
 
     configure :hospitactes do
       label "Soins"
-    end
-
-    configure :pictures do
-      label "Image"
     end
 
     configure :treatments do
@@ -841,19 +837,14 @@ RailsAdmin.config do |config|
       field :hospitactes do
         filterable false
       end
-      field :pictures do
-        filterable false
-      end
       field :treatments do
         filterable false
       end
-      field :diseases do
+      field :disease do
         filterable false
       end
       field :comment
       field :description
-      field :additional_cost
-      field :total_cost
       field :created_at
       field :updated_at
     end
@@ -865,14 +856,11 @@ RailsAdmin.config do |config|
       field :user
       field :animals
       field :anamnesis
-      field :diseases
+      field :disease
       field :hospitactes
-      field :pictures
       field :treatments
       field :comment
       field :description
-      field :additional_cost
-      field :total_cost
       field :created_at
       field :updated_at
     end
@@ -886,14 +874,11 @@ RailsAdmin.config do |config|
         inline_add false
       end
       field :anamnesis
-      field :diseases do
+      field :disease do
         inline_add false
       end
       field :hospitactes do
         nested_form false
-        inline_add false
-      end
-      field :pictures do
         inline_add false
       end
       field :treatments do
@@ -902,7 +887,6 @@ RailsAdmin.config do |config|
       field :user
       field :comment
       field :description
-      field :additional_cost
 
     export do
       field :id
@@ -913,14 +897,11 @@ RailsAdmin.config do |config|
       field :anamnesis
       field :comment
       field :description
-      field :additional_cost
-      field :total_cost
       field :created_at
       field :updated_at
-      field :diseases
+      field :disease
       field :hospitactes
       field :medocs
-      field :pictures
       field :treatments
       end
     end
@@ -1060,13 +1041,10 @@ RailsAdmin.config do |config|
         sort_reverse false
       end
       field :name
-      field :amount
       field :unit do
         filterable false
       end
       field :dosage
-      field :grace_period
-      field :price
       field :serial_number
       field :description
       field :medical_records do
@@ -1079,11 +1057,8 @@ RailsAdmin.config do |config|
     show do
       field :id
       field :name
-      field :amount
       field :unit
       field :dosage
-      field :grace_period
-      field :price
       field :serial_number
       field :description
       field :medical_records
@@ -1094,28 +1069,22 @@ RailsAdmin.config do |config|
 
     create do
       field :name
-      field :amount
       field :unit do
         inline_add false
         inline_edit false
       end
       field :dosage
-      field :grace_period
-      field :price
       field :serial_number
       field :description
     end
 
     update do
       field :name
-      field :amount
       field :unit do
         inline_add false
         inline_edit false
       end
       field :dosage
-      field :grace_period
-      field :price
       field :serial_number
       field :description
       field :medical_records do
@@ -1126,11 +1095,8 @@ RailsAdmin.config do |config|
     export do
       field :id
       field :name
-      field :amount
       field :unit
       field :dosage
-      field :grace_period
-      field :price
       field :serial_number
       field :description
       field :medical_records
@@ -1146,10 +1112,6 @@ RailsAdmin.config do |config|
 
     configure :medical_records do
       label "Fiche consultation"
-    end
-
-    configure :hospits do
-      label "Fiche hospitalisation"
     end
 
     configure :animal do
@@ -1175,9 +1137,6 @@ RailsAdmin.config do |config|
       field :medical_records do
         filterable false
       end
-      field :hospits do
-        filterable false
-      end
       field :animal do
         filterable false
       end
@@ -1192,7 +1151,6 @@ RailsAdmin.config do |config|
       field :image
       field :proprio
       field :medical_records
-      field :hospits
       field :animal
       field :created_at
       field :updated_at
@@ -1223,9 +1181,6 @@ RailsAdmin.config do |config|
       field :medical_records do
         inline_add false
       end
-      field :hospits do
-        inline_add false
-      end
       field :animal do
         inline_add false
         inline_edit false
@@ -1241,7 +1196,6 @@ RailsAdmin.config do |config|
       field :updated_at
       field :proprio
       field :medical_records
-      field :hospits
       field :animal
     end
   end
@@ -1558,10 +1512,6 @@ RailsAdmin.config do |config|
       label "Fiche client"
     end
 
-    configure :hospits do
-      label "Fiche hospitalisation"
-    end
-
     configure :vacations do
       label "Vacances"
     end
@@ -1580,10 +1530,6 @@ RailsAdmin.config do |config|
       end
 
       configure :medical_records do
-        hide
-      end
-
-      configure :hospits do
         hide
       end
 
@@ -1617,9 +1563,6 @@ RailsAdmin.config do |config|
       field :medical_records do
         filterable false
       end
-      field :hospits do
-        filterable false
-      end
       field :created_at
       field :updated_at
     end
@@ -1633,7 +1576,6 @@ RailsAdmin.config do |config|
       field :vacations
       field :working_day
       field :medical_records
-      field :hospits
       field :created_at
       field :updated_at
     end
@@ -1667,9 +1609,6 @@ RailsAdmin.config do |config|
       field :medical_records do
         inline_add false
       end
-      field :hospits do
-        inline_add false
-      end
     end
 
     export do
@@ -1683,7 +1622,6 @@ RailsAdmin.config do |config|
       field :vacations
       field :working_day
       field :medical_records
-      field :hospits
     end
   end
 

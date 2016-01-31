@@ -48,11 +48,12 @@ gem 'cookies_eu'
 gem 'datetimepicker-rails', github: 'zpaulovics/datetimepicker-rails', branch: 'master', submodules: true
 gem 'momentjs-rails'
 gem 'bootstrap3-datetimepicker-rails', '~> 4.14.30'
+gem 'graphviz'
 
 
 group :development do
   gem 'html2haml'
-  gem 'rails-erd'
+#  gem 'rails-erd'
   gem 'hirb'
   gem 'awesome_print'
 end
