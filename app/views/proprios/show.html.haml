@@ -69,21 +69,21 @@
       %table.table.table-striped
         %thead
           %tr
-            %th N° d'identification
             %th Nom
             %th Statut
             %th Sexe
             %th Espèce
+            %th N° d'identification
             %th.btn-row-2
 
         %tbody
           - @animals.each do |animal|
             %tr
-              %td= change_blank_to_dash(animal.id_number)
               %td= change_blank_to_dash(animal.name.capitalize)
               %td= change_blank_to_dash(animal.statut)
               %td= change_blank_to_dash(animal.gender)
               %td= change_blank_to_dash(animal.try(:species).try(:name))
+              %td= change_blank_to_dash(animal.id_number)
               %td
                 .pull-right
                   = link_to icon('list-alt'), proprio_animal_path(proprio, animal), title: 'Détails', class: "btn btn-default"
@@ -103,8 +103,8 @@
       %table.table.table-striped
         %thead
           %tr
-            %th Description consultation
             %th Animal
+            %th Description consultation
             %th Vétérinaire
             %th.date-row Date
             %th.btn-row-2
@@ -112,8 +112,9 @@
         %tbody
           - @medical_records.each do |medical_record|
             %tr
+            - medical_record.animals.each do |animal|
+              %td= change_blank_to_dash(animal.name.capitalize)
               %td= change_blank_to_dash(medical_record.decorate.consultation)
-              %td= change_blank_to_dash(@animal)
               %td= change_blank_to_dash(medical_record.veterinarian.user.last_name.capitalize)
               %td= change_blank_to_dash(medical_record.created_at.to_date)
               %td
@@ -134,7 +135,7 @@
       %table.table.table-striped
         %thead
           %tr
-            %th Cause hospitalisation
+            %th Animal
             %th Diagnostic ou suspicion
             %th Vétérinaire
             %th Observations
@@ -144,7 +145,8 @@
         %tbody
           - @hospits.each do |hospit|
             %tr
-              %td= change_blank_to_dash(hospit.anamnesis)
+            - hospit.animals.each do |animal|
+              %td= change_blank_to_dash(animal.name.capitalize)
               %td= change_blank_to_dash(hospit.decorate.name_of_disease)
               %td= change_blank_to_dash(hospit.veterinarian.user.last_name)
               %td= change_blank_to_dash(hospit.description)
@@ -167,8 +169,8 @@
       %table.table.table-striped
         %thead
           %tr
-            %th Nom
             %th Animal
+            %th Nom
             %th Image
             %th Description
             %th.btn-row-2
@@ -176,8 +178,8 @@
         %tbody
           - @pictures.each do |picture|
             %tr
-              %td= change_blank_to_dash(picture.name)
               %td= change_blank_to_dash(picture.animal.name)
+              %td= change_blank_to_dash(picture.name)
               %td= link_to image_tag(picture.image, width: 100), picture.image.url
               %td= change_blank_to_dash(picture.description)
               %td

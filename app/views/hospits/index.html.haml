@@ -5,7 +5,7 @@
     %table.table.table-striped
       %thead
         %tr
-          %th= sortable 'anamnesis', "Cause hospitalisation"
+          %th Animal
           %th Diagnostic ou suspicion
           %th Vétérinaire
           %th.date-row= sortable 'created_at', "Date"
@@ -14,7 +14,8 @@
       %tbody
         - hospits.each do |hospit|
           %tr
-            %td= change_blank_to_dash(hospit.anamnesis)
+          - hospit.animals.each do |animal|
+            %td= change_blank_to_dash(animal.name.capitalize)
             %td= change_blank_to_dash(hospit.decorate.name_of_disease)
             %td= change_blank_to_dash(hospit.try(:veterinarian).try(:user). try(:decorate).try(:last_name))
             %td= change_blank_to_dash(hospit.created_at.to_date)
