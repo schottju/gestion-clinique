@@ -4,6 +4,3 @@
   .form-inline
     = text_field_tag :search, params[:search], placeholder: 'Entrez le nom ou la description', class: 'form-control', size: 27
     = submit_tag "Recherche", name: nil, class: 'btn btn-default'
-
-  .pull-right
-    = link_to 'Nouvelle image', new_proprio_picture_path(proprio), class: "btn btn-default"

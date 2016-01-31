@@ -6,7 +6,7 @@
       %thead
         %tr
           %th Animal
-          %th Diagnostic ou suspicion
+          %th Cause
           %th Vétérinaire
           %th.date-row= sortable 'created_at', "Date"
           %th.btn-row-2
@@ -16,7 +16,7 @@
           %tr
           - hospit.animals.each do |animal|
             %td= change_blank_to_dash(animal.name.capitalize)
-            %td= change_blank_to_dash(hospit.decorate.name_of_disease)
+            %td= change_blank_to_dash(hospit.anamnesis)
             %td= change_blank_to_dash(hospit.try(:veterinarian).try(:user). try(:decorate).try(:last_name))
             %td= change_blank_to_dash(hospit.created_at.to_date)
             %td

@@ -95,6 +95,8 @@
 .panel.panel-default
   .panel-heading Consultations
   .panel-body
+    .pull-right
+      = link_to "Nouvelle consult", new_proprio_medical_record_path(proprio), class: "btn btn-default"
     - if @medical_records.empty?
       .alert.alert-warning.table-warning Pas de fichier.
       .pull-right
@@ -136,7 +138,7 @@
         %thead
           %tr
             %th Animal
-            %th Diagnostic ou suspicion
+            %th Cause
             %th Vétérinaire
             %th Observations
             %th.date-row Date
@@ -147,7 +149,7 @@
             %tr
             - hospit.animals.each do |animal|
               %td= change_blank_to_dash(animal.name.capitalize)
-              %td= change_blank_to_dash(hospit.decorate.name_of_disease)
+              %td= change_blank_to_dash(hospit.anamnesis)
               %td= change_blank_to_dash(hospit.veterinarian.user.last_name)
               %td= change_blank_to_dash(hospit.description)
               %td= change_blank_to_dash(hospit.created_at.to_date)

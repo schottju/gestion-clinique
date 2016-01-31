@@ -27,6 +27,7 @@
                   = link_to icon('edit'), edit_proprio_picture_path(proprio, picture), title: 'Modifier', class: "btn btn-default"
 
     .pull-right
+      = link_to 'Nouvelle image', new_proprio_picture_path(proprio), class: "btn btn-default"
       = link_to 'Vers le profil du propriétaire', proprio_path(proprio), class: 'btn btn-default'
 
     .flickr_pagination

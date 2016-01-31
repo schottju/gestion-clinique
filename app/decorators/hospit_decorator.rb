@@ -11,7 +11,7 @@ class HospitDecorator < Draper::Decorator
   #   end
 
   def name_of_disease
-    "#{self.try(:disease).try(:name)}"
+    "#{self.try(:diseases).try(:name)}"
   end
 
 end

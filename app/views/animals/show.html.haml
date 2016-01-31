@@ -82,6 +82,11 @@
                   %th Ville:
                   %td= change_blank_to_dash(animal.try(:proprio).try(:city))
           .col-md-1
+    .pull-right
+      = link_to "Ajouter consult", new_proprio_medical_record_path(proprio), class: "btn btn-default"
+      = link_to "Ajouter hospit", new_proprio_hospit_path(proprio), class: "btn btn-default"
+      = link_to "Ajouter image", new_proprio_picture_path(proprio), class: "btn btn-default"
+      = link_to "Retour listing", proprio_animals_path(proprio), class: "btn btn-default"
 
 .panel.panel-default
   .panel-heading Fichiers consultation
@@ -93,7 +98,6 @@
         %thead
           %tr
             %th Description consultation
-            %th Animal
             %th Vétérinaire
             %th Date
             %th
@@ -102,7 +106,6 @@
           - @medical_records.each do |medical_record|
             %tr
               %td= change_blank_to_dash(medical_record.decorate.consultation)
-              %td= change_blank_to_dash(medical_record.animal.name)
               %td= change_blank_to_dash(medical_record.veterinarian.user.last_name)
               %td= change_blank_to_dash(medical_record.created_at.to_date)
               %td
@@ -112,60 +115,65 @@
                   = link_to icon('edit'), edit_proprio_medical_record_path(proprio, medical_record), title: 'Modifier', class: "btn btn-default"
           .flickr_pagination
             = will_paginate @medical_records, param_name: 'medical_records_page'
-
-    .panel.panel-default
-      .panel-heading Hospitalisation
-      .panel-body
-        - if @hospits.empty?
-          .alert.alert-warning.table-warning Pas de fichier.
-        - else
-          %table.table.table-striped
-            %thead
-              %tr
-                %th Cause hospitalisation
-                %th Diagnostic ou suspicion
-                %th Vétérinaire
-                %th Observations
-                %th.date-row Date d'entrée
-                %th.btn-row-2
-
-            %tbody
-              - @hospits.each do |hospit|
-                %tr
-                  %td= change_blank_to_dash(hospit.anamnesis)
-                  %td= change_blank_to_dash(hospit.decorate.name_of_disease)
-                  %td= change_blank_to_dash(hospit.veterinarian.user.last_name)
-                  %td= change_blank_to_dash(hospit.description)
-                  %td= change_blank_to_dash(hospit.created_at.to_date)
-                  %td
-                    .pull-right
-                      = link_to icon('list-alt'), proprio_hospit_path(proprio, hospit), title: 'Détails', class: "btn btn-default"
-                      = link_to icon('edit'), edit_proprio_hospit_path(proprio, hospit), title: 'Modifier', class: "btn btn-default"
-
-    .panel.panel-info
-      .panel-heading Images de l'animal
-      .panel-body
-        - if @pictures.empty?
-          Pas d'images.
-        - else
-          %table.table.table-striped
-            %thead
-              %tr
-                %th Nom
-                %th Image
-                %th Description
-
-            %tbody
-              - @pictures.each do |picture|
-                %tr
-                  %td= change_blank_to_dash(picture.name)
-                  %td= link_to image_tag(picture.image, width: 100), picture.image.url
-                  %td= change_blank_to_dash(picture.description)
-
-          .flickr_pagination
-            = will_paginate @pictures, param_name: 'pictures_page'
-
     .pull-right
       = link_to "Ajouter consult", new_proprio_medical_record_path(proprio), class: "btn btn-default"
+
+.panel.panel-default
+  .panel-heading Hospitalisation
+  .panel-body
+    - if @hospits.empty?
+      .alert.alert-warning.table-warning Pas de fichier.
+    - else
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Cause hospitalisation
+            %th Vétérinaire
+            %th Observations
+            %th.date-row Date d'entrée
+            %th.btn-row-2
+
+        %tbody
+          - @hospits.each do |hospit|
+            %tr
+              %td= change_blank_to_dash(hospit.anamnesis)
+              %td= change_blank_to_dash(hospit.veterinarian.user.last_name)
+              %td= change_blank_to_dash(hospit.description)
+              %td= change_blank_to_dash(hospit.created_at.to_date)
+              %td
+                .pull-right
+                  = link_to icon('list-alt'), proprio_hospit_path(proprio, hospit), title: 'Détails', class: "btn btn-default"
+                  = link_to icon('edit'), edit_proprio_hospit_path(proprio, hospit), title: 'Modifier', class: "btn btn-default"
+    .pull-right
       = link_to "Ajouter hospit", new_proprio_hospit_path(proprio), class: "btn btn-default"
-      = link_to "Retour", proprio_animals_path(proprio), class: "btn btn-default"
+
+.panel.panel-default
+  .panel-heading Images de l'animal
+  .panel-body
+    - if @pictures.empty?
+      Pas d'images.
+    - else
+      %table.table.table-striped
+        %thead
+          %tr
+            %th Nom
+            %th Image
+            %th Description
+
+        %tbody
+          - @pictures.each do |picture|
+            %tr
+              %td= change_blank_to_dash(picture.name)
+              %td= link_to image_tag(picture.image, width: 100), picture.image.url
+              %td= change_blank_to_dash(picture.description)
+
+      .flickr_pagination
+        = will_paginate @pictures, param_name: 'pictures_page'
+    .pull-right
+      = link_to "Ajouter image", new_proprio_picture_path(proprio), class: "btn btn-default"
+
+.pull-right
+  = link_to "Ajouter consult", new_proprio_medical_record_path(proprio), class: "btn btn-default"
+  = link_to "Ajouter hospit", new_proprio_hospit_path(proprio), class: "btn btn-default"
+  = link_to "Ajouter image", new_proprio_picture_path(proprio), class: "btn btn-default"
+  = link_to "Retour listing", proprio_animals_path(proprio), class: "btn btn-default"
