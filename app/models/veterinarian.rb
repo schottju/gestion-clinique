@@ -1,10 +1,7 @@
 class Veterinarian < ActiveRecord::Base
   belongs_to :user
-  #  has_and_belongs_to_many :medical_records
-#  has_many :proprios
   has_many :medical_records
   has_many :hospits
-#  has_many :proprios
   belongs_to :user
   has_many :vacations
   has_one :working_day
