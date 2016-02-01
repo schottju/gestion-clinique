@@ -163,10 +163,10 @@
 .panel.panel-default
   .panel-heading Photos
   .panel-body
+    .pull-right
+      = link_to "Ajouter", new_proprio_picture_path(proprio), class: "btn btn-default"  
     - if @pictures.empty?
       .alert.alert-warning.table-warning Pas de photos.
-      .pull-right
-        = link_to "Ajouter", new_proprio_picture_path(proprio), class: "btn btn-default"
     - else
       %table.table.table-striped
         %thead

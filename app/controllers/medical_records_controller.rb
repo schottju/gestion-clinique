@@ -102,7 +102,7 @@ helper_method :sort_column, :sort_direction
       params.require(:medical_record).permit(
           :anamnesis, :description, :comment, :poids, :proprio_id, :user_id, :veterinarian_id, :additional_cost, :total_cost, :disease_id,
           treatment_ids: [], picture_ids: [], animal_ids: [],
-          medicines_attributes: [ :id, :name, :description, :amount, :grace_period, :price, :serial_number, :dosage, :unit_id, :medoc_id, :_destroy ],
+          medicines_attributes: [ :id, :name, :description, :serial_number, :dosage, :medoc_id, :_destroy ],
           comments_attributes: [ :id, :num, :comment, :_destroy ]
       )
     end
