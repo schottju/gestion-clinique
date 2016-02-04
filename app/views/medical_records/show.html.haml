@@ -1,17 +1,6 @@
 .panel.panel-default
   .panel-heading= "Consultation nr #{medical_record.id}/#{medical_record.created_at.to_date}"
   .panel-body
-    .panel.panel-info
-      .panel-heading
-        .row
-          .col-md-4
-            %th Propriétaire
-          .col-md-4
-            %th Vétérinaire
-          .col-md-4
-            %th Animal
-          .col-md-1
-  .panel-body
     .row
       .col-md-4
         %table.table
@@ -20,108 +9,80 @@
               %td
           %tbody
             %tr
-              %th Prénom:
-              %td= change_blank_to_dash(proprio.first_name.capitalize)
-            %tr
-              %th Nom:
+              %th Propriétaire:
               %td= change_blank_to_dash(proprio.last_name.capitalize)
-            %tr
-              %th Téléphone:
-              %td= change_blank_to_dash(proprio.phone_number)
 
-      .col-md-4
+      .col-md-3
         %table.table
           %thead
             %tr
               %td
           %tbody
             %tr
-              %th Prénom:
-              %td= change_blank_to_dash(medical_record.veterinarian.user.first_name.capitalize)
-              %tr
-                %th Nom:
-                %td= change_blank_to_dash(medical_record.veterinarian.user.last_name.capitalize)
-              %tr
-                %th N° d'ordre:
-                %td= change_blank_to_dash(medical_record.veterinarian.pwz)
+              %th Vétérinaire:
+              %td= change_blank_to_dash(medical_record.veterinarian.user.last_name.capitalize)
+
       .col-md-4
         - medical_record.animals.each do |animal|
           %table.table
             %tbody
               %tr
-                %th.col-md-2 N° identification:
-                %td= change_blank_to_dash(animal.id_number)
-              %tr
-                %th.col-md-2 Nom:
+                %th.col-md-2 Animal:
                 %td= change_blank_to_dash(animal.name.capitalize)
               %tr
                 %th.col-md-2 Sexe:
                 %td= change_blank_to_dash(animal.gender)
               %tr
-                %th.col-md-2 Date de naissance:
-                %td= change_blank_to_dash(animal.birth_date)
-              %tr
-                %th.col-md-2 Espèce:
-                %td= change_blank_to_dash(animal.try(:species).try(:name))
-              %tr
-                %th.col-md-2 Informations complémentaires:
-                %td= change_blank_to_dash(animal.description)
-              %tr
                 %th
                 %td
       .col-md-1
-
-    .panel.panel-info
-      .panel-heading Informations générales
-      .panel-body
-        %table.table
-          %tbody
-          %tr
-            %th.col-md-2 Poids (kg):
-            %td= change_blank_to_dash(medical_record.poids)
-      .panel-body
-        %table.table
-          %tbody
-            %tr
-              %th.col-md-2 Description consultation:
-              %td= change_blank_to_dash(medical_record.decorate.consultation)
+      .pull-right
+        = link_to "Ordonnance", proprio_medical_record_path(proprio, medical_record.id, :format => 'pdf'), class: "btn btn-default"
 
   .panel-body
     .panel.panel-info
       .panel-heading
         .row
-          .col-md-6
-            %th Maladie ou acte prophylactique
-          .col-md-6
-            %th Traitements
+          .col-md-3
+            %th Poids (kg):
+          .col-md-9
+            %th Description consultation:
           .col-md-1
   .panel-body
     .row
-    .col-md-6
+    .col-md-3
       %table.table
         %thead
           %tr
             %td
         %tbody
           %tr
-            %td= change_blank_to_dash(medical_record.decorate.name_of_disease)
-      .col-md-6
-        %table.table
-          %thead
+            %td= change_blank_to_dash(medical_record.poids)
+    .col-md-9
+      %table.table
+        %thead
+          %tr
+            %td
+        %tbody
+          %td= change_blank_to_dash(medical_record.decorate.consultation)
+          %tr
+            %th
+            %td
+    .col-md-1
+
+  .panel.panel-info
+    .panel-heading Infos supplémentaires
+    .panel-body
+      %table.table
+        %thead
+          %tr
+          %th Maladie ou acte prophylactique
+          %th Traitements ou chirurgie
+        %tbody
+          %td= change_blank_to_dash(medical_record.decorate.name_of_disease)
+          - medical_record.treatments.each do |treatment|
             %tr
-              %td
-          %tbody
-            - medical_record.treatments.each do |treatment|
-              %tr
-                %th.col-md-3 Nom:
-                %td= change_blank_to_dash(treatment.name)
-              %tr
-                %th.col-md-3 Description:
-                %td= change_blank_to_dash(treatment.description)
-              %tr
-                %th
-                %td
-      .col-md-1
+              %td= change_blank_to_dash(treatment.name)
 
   .panel.panel-info
     .panel-heading Médicaments
@@ -149,14 +110,10 @@
     .panel.panel-info
       .panel-heading Remarques générales sur ordonnance
       .panel-body
-        %table.table
-          %thead
+        %tbody
+          - medical_record.comments.each do |comment|
             %tr
-            %th Observations
-          %tbody
-            - medical_record.comments.each do |comment|
-              %tr
-              %td= change_blank_to_dash(comment.comment)
+            %td= change_blank_to_dash(comment.comment)
 
     .panel.panel-info
       .panel-heading Images

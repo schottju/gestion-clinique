@@ -15,6 +15,15 @@
       .panel-body
       = f.input :description, label: false, placeholder: 'Observations, actes, injections, etc...'
     .panel.panel-info
+      .panel-heading Remarques en haut de l'ordonnance
+      .panel-body
+        #comments
+          = f.simple_fields_for :comments do |comment|
+            = render 'comment_fields', f: comment
+          .links.centered
+            = link_to_add_association 'Ajouter une remarque', f, :comments, class: 'btn btn-default'
+    .row
+    .panel.panel-info
       .panel-heading Médicaments
       .panel-body
         #medicines
@@ -22,15 +31,6 @@
             = render 'medicine_fields', f: medicine
           .links.centered
             = link_to_add_association 'Ajouter un médicament', f, :medicines, class: 'btn btn-default'
-    .row
-    .panel.panel-info
-      .panel-heading Remarques en haut de l'ordonnance
-      .panel-body
-        #comments
-          = f.simple_fields_for :comments do |comment|
-            = render 'comment_fields', f: comment
-          .links.centered
-            = link_to_add_association 'Ajouter une remarque sur ordonnance', f, :comments, class: 'btn btn-default'
 
   .form-actions
     = link_to 'Annuler', proprio_medical_records_path, class: 'btn btn-default'

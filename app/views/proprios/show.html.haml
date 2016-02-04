@@ -86,6 +86,7 @@
               %td= change_blank_to_dash(animal.id_number)
               %td
                 .pull-right
+                  = link_to icon('list-alt'), proprio_animal_path(proprio, animal.id, :format => 'pdf'), title: 'Historique', class: "btn btn-default"
                   = link_to icon('list-alt'), proprio_animal_path(proprio, animal), title: 'Détails', class: "btn btn-default"
                   = link_to icon('edit'), edit_proprio_animal_path(proprio, animal), title: 'Modifier', class: "btn btn-default"
       .pull-right
@@ -164,7 +165,7 @@
   .panel-heading Photos
   .panel-body
     .pull-right
-      = link_to "Ajouter", new_proprio_picture_path(proprio), class: "btn btn-default"  
+      = link_to "Ajouter", new_proprio_picture_path(proprio), class: "btn btn-default"
     - if @pictures.empty?
       .alert.alert-warning.table-warning Pas de photos.
     - else

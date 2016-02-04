@@ -83,6 +83,7 @@
                   %td= change_blank_to_dash(animal.try(:proprio).try(:city))
           .col-md-1
     .pull-right
+      = link_to "Historique", proprio_animal_path(proprio, animal.id, :format => 'pdf'), title: 'Historique', class: "btn btn-default"
       = link_to "Ajouter consult", new_proprio_medical_record_path(proprio), class: "btn btn-default"
       = link_to "Ajouter hospit", new_proprio_hospit_path(proprio), class: "btn btn-default"
       = link_to "Ajouter image", new_proprio_picture_path(proprio), class: "btn btn-default"
