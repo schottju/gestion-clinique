@@ -8,6 +8,7 @@ class Proprio < ActiveRecord::Base
   has_many :hospits
   has_many :pictures
 
+#  accepts_nested_attributes_for :medicalrecs
   accepts_nested_attributes_for :contacts, allow_destroy: true
 #  validates_presence_of :last_name
   def custom_label_method

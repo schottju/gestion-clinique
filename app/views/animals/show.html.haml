@@ -44,7 +44,7 @@
                 %tr
                   %td
           .col-md-1
-          
+
     .pull-right
       = link_to "Historique", proprio_animal_path(proprio, animal.id, :format => 'pdf'), title: 'Historique', class: "btn btn-default"
       = link_to "Ajouter consult", new_proprio_medical_record_path(proprio), class: "btn btn-default"
@@ -55,6 +55,8 @@
 .panel.panel-default
   .panel-heading Fichiers consultation
   .panel-body
+    .pull-right
+      = link_to "Nouvelle consult", new_proprio_medical_record_path(proprio), class: "btn btn-default"
     - if @medical_records.empty?
       .alert.alert-warning.table-warning Pas de fiche.
     - else
@@ -80,7 +82,7 @@
           .flickr_pagination
             = will_paginate @medical_records, param_name: 'medical_records_page'
     .pull-right
-      = link_to "Ajouter consult", new_proprio_medical_record_path(proprio), class: "btn btn-default"
+      = link_to "Nouvelle consult", new_proprio_medical_record_path(proprio), class: "btn btn-default"
 
 .panel.panel-default
   .panel-heading Hospitalisation
@@ -109,7 +111,7 @@
                   = link_to icon('list-alt'), proprio_hospit_path(proprio, hospit), title: 'Détails', class: "btn btn-default"
                   = link_to icon('edit'), edit_proprio_hospit_path(proprio, hospit), title: 'Modifier', class: "btn btn-default"
     .pull-right
-      = link_to "Ajouter hospit", new_proprio_hospit_path(proprio), class: "btn btn-default"
+      = link_to "Nouvelle hospit", new_proprio_hospit_path(proprio), class: "btn btn-default"
 
 .panel.panel-default
   .panel-heading Images de l'animal

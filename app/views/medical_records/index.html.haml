@@ -1,11 +1,11 @@
 .panel.panel-default
-  .panel-heading Fichier
+  .panel-heading Consultations
   .panel-body
     = render 'search_form'
     %table.table.table-striped
       %thead
         %tr
-          %th Animal        
+          %th Animal
           %th Description consultation
           %th Vétérinaire
           %th.date-row= sortable 'created_at', "Date"

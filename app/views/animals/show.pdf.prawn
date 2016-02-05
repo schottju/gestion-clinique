@@ -9,14 +9,13 @@ pdf.draw_text " Historique médical (hors hospit) du #{animal.try(:species).try(
 pdf.move_down 80
 @medical_records.each do |medical_record|
 
-pdf.text "<u>Date</u> : #{medical_record.created_at.to_date},  <u>Vétérinaire</u> : #{medical_record.veterinarian.user.last_name},  <u>Commentaires</u> :  #{medical_record.decorate.consultation}", :size => 9, :inline_format => true
+pdf.text "=> <u>Date</u> : #{medical_record.created_at.to_date},  <u>Vétérinaire</u> : #{medical_record.veterinarian.user.last_name}, <u>Poids</u> : #{medical_record.poids} Kg , <u>Commentaires</u> :  #{medical_record.decorate.consultation}", :size => 9, :inline_format => true
 pdf.text "<u>Médicaments prescrits</u> :", :size => 9, :inline_format => true
 medical_record.medicines.each do |medicine|
 pdf.text "#{medicine.name.titleize} #{medicine.decorate.name_with_medoc}", :size => 9, :inline_format => true
 end
-pdf.move_down 20
+pdf.move_down 10
 end
-pdf.move_down 20
 
 
 pdf.draw_text "ZI de la Croix Blanche - 87 200 SAINT JUNIEN", :size => 12, :at => [150, 12]
