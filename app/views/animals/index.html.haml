@@ -13,7 +13,7 @@
             %th= sortable 'statut', "Statut"
             %th Espèce
             %th= sortable 'id_number', "N° indentification"
-            %th.btn-row-2
+            %th.btn-row-3
         %tbody
           - animals.each do |animal|
             %tr
@@ -24,7 +24,7 @@
               %td= change_blank_to_dash(animal.id_number)
               %td
                 .pull-right
-                  = link_to icon('list-alt'), proprio_animal_path(proprio, animal.id, :format => 'pdf'), title: 'Historique', class: "btn btn-default"
+                  = link_to "H", proprio_animal_path(proprio, animal.id, :format => 'pdf'), title: 'Historique', class: "btn btn-default"
                   = link_to icon('list-alt'), proprio_animal_path(proprio, animal), title: 'Animal', class: "btn btn-default"
                   = link_to icon('edit'), edit_proprio_animal_path(proprio, animal), title: 'Modifier', class: "btn btn-default"
 

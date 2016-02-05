@@ -44,44 +44,7 @@
                 %tr
                   %td
           .col-md-1
-    .panel.panel-info
-      .panel-heading Données du propriétaire
-      .panel-body
-        .row
-          .col-md-4
-            %table.table
-              %thead
-                %tr
-                  %td
-              %tbody
-                %tr
-                  %th Prénom:
-                  %td= change_blank_to_dash(proprio.first_name)
-                %tr
-                  %th Nom:
-                  %td= change_blank_to_dash(proprio.last_name)
-                %tr
-                  %th Téléphone:
-                  %td= change_blank_to_dash(proprio.phone_number)
-          .col-md-4
-            %table.table
-              %thead
-                %tr
-                  %td
-              %tbody
-                %%tr
-                  %th Numéro:
-                  %td= change_blank_to_dash(animal.try(:proprio).try(:house_number))
-                %tr
-                  %th Rue:
-                  %td= change_blank_to_dash(animal.try(:proprio).try(:street))
-                %tr
-                  %th Code postal:
-                  %td= change_blank_to_dash(animal.try(:proprio).try(:zip_code))
-                %tr
-                  %th Ville:
-                  %td= change_blank_to_dash(animal.try(:proprio).try(:city))
-          .col-md-1
+          
     .pull-right
       = link_to "Historique", proprio_animal_path(proprio, animal.id, :format => 'pdf'), title: 'Historique', class: "btn btn-default"
       = link_to "Ajouter consult", new_proprio_medical_record_path(proprio), class: "btn btn-default"
