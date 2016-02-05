@@ -105,7 +105,6 @@
             %tr
               %th Observations
               %th Actes
-              %th Intervenant
               %th Date
           %tbody
             - hospit.hospitactes.each do |hospitacte|
@@ -113,8 +112,6 @@
                 %td= change_blank_to_dash(hospitacte.comment)
 
                 %td= change_blank_to_dash(hospitacte.soin)
-
-                %td= change_blank_to_dash(hospitacte.veterinarian.user.last_name)
 
                 %td= change_blank_to_dash(hospitacte.created_at)
 

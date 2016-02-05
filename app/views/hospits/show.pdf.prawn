@@ -20,14 +20,10 @@ pdf.move_down 10
 pdf.text "Chronologie des évènements :", :style => :bold, :indent_paragraphs => 180, :inline_format => true
 hospit.hospitactes.each do |hospitacte|
 pdf.move_down 20
-pdf.text  "=> <u>Date/heure</u> : #{hospitacte.created_at}    <u>Observations</u> : #{hospitacte.comment}    <u>Soins</u> : #{hospitacte.soin}  <u>Intervenant</u> : Dr #{hospitacte.veterinarian.user.last_name.titleize}", :size => 9, :inline_format => true
+pdf.text  "=> <u>Date/heure</u> : #{hospitacte.created_at}    <u>Observations</u> : #{hospitacte.comment}    <u>Soins</u> : #{hospitacte.soin}", :size => 9, :inline_format => true
 
 
 end
-
-pdf.move_down 100
-pdf.text "Docteur #{hospit.veterinarian.user.last_name.titleize} #{hospit.veterinarian.user.first_name.titleize}", :size => 12, :indent_paragraphs => 270
-pdf.text "N° d'ordre : #{hospit.veterinarian.pwz}", :size => 12, :indent_paragraphs => 280
 
 pdf.draw_text "ZI de la Croix Blanche - 87 200 SAINT JUNIEN", :size => 12, :at => [150, 12]
 pdf.draw_text "Tél : 05 55 02 17 52 - Fax : 05 55 02 68 28 - Courriel : clinvet-stjunien@wanadoo.fr", :size => 12, :at => [60, 0]
