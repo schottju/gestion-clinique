@@ -3,17 +3,21 @@
   .form-inputs
     .row
       .col-md-5
-        = f.input :animal_ids, label: 'Animaux', collection: @animals, input_html: { multiple: true }, required: true, autofocus: true
+        = f.input :animal_ids, label: 'Animaux', collection: @animals, required: true, autofocus: true
       .col-md-2
         = f.input :poids, label: 'Poids', placeholder: 'Entrez le poids'
       .col-md-5
-        = f.input :animal_ids, label: 'Maladie ou acte prophylo', collection: @diseases, input_html: { multiple: true }, required: true, autofocus: true
+        = f.input :disease_ids, label: 'Maladie ou acte prophylo', collection: @diseases
     = f.hidden_field :veterinarian_id, value: current_user.try(:veterinarian).try(:id)
     = f.hidden_field :proprio_id, value: proprio.id
     .panel.panel-info
       .panel-heading Description de la consultation
       .panel-body
       = f.input :description, label: false, placeholder: 'Observations, actes, injections, etc...'
+      .form-actions
+        = link_to 'Annuler', proprio_medical_records_path, class: 'btn btn-default'
+        .pull-right
+          = f.button :submit, "Sauvegarder"
     .panel.panel-info
       .panel-heading Remarques en haut de l'ordonnance
       .panel-body
@@ -35,7 +39,7 @@
   .form-inputs
     .row
       .col-md-4
-        = f.input :picture_ids, label: 'Images', collection: @pictures, input_html: { multiple: true }
+        = f.input :picture_ids, label: 'Images', collection: @pictures
   .form-actions
     = link_to 'Annuler', proprio_medical_records_path, class: 'btn btn-default'
     .pull-right
