@@ -3,7 +3,7 @@
   .form-inputs
     .row
       .col-md-5
-        = f.input :animal_ids, label: 'Animaux', collection: @animals, required: true, autofocus: true
+        = f.input :animal_ids, label: 'Animaux', collection: @animals, input_html: { class: 'multiselectuser', multiple: true }, required: true, autofocus: true
       .col-md-2
         = f.input :poids, label: 'Poids', placeholder: 'Entrez le poids'
       .col-md-5
