@@ -1,119 +1,86 @@
 .panel.panel-default
   .panel-heading= "Consultation nr #{medical_record.id}/#{medical_record.created_at.to_date}"
   .panel-body
-    .row
-      .col-md-4
-        %table.table
-          %thead
-            %tr
-              %td
-          %tbody
-            %tr
-              %th Propriétaire:
-              %td= change_blank_to_dash(proprio.last_name.capitalize)
+    %table.table
+      %thead
+        %tr
+          %th Animal:
+          %th Propriétaire:
+          %th Vétérinaire:
+        %tbody
+          %tr
+          - medical_record.animals.each do |animal|
+            %td= change_blank_to_dash(animal.name.capitalize)
+            %td= change_blank_to_dash(proprio.last_name.capitalize)
+            %td= change_blank_to_dash(medical_record.veterinarian.user.last_name.capitalize)
 
-      .col-md-3
-        %table.table
-          %thead
-            %tr
-              %td
-          %tbody
-            %tr
-              %th Vétérinaire:
-              %td= change_blank_to_dash(medical_record.veterinarian.user.last_name.capitalize)
-
-      .col-md-4
-        - medical_record.animals.each do |animal|
-          %table.table
-            %tbody
-              %tr
-                %th.col-md-2 Animal:
-                %td= change_blank_to_dash(animal.name.capitalize)
-              %tr
-                %th.col-md-2 Sexe:
-                %td= change_blank_to_dash(animal.gender)
-              %tr
-                %th
-                %td
-      .col-md-1
       .pull-right
+        = link_to icon('edit'), edit_proprio_medical_record_path(proprio, medical_record.id), title: 'Modifier', class: "btn btn-default"
         = link_to "Ordonnance", proprio_medical_record_path(proprio, medical_record.id, :format => 'pdf'), class: "btn btn-default"
+        = link_to "Retour", proprio_path(proprio), class: "btn btn-default"
 
   .panel-body
     .panel.panel-info
-      .panel-heading
-        .row
-          .col-md-3
-            %th Poids (kg):
-          .col-md-9
-            %th Description consultation:
-          .col-md-1
-  .panel-body
-    .row
-    .col-md-3
-      %table.table
-        %thead
-          %tr
-            %td
-        %tbody
-          %tr
-            %td= change_blank_to_dash(medical_record.poids)
-    .col-md-9
-      %table.table
-        %thead
-          %tr
-            %td
-        %tbody
-          %td= change_blank_to_dash(medical_record.decorate.consultation)
-          %tr
-            %th
-            %td
-    .col-md-1
-
-  .panel.panel-info
-    .panel-heading Infos supplémentaires
-    .panel-body
-      %table.table
-        %thead
-          %tr
-          %th Maladie ou acte prophylactique
-          %th Traitements ou chirurgie
-        %tbody
-          %td= change_blank_to_dash(medical_record.decorate.name_of_disease)
-          - medical_record.treatments.each do |treatment|
-            %tr
-              %td= change_blank_to_dash(treatment.name)
-
-  .panel.panel-info
-    .panel-heading Médicaments
-    .panel-body
-      %table.table
-        %thead
-          %tr
-            %th N° lot:
-            %th Nom(hors dico):
-            %th Nom:
-            %th Posologie:
-            %th Infos complémentaires (apparait sur ordonnance):
-        %tbody
-          - medical_record.medicines.each do |medicine|
-            %tr
-              %td= change_blank_to_dash(medicine.serial_number)
-
-              %td= change_blank_to_dash(medicine.name)
-
-              %td= change_blank_to_dash(medicine.decorate.name_with_medoc)
-
-              %td= change_blank_to_dash(medicine.dosage)
-
-              %td= change_blank_to_dash(medicine.description)
-    .panel.panel-info
-      .panel-heading Remarques générales sur ordonnance
+      .panel-heading Descriptif
       .panel-body
+        %table.table
+          %thead
+            %tr
+            %th Poids (kg):
+            %th Description consultation:
+          %tbody
+            %td= change_blank_to_dash(medical_record.poids)
+            %td= change_blank_to_dash(medical_record.decorate.consultation)
+
+  .panel-body
+    .panel.panel-info
+      .panel-heading Infos supplémentaires
+      .panel-body
+        %table.table
+          %thead
+            %tr
+            %th Maladie ou acte prophylactique
+            %th Traitements ou chirurgie
+          %tbody
+            %td= change_blank_to_dash(medical_record.decorate.name_of_disease)
+            - medical_record.treatments.each do |treatment|
+              %tr
+                %td= change_blank_to_dash(treatment.name)
+
+  .panel-body
+    .panel.panel-info
+      .panel-heading Ordonnance
+      %table.table
+        %thead
+          %tr
+            %th Remarque en haut de l'ordonnance
         %tbody
           - medical_record.comments.each do |comment|
             %tr
             %td= change_blank_to_dash(comment.comment)
+
+      .panel-heading Médicaments
+      .panel-body
+        %table.table
+          %thead
+            %tr
+              %th N° lot:
+              %th Nom(hors dico):
+              %th Nom:
+              %th Posologie:
+              %th Infos complémentaires (apparait sur ordonnance):
+          %tbody
+            - medical_record.medicines.each do |medicine|
+              %tr
+                %td= change_blank_to_dash(medicine.serial_number)
+
+                %td= change_blank_to_dash(medicine.name)
+
+                %td= change_blank_to_dash(medicine.decorate.name_with_medoc)
+
+                %td= change_blank_to_dash(medicine.dosage)
+
+                %td= change_blank_to_dash(medicine.description)
 
     .panel.panel-info
       .panel-heading Images
@@ -137,10 +104,7 @@
                   %td= link_to image_tag(picture.image, width: 100), picture.image.url
                   %td= change_blank_to_dash(picture.description)
 
-
-    .pull-left
-      = link_to "Ordonnance", proprio_medical_record_path(proprio, medical_record.id, :format => 'pdf'), class: "btn btn-default"
-
     .pull-right
+      = link_to "Ordonnance", proprio_medical_record_path(proprio, medical_record.id, :format => 'pdf'), class: "btn btn-default"
       = link_to icon('edit'), edit_proprio_medical_record_path(proprio, medical_record.id), title: 'Modifier', class: "btn btn-default"
       = link_to "Retour", proprio_path(proprio), class: "btn btn-default"
