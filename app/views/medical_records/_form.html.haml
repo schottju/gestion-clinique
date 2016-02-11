@@ -7,7 +7,7 @@
       .col-md-2
         = f.input :poids, label: 'Poids', placeholder: 'Entrez le poids'
       .col-md-5
-        = f.input :disease_ids, label: 'Maladie ou acte prophylo', collection: @diseases
+        = f.input :disease_id, label: 'Maladie ou acte prophylo', collection: @diseases
     = f.hidden_field :veterinarian_id, value: current_user.try(:veterinarian).try(:id)
     = f.hidden_field :proprio_id, value: proprio.id
     .panel.panel-info
