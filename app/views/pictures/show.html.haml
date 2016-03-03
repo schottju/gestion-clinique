@@ -15,7 +15,7 @@
               %td= change_blank_to_dash(proprio.last_name.capitalize)
             %tr
               %th.col-md-1 Animal:
-              %td= change_blank_to_dash(@animals)
+              %td= change_blank_to_dash(picture.animal.name)
             %tr
               %th.col-md-1 Description image:
               %td= change_blank_to_dash(picture.description)
@@ -24,4 +24,5 @@
     .row
       .col-md-12
         .pull-right
+          = link_to "Listing animaux", proprio_animals_path(proprio), class: "btn btn-default"
           = link_to 'Aller à la galerie', proprio_pictures_path(proprio), class: 'btn btn-default'

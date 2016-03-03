@@ -103,5 +103,5 @@
     .pull-right
       = link_to "Ordonnance", proprio_medical_record_path(proprio, medical_record.id, :format => 'pdf'), class: "btn btn-default"
       = link_to icon('edit'), edit_proprio_medical_record_path(proprio, medical_record.id), title: 'Modifier', class: "btn btn-default"
-      = link_to "Retour", proprio_animals_path(proprio), class: "btn btn-default"
+      = link_to "Listing animaux", proprio_animals_path(proprio), class: "btn btn-default"
       = link_to 'Vers le profil du propriétaire', proprio_path(proprio), class: 'btn btn-default'
