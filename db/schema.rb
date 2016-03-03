@@ -187,8 +187,10 @@ ActiveRecord::Schema.define(version: 20161126003333) do
     t.datetime "updated_at",      null: false
     t.string   "poids"
     t.integer  "disease_id"
+    t.integer  "animal_id"
   end
 
+  add_index "medical_records", ["animal_id"], name: "index_medical_records_on_animal_id", using: :btree
   add_index "medical_records", ["disease_id"], name: "index_medical_records_on_disease_id", using: :btree
   add_index "medical_records", ["proprio_id"], name: "index_medical_records_on_proprio_id", using: :btree
   add_index "medical_records", ["veterinarian_id"], name: "index_medical_records_on_veterinarian_id", using: :btree
@@ -401,6 +403,7 @@ ActiveRecord::Schema.define(version: 20161126003333) do
   add_foreign_key "hospits", "diseases"
   add_foreign_key "hospits", "proprios"
   add_foreign_key "hospits", "veterinarians"
+  add_foreign_key "medical_records", "animals"
   add_foreign_key "medical_records", "diseases"
   add_foreign_key "medical_records", "proprios"
   add_foreign_key "medical_records", "veterinarians"

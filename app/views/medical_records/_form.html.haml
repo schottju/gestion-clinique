@@ -3,7 +3,7 @@
   .form-inputs
     .row
       .col-md-5
-        = f.input :animal_ids, label: 'Animaux', collection: @animals, input_html: { class: 'multiselectuser', multiple: true }, required: true, autofocus: true
+        = f.input :animal_id, label: 'Animaux', collection: @animal, autofocus: true
       .col-md-2
         = f.input :poids, label: 'Poids', placeholder: 'Entrez le poids'
       .col-md-5
@@ -15,7 +15,7 @@
       .panel-body
       = f.input :description, label: false, placeholder: 'Observations, actes, injections, etc...'
       .form-actions
-        = link_to 'Annuler', proprio_medical_records_path, class: 'btn btn-default'
+        = link_to 'Annuler', proprio_animals_path(proprio), class: 'btn btn-default'
         .pull-right
           = f.button :submit, "Sauvegarder"
     .panel.panel-info
@@ -39,8 +39,8 @@
   .form-inputs
     .row
       .col-md-4
-        = f.input :picture_ids, label: 'Images', collection: @pictures
+        = f.input :picture_ids, label: 'Images', collection: @pictures, input_html: { multiple: true }
   .form-actions
-    = link_to 'Annuler', proprio_medical_records_path, class: 'btn btn-default'
+    = link_to 'Annuler', proprio_animals_path(proprio), class: 'btn btn-default'
     .pull-right
       = f.button :submit, "Sauvegarder"

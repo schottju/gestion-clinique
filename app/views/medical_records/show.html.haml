@@ -8,16 +8,14 @@
           %th Propriétaire:
           %th Vétérinaire:
         %tbody
-          %tr
-          - medical_record.animals.each do |animal|
-            %td= change_blank_to_dash(animal.name.capitalize)
-            %td= change_blank_to_dash(proprio.last_name.capitalize)
-            %td= change_blank_to_dash(medical_record.veterinarian.user.last_name.capitalize)
-
-      .pull-right
-        = link_to icon('edit'), edit_proprio_medical_record_path(proprio, medical_record.id), title: 'Modifier', class: "btn btn-default"
-        = link_to "Ordonnance", proprio_medical_record_path(proprio, medical_record.id, :format => 'pdf'), class: "btn btn-default"
-        = link_to "Retour", proprio_path(proprio), class: "btn btn-default"
+          %td= change_blank_to_dash(medical_record.decorate.name_of_animal.capitalize)
+          %td= change_blank_to_dash(proprio.last_name.capitalize)
+          %td= change_blank_to_dash(medical_record.veterinarian.user.last_name.capitalize)
+    .pull-right
+      = link_to icon('edit'), edit_proprio_medical_record_path(proprio, medical_record.id), title: 'Modifier', class: "btn btn-default"
+      = link_to "Ordonnance", proprio_medical_record_path(proprio, medical_record.id, :format => 'pdf'), class: "btn btn-default"
+      = link_to "Retour", proprio_animals_path(proprio), class: "btn btn-default"
+      = link_to 'Vers le profil du propriétaire', proprio_path(proprio), class: 'btn btn-default'
 
   .panel-body
     .panel.panel-info
@@ -92,7 +90,6 @@
             %thead
               %tr
                 %th Nom
-                %th Animal
                 %th Image
                 %th Description
 
@@ -100,11 +97,11 @@
               - medical_record.pictures.each do |picture|
                 %tr
                   %td= change_blank_to_dash(picture.name)
-                  %td= picture.decorate.print_animal_id
                   %td= link_to image_tag(picture.image, width: 100), picture.image.url
                   %td= change_blank_to_dash(picture.description)
 
     .pull-right
       = link_to "Ordonnance", proprio_medical_record_path(proprio, medical_record.id, :format => 'pdf'), class: "btn btn-default"
       = link_to icon('edit'), edit_proprio_medical_record_path(proprio, medical_record.id), title: 'Modifier', class: "btn btn-default"
-      = link_to "Retour", proprio_path(proprio), class: "btn btn-default"
+      = link_to "Retour", proprio_animals_path(proprio), class: "btn btn-default"
+      = link_to 'Vers le profil du propriétaire', proprio_path(proprio), class: 'btn btn-default'

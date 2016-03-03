@@ -16,9 +16,9 @@ else
 end
 end
 
-medical_record.animals.each do |animal|
-pdf.draw_text "Pour le #{animal.try(:species).try(:name)} #{animal.name.titleize} de #{proprio.last_name.titleize} #{proprio.first_name.titleize}", :style => :bold, :size => 12, :at => [150, 550]
-end
+
+pdf.draw_text "Pour l'animal #{medical_record.decorate.name_of_animal.titleize} de #{proprio.last_name.titleize} #{proprio.first_name.titleize}", :style => :bold, :size => 12, :at => [150, 550]
+
 
 pdf.move_down 100
 

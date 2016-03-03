@@ -36,14 +36,15 @@ Rails.application.routes.draw do
   resources :medocs, only: [ :new, :create, :edit, :update ]
   resources :searchas, only: [ :index ]
   resources :animals , only: [ :index, :show, :new, :create, :edit, :update ]
+  resources :medical_records, only: [ :index, :show, :new, :create, :edit, :update ]
 
   get '/proprios_search', to: 'proprios#proprios_search'
   resources :veterinarians, only: [ :index, :show, :new, :create, :edit, :update ]
   resources :proprios, only: [ :index, :show, :new, :create, :edit, :update ] do
-   resources :animals , only: [ :index, :show, :new, :create, :edit, :update ]
-   resources :medical_records, only: [ :index, :show, :new, :create, :edit, :update ]
-   resources :hospits, only: [ :index, :show, :new, :create, :edit, :update ]
-   resources :pictures, only: [ :index, :show, :new, :create, :edit, :update ]
+    resources :animals , only: [ :index, :show, :new, :create, :edit, :update ]
+    resources :medical_records, only: [ :index, :show, :new, :create, :edit, :update ]
+    resources :hospits, only: [ :index, :show, :new, :create, :edit, :update ]
+    resources :pictures, only: [ :index, :show, :new, :create, :edit, :update ]
 
   end
   resources :users, only: [ :index, :show, :new, :create, :edit, :update ] do

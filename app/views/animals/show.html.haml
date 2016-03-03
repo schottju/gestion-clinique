@@ -51,6 +51,7 @@
       = link_to "Ajouter hospit", new_proprio_hospit_path(proprio), class: "btn btn-default"
       = link_to "Ajouter image", new_proprio_picture_path(proprio), class: "btn btn-default"
       = link_to "Retour listing", proprio_animals_path(proprio), class: "btn btn-default"
+      = link_to 'Vers le profil du propriétaire', proprio_path(proprio), class: 'btn btn-default'
 
 .panel.panel-default
   .panel-heading Fichiers consultation
@@ -79,6 +80,7 @@
                 .pull-right
                   = link_to icon('list-alt'), proprio_medical_record_path(proprio, medical_record), title: 'Détails', class: "btn btn-default"
                   = link_to icon('edit'), edit_proprio_medical_record_path(proprio, medical_record), title: 'Modifier', class: "btn btn-default"
+                  = link_to "O", proprio_medical_record_path(proprio, medical_record.id, :format => 'pdf'), class: "btn btn-default"
           .flickr_pagination
             = will_paginate @medical_records, param_name: 'medical_records_page'
     .pull-right
@@ -143,3 +145,4 @@
   = link_to "Ajouter hospit", new_proprio_hospit_path(proprio), class: "btn btn-default"
   = link_to "Ajouter image", new_proprio_picture_path(proprio), class: "btn btn-default"
   = link_to "Retour listing", proprio_animals_path(proprio), class: "btn btn-default"
+  = link_to 'Vers le profil du propriétaire', proprio_path(proprio), class: 'btn btn-default'

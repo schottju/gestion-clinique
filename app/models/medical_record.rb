@@ -10,8 +10,9 @@ class MedicalRecord < ActiveRecord::Base
   has_and_belongs_to_many :treatments
   has_and_belongs_to_many :pictures
   has_and_belongs_to_many :medocs
+
   belongs_to :disease
-  validates_presence_of  :animal_ids
+  validates_presence_of  :animal_id
   accepts_nested_attributes_for :medicines, allow_destroy: true
   accepts_nested_attributes_for :comments, allow_destroy: true
 
@@ -22,7 +23,7 @@ class MedicalRecord < ActiveRecord::Base
   end
 
   def custom_label_method
-    "#{user.try(:decorate).try(:full_name)} #{disease.try(:name)}, Vétérinaire: #{veterinarian.try(:user).try(:decorate).try(:full_name)}"
+    "#{user.try(:decorate).try(:full_name)} #{animal.try(:name)} #{disease.try(:name)}, Vétérinaire: #{veterinarian.try(:user).try(:decorate).try(:full_name)}"
   end
 
   private

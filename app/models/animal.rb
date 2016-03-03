@@ -5,7 +5,7 @@ class Animal < ActiveRecord::Base
   belongs_to :proprio
   belongs_to :species
   has_many :pictures
-  has_and_belongs_to_many :medical_records
+  has_many :medical_records
   has_and_belongs_to_many :hospits
   validates_presence_of :gender, :species_id
 

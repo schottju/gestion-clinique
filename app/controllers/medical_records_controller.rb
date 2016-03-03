@@ -10,8 +10,8 @@ helper_method :sort_column, :sort_direction
   expose(:medoc, attributes: :medoc_params)
   expose(:medical_record, attributes: :medical_record_params)
   expose(:user) { User.find(params[:user_id]) }
-  expose(:animal) { Animal.find(params[:animal_id]) }
   expose(:proprio) { Proprio.find(params[:proprio_id]) }
+#  expose(:animal) { Animal.find(params[:animal_id]) }
 #  expose(:veterinarian) { Veterinarian.find(params[:user_id]) }
   expose(:medical_records) { proprio.medical_records.order(sort_column + " " + sort_direction).paginate(page: params[:page], per_page: 8) }
 
@@ -23,7 +23,7 @@ helper_method :sort_column, :sort_direction
   end
 
   def show
-    @animal = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name.titleize}" ] }
+    @animal = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name.titleize}", animal.id ] }
   end
 
   def new
@@ -34,6 +34,7 @@ helper_method :sort_column, :sort_direction
     @treatments = Treatment.order(:name).where(status: "actif")
     @pictures = Picture.where(proprio_id: proprio.id).map { |picture| [ "Nom: #{picture.name}, Description: #{picture.description}", picture.id  ] }
     @animals = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name.titleize}, #{animal.try(:species).try(:name)}, #{animal.description}, ID: #{animal.id_number}", animal.id ] }
+    @animal = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name.titleize}", animal.id ] }
 #    resource.build_medoc
   end
 
@@ -46,7 +47,7 @@ helper_method :sort_column, :sort_direction
 #    end if params[:medical_record] and params[:medical_record][:medicines_attributes]
 
     if medical_record.save
-      redirect_to proprio_medical_records_path, notice: 'Nouvelle entrée dans le fichier crée.'
+      redirect_to proprio_animal_path(proprio, medical_record.animal_id), notice: 'Nouvelle entrée dans le fichier crée.'
     else
 #      @veterinarians = Veterinarian.find(params[:user_id]).map { |user| [ "Nom: #{user.last_name}, Prénom: #{user.first_name}"] }
       @units = Unit.order(:name).where(status: "actif")
@@ -55,6 +56,7 @@ helper_method :sort_column, :sort_direction
       @treatments = Treatment.order(:name).where(status: "actif")
       @pictures = Picture.where(proprio_id: proprio.id).map { |picture| [ "Nom: #{picture.name}, description: #{picture.description}", picture.id  ] }
       @animals = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name.titleize}, #{animal.try(:species).try(:name)}, #{animal.description}, ID: #{animal.id_number}", animal.id ] }
+      @animal = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name.titleize}", animal.id ] }
       render :new
     end
   end
@@ -67,6 +69,7 @@ helper_method :sort_column, :sort_direction
     @treatments = Treatment.order(:name).map { |treatment| [ "#{treatment.name} #{"(Inactif)" if treatment.inactif?}", treatment.id ] }
     @pictures = Picture.where(proprio_id: proprio.id).map { |picture| [ "Nom: #{picture.name}, description: #{picture.description}", picture.id  ] }
     @animals = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name.titleize}, #{animal.try(:species).try(:name)}, #{animal.description}, ID: #{animal.id_number}", animal.id ] }
+    @animal = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name.titleize}", animal.id ] }
 #    resource.build_medoc
   end
 
@@ -88,6 +91,7 @@ helper_method :sort_column, :sort_direction
       @treatments = Treatment.order(:name).map { |treatment| [ "#{treatment.name} #{"(Inactif)" if treatment.inactif?}", treatment.id ] }
       @pictures = Picture.where(proprio_id: proprio.id).map { |picture| [ "Nom: #{picture.name}, description: #{picture.description}", picture.id  ] }
       @animals = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name.titleize}, #{animal.try(:species).try(:name)}, #{animal.description}, ID: #{animal.id_number}", animal.id ] }
+      @animal = Animal.where(proprio_id: proprio.id).map { |animal| [ "#{animal.name.titleize}", animal.id ] }
 #      resource.build_medoc
       render :edit
     end
@@ -100,15 +104,15 @@ helper_method :sort_column, :sort_direction
 
     def medical_record_params
       params.require(:medical_record).permit(
-          :anamnesis, :description, :comment, :poids, :proprio_id, :user_id, :veterinarian_id, :disease_id,
-          treatment_ids: [], picture_ids: [], animal_ids: [],
+          :anamnesis, :description, :comment, :poids, :proprio_id, :user_id, :veterinarian_id, :disease_id, :animal_id,
+          treatment_ids: [], picture_ids: [],
           medicines_attributes: [ :id, :name, :description, :serial_number, :dosage, :medoc_id, :_destroy ],
           comments_attributes: [ :id, :num, :comment, :_destroy ]
       )
     end
 
     def sort_column
-      MedicalRecord.column_names.include?(params[:sort]) ? params[:sort] : "id"
+      MedicalRecord.column_names.include?(params[:sort]) ? params[:sort] : "animal_id"
     end
 
     def sort_direction

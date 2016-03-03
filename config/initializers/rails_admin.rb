@@ -425,6 +425,10 @@ RailsAdmin.config do |config|
       label "Espèce"
     end
 
+    configure :medical_records do
+      label "Fiche consultation"
+    end
+
     configure :pictures do
       label "Images"
     end
@@ -630,7 +634,7 @@ RailsAdmin.config do |config|
       label "Vétérinaire"
     end
 
-    configure :animals do
+    configure :animal do
       label "Animal"
     end
 
@@ -677,7 +681,7 @@ RailsAdmin.config do |config|
       field :user do
         filterable false
       end
-      field :animals do
+      field :animal do
         filterable false
       end
       field :anamnesis do
@@ -702,8 +706,6 @@ RailsAdmin.config do |config|
         filterable false
       end
       field :description
-      field :additional_cost
-      field :total_cost
       field :created_at
       field :updated_at
     end
@@ -713,7 +715,7 @@ RailsAdmin.config do |config|
       field :proprio
       field :veterinarian
       field :user
-      field :animals
+      field :animal
       field :anamnesis
       field :diseases
       field :medicines
@@ -723,8 +725,6 @@ RailsAdmin.config do |config|
       field :treatments
       field :comment
       field :description
-      field :additional_cost
-      field :total_cost
       field :created_at
       field :updated_at
     end
@@ -734,7 +734,7 @@ RailsAdmin.config do |config|
         inline_add false
         inline_edit false
       end
-      field :animals do
+      field :animal do
         inline_add false
       end
       field :anamnesis
@@ -761,18 +761,15 @@ RailsAdmin.config do |config|
       end
       field :user
       field :description
-      field :additional_cost
 
     export do
       field :id
       field :proprio
-      field :animals
+      field :animal
       field :veterinarian
       field :user
       field :anamnesis
       field :description
-      field :additional_cost
-      field :total_cost
       field :created_at
       field :updated_at
       field :diseases
